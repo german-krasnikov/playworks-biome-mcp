@@ -16,7 +16,7 @@
 <img alt="Last commit" src="https://img.shields.io/github/last-commit/german-krasnikov/playworks-biome-mcp?style=for-the-badge&labelColor=05060B&color=3FE0A3&logo=git&logoColor=white" />
 
 <sub>**SPEC**</sub><br>
-<img alt="Tests" src="https://img.shields.io/badge/tests-1620%20passing-3FE0A3?style=for-the-badge&labelColor=05060B" />
+<img alt="Tests" src="https://img.shields.io/badge/tests-1728%20passing-3FE0A3?style=for-the-badge&labelColor=05060B" />
 <img alt="Tools" src="https://img.shields.io/badge/tools-198-39E0FF?style=for-the-badge&labelColor=05060B" />
 <img alt="Status" src="https://img.shields.io/badge/Status-Beta%20v0.1.0-FFC24B?style=for-the-badge&labelColor=05060B" />
 

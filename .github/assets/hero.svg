@@ -340,7 +340,7 @@
     </g>
     <g class="hero__chip c3" transform="translate(744,298)">
       <rect x="-66" y="-14" width="132" height="28" rx="14" fill="#151A2E" stroke="#222742" stroke-width="1"/>
-      <text x="0" y="4.5" font-size="12.5" letter-spacing="0.4"><tspan fill="#8B7DFF" font-weight="700">1620</tspan><tspan fill="#C2C9DD"> tests</tspan></text>
+      <text x="0" y="4.5" font-size="12.5" letter-spacing="0.4"><tspan fill="#8B7DFF" font-weight="700">1728</tspan><tspan fill="#C2C9DD"> tests</tspan></text>
     </g>
   </g>
 

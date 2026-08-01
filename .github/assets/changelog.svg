@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 960" width="900" height="960" role="img" aria-labelledby="cl-title cl-desc">
 <title id="cl-title">Luna MCP — Release Timeline</title>
-<desc id="cl-desc">An animated vertical changelog. Five milestones reveal in sequence top to bottom as a marker descends a glowing gradient spine: Phase A+B+C (Foundation), Waves 1-6 (The brain), Token Economy (up to 92% saved), Sprints 1-6 (Probes and field-readiness), and v0.1.0 Beta (Touchdown) with 198 tools, 1620 tests, and 30,236 LOC.</desc>
+<desc id="cl-desc">An animated vertical changelog. Five milestones reveal in sequence top to bottom as a marker descends a glowing gradient spine: Phase A+B+C (Foundation), Waves 1-6 (The brain), Token Economy (up to 92% saved), Sprints 1-6 (Probes and field-readiness), and v0.1.0 Beta (Touchdown) with 198 tools, 1728 tests, and 30,293 LOC.</desc>
 <defs>
 <linearGradient id="sky" x1="0" y1="0" x2="0.65" y2="1"><stop offset="0" stop-color="#05060B"/><stop offset="0.5" stop-color="#080A14"/><stop offset="1" stop-color="#0E1120"/></linearGradient>
 <linearGradient id="spine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8B7DFF"/><stop offset="0.32" stop-color="#6AB6FF"/><stop offset="0.58" stop-color="#39E0FF"/><stop offset="1" stop-color="#3FE0A3"/></linearGradient>
@@ -157,9 +157,9 @@
 <g class="mn">
 <text x="22" y="70" font-size="22" font-weight="700" fill="#E8ECF6">198</text>
 <text x="22" y="88" font-size="10.5" fill="#7E879F">tools 112 AI + 86</text>
-<text x="170" y="70" font-size="22" font-weight="700" fill="#39E0FF">1620</text>
-<text x="170" y="88" font-size="10.5" fill="#7E879F">tests / 147 files</text>
-<text x="320" y="70" font-size="22" font-weight="700" fill="#6AB6FF">30,236</text>
+<text x="170" y="70" font-size="22" font-weight="700" fill="#39E0FF">1728</text>
+<text x="170" y="88" font-size="10.5" fill="#7E879F">tests / 148 files</text>
+<text x="320" y="70" font-size="22" font-weight="700" fill="#6AB6FF">30,293</text>
 <text x="320" y="88" font-size="10.5" fill="#7E879F">lines of code</text>
 <text x="492" y="70" font-size="18" font-weight="700" fill="#8B7DFF">3.10-3.13</text>
 <text x="492" y="88" font-size="10.5" fill="#7E879F">Python</text>

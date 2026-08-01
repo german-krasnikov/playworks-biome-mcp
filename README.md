@@ -2,7 +2,7 @@
 
 <img src="./.github/assets/hero.svg" width="100%" alt="Luna MCP — AI-native debugger for Luna playable builds: a deep-space banner with a twinkling starfield, an orbiting moon, and the title Luna MCP"/>
 
-<a href="https://github.com/german-krasnikov/luna-kiss-mcp">
+<a href="https://github.com/german-krasnikov/playworks-biome-mcp">
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=900&color=39E0FF&center=true&vCenter=true&width=760&lines=Debug+Luna+builds+from+Claude.;Token-minimized+MCP+tools.;80-95%25+batch+token+savings.;Scene+.+Physics+.+Visual+.+Build." alt="Debug Luna builds from Claude — token-minimized MCP tools — 80-95% batch token savings">
 </a>
 
@@ -11,9 +11,9 @@
 <div align="center">
 
 <sub>**STATUS**</sub><br>
-<a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/github/license/german-krasnikov/luna-kiss-mcp?style=for-the-badge&labelColor=05060B&color=39E0FF&logo=opensourceinitiative&logoColor=white" /></a>
-<img alt="GitHub stars" src="https://img.shields.io/github/stars/german-krasnikov/luna-kiss-mcp?style=for-the-badge&labelColor=05060B&color=39E0FF&logo=github&logoColor=white" />
-<img alt="Last commit" src="https://img.shields.io/github/last-commit/german-krasnikov/luna-kiss-mcp?style=for-the-badge&labelColor=05060B&color=3FE0A3&logo=git&logoColor=white" />
+<a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/github/license/german-krasnikov/playworks-biome-mcp?style=for-the-badge&labelColor=05060B&color=39E0FF&logo=opensourceinitiative&logoColor=white" /></a>
+<img alt="GitHub stars" src="https://img.shields.io/github/stars/german-krasnikov/playworks-biome-mcp?style=for-the-badge&labelColor=05060B&color=39E0FF&logo=github&logoColor=white" />
+<img alt="Last commit" src="https://img.shields.io/github/last-commit/german-krasnikov/playworks-biome-mcp?style=for-the-badge&labelColor=05060B&color=3FE0A3&logo=git&logoColor=white" />
 
 <sub>**SPEC**</sub><br>
 <img alt="Tests" src="https://img.shields.io/badge/tests-1620%20passing-3FE0A3?style=for-the-badge&labelColor=05060B" />
@@ -72,8 +72,8 @@ batch("
 **1. Install the server**
 
 ```bash
-git clone https://github.com/german-krasnikov/luna-kiss-mcp.git
-cd luna-kiss-mcp/server && pip install -e ".[dev]"
+git clone https://github.com/german-krasnikov/playworks-biome-mcp.git
+cd playworks-biome-mcp/server && pip install -e ".[dev]"
 ```
 
 **2. Launch Chrome with CDP**
@@ -96,11 +96,11 @@ Add to `.mcp.json` (Claude Code) or `.codex/config.toml` (Codex CLI):
 ```json
 {
   "mcpServers": {
-    "luna-mcp": {
+    "playworks-biome-mcp": {
       "type": "stdio",
       "command": "python3",
       "args": ["-m", "luna_mcp.server"],
-      "cwd": "/absolute/path/to/luna-kiss-mcp/server",
+      "cwd": "/absolute/path/to/playworks-biome-mcp/server",
       "env": { "PYTHONPATH": "src" }
     }
   }
@@ -144,7 +144,7 @@ Restart your client. Ask: *"Inspect the Luna scene hierarchy"* — done.
 <div align="center">
   <img src="./.github/assets/changelog.svg" width="900" alt="Animated release timeline" />
 
-<a href="https://german-krasnikov.github.io/luna-kiss-mcp/changelog/"><img alt="Explore the interactive Flight Log" src="https://img.shields.io/badge/Explore_Interactive_Flight_Log-39E0FF?style=for-the-badge&logo=github&logoColor=05060B&labelColor=0E1120"></a>
+<a href="https://german-krasnikov.github.io/playworks-biome-mcp/changelog/"><img alt="Explore the interactive Flight Log" src="https://img.shields.io/badge/Explore_Interactive_Flight_Log-39E0FF?style=for-the-badge&logo=github&logoColor=05060B&labelColor=0E1120"></a>
 
 <sub>See <a href="./CHANGELOG.md"><b>CHANGELOG.md</b></a> for full history</sub>
 
@@ -157,7 +157,7 @@ Restart your client. Ask: *"Inspect the Luna scene hierarchy"* — done.
 
 <div align="center">
 
-<sub>MIT License · © <a href="https://github.com/german-krasnikov">German Krasnikov</a> · <a href="https://github.com/german-krasnikov/luna-kiss-mcp">⭐ Star</a></sub>
+<sub>MIT License · © <a href="https://github.com/german-krasnikov">German Krasnikov</a> · <a href="https://github.com/german-krasnikov/playworks-biome-mcp">⭐ Star</a></sub>
 
 <img src="./.github/assets/footer-wave.svg" width="100%" alt="" />
 

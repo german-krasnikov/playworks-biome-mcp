@@ -1,4 +1,4 @@
-"""Persist Manifests to ~/.luna_mcp/builds/<label>.json atomically."""
+"""Persist Manifests to ~/.playworks-biome-mcp/builds/<label>.json atomically."""
 from __future__ import annotations
 
 import dataclasses

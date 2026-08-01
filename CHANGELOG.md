@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to **Luna MCP** (`luna-kiss-mcp`) are documented here.
+All notable changes to **Luna MCP** (`playworks-biome-mcp`) are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Luna MCP is a token-minimal MCP server that lets an AI coding assistant debug
 Luna (a Unity-to-JS transpiler) playable-ad builds running in Chrome over the
 Chrome DevTools Protocol (CDP).
+
+---
+
+## [Unreleased]
+
+### Changed
+- Renamed package from `luna-kiss-mcp` to `playworks-biome-mcp`
+- Data directory moved from `~/.luna_mcp` to `~/.playworks-biome-mcp` (auto-migration on first start)
 
 ---
 
@@ -127,4 +135,4 @@ The brain of the server: learning, prediction, and server-side AI.
 
 ---
 
-[0.1.0]: https://github.com/german-krasnikov/luna-kiss-mcp/releases/tag/v0.1.0
+[0.1.0]: https://github.com/german-krasnikov/playworks-biome-mcp/releases/tag/v0.1.0

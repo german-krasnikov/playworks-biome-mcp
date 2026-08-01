@@ -141,7 +141,7 @@
     <circle cx="60" cy="18" r="5.5" fill="#3FE0A3"/>
 
     <!-- Title -->
-    <text x="366" y="22" text-anchor="middle" class="qst-mono" font-size="12" fill="#7E879F">luna-mcp — quickstart</text>
+    <text x="366" y="22" text-anchor="middle" class="qst-mono" font-size="12" fill="#7E879F">playworks-biome-mcp — quickstart</text>
 
     <!-- Accent underline sweep on the title bar -->
     <rect x="0" y="35" width="732" height="1.5" fill="url(#qst__accentArc)" opacity="0.55"/>
@@ -153,14 +153,14 @@
       <!-- Line 1: clone -->
       <g>
         <text x="0" y="0" fill="#566079">$</text>
-        <text x="16" y="0" fill="#39E0FF" filter="url(#qst__glowFine)">git clone https://github.com/german-krasnikov/luna-kiss-mcp</text>
+        <text x="16" y="0" fill="#39E0FF" filter="url(#qst__glowFine)">git clone https://github.com/german-krasnikov/playworks-biome-mcp</text>
         <rect class="qst-cover qst-c1" x="14" y="-12" width="720" height="18"/>
       </g>
 
       <!-- Line 2: cd + install -->
       <g transform="translate(0,26)">
         <text x="0" y="0" fill="#566079">$</text>
-        <text x="16" y="0" fill="#E8ECF6">cd luna-kiss-mcp/server </text>
+        <text x="16" y="0" fill="#E8ECF6">cd playworks-biome-mcp/server </text>
         <text x="208" y="0" fill="#566079">&amp;&amp;</text>
         <text x="234" y="0" fill="#39E0FF">pip install -e ".[dev]"</text>
         <rect class="qst-cover qst-c2" x="14" y="-12" width="720" height="18"/>
@@ -194,7 +194,7 @@
         <rect class="qst-cover qst-c4" x="14" y="-12" width="720" height="18"/>
       </g>
       <g transform="translate(0,168)">
-        <text x="0" y="0" class="qst-mono" font-size="11.5" fill="#7E879F">↳ luna-mcp · get_hierarchy → 1 round-trip · plain-text, token-minimal</text>
+        <text x="0" y="0" class="qst-mono" font-size="11.5" fill="#7E879F">↳ playworks-biome-mcp · get_hierarchy → 1 round-trip · plain-text, token-minimal</text>
         <rect class="qst-cover qst-c4" x="-2" y="-11" width="720" height="16"/>
       </g>
     </g>

@@ -1,5 +1,5 @@
 [project]
-name = "luna-mcp"
+name = "playworks-biome-mcp"
 version = "0.1.0"
 description = "MCP server for debugging Luna builds in Chrome via CDP"
 license = "MIT"
@@ -27,9 +27,9 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/german-krasnikov/luna-kiss-mcp"
-Repository = "https://github.com/german-krasnikov/luna-kiss-mcp"
-Issues = "https://github.com/german-krasnikov/luna-kiss-mcp/issues"
+Homepage = "https://github.com/german-krasnikov/playworks-biome-mcp"
+Repository = "https://github.com/german-krasnikov/playworks-biome-mcp"
+Issues = "https://github.com/german-krasnikov/playworks-biome-mcp/issues"
 
 [project.optional-dependencies]
 dev = [
@@ -38,7 +38,7 @@ dev = [
 ]
 
 [project.scripts]
-luna-mcp = "luna_mcp.server:main"
+playworks-biome-mcp = "luna_mcp.server:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

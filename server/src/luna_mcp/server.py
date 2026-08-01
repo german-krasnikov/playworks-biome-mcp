@@ -6,6 +6,12 @@ import os
 import time
 from contextlib import asynccontextmanager
 
+# Migration MUST run before any other luna_mcp import touches data_dir()
+# (e.g. record_tools creates ~/.playworks-biome-mcp/recordings/ at import
+# time, which would make the migration a permanent no-op if it ran first).
+from luna_mcp.config import data_dir as _cfg_data_dir, migrate_data_dir as _migrate_data_dir
+_migrate_data_dir()
+
 from mcp.server.fastmcp import FastMCP
 from mcp.server.fastmcp.exceptions import ToolError
 
@@ -34,7 +40,6 @@ from .wiring import EXPOSED_TOOLS, register_all_tools
 from .composition import apply_composition
 from .lifespan import wire_features
 import luna_mcp.tools.record_tools as _record_mod
-from .config import data_dir as _cfg_data_dir
 
 logger = logging.getLogger(__name__)
 bridge: CDPBridge | None = None

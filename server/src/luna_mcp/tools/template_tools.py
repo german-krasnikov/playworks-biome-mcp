@@ -36,7 +36,7 @@ def _make_tools(bundled_dir=_BUNDLED_DIR, user_dir=_USER_DIR):
         return "\n".join(lines)
 
     async def template_save(name: str, body: str, overwrite: bool = False) -> str:
-        """Save a custom template to user templates dir (~/.luna-mcp/templates/)."""
+        """Save a custom template to user templates dir (~/.playworks-biome-mcp/templates/)."""
         try:
             p = reg.save_user(name, body, overwrite)
             return f"saved: {p}"

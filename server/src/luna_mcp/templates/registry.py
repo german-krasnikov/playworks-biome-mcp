@@ -4,7 +4,7 @@ import pathlib
 from typing import Optional
 
 _BUNDLED_DIR = pathlib.Path(__file__).resolve().parent / "builtin"
-_USER_DIR = pathlib.Path.home() / ".luna-mcp" / "templates"
+_USER_DIR = pathlib.Path.home() / ".playworks-biome-mcp" / "templates"
 
 _HEADER_RE = re.compile(r'^#\s*(params|desc|version):\s*(.*)$', re.MULTILINE)
 

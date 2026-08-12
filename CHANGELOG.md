@@ -11,6 +11,15 @@ Chrome DevTools Protocol (CDP).
 
 ---
 
+## [v0.2.1] — 2026-08-12
+
+### Changed
+- Rebranded all "Luna MCP" project-name references to "Playworks Biome MCP" across README, CHANGELOG, 13 SVG assets, docs/changelog, and JS helper comment
+- Hero banner SVG: title text updated to "Playworks Biome", font-size adjusted 104→68 for longer name
+- Preserved all Luna product references (Luna build, Luna playable, Luna Labs, `luna_mcp` module, `LUNA_*` env vars)
+
+---
+
 ## [v0.2.0] — 2026-08-12
 
 ### Added

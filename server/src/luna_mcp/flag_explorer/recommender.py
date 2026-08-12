@@ -1,5 +1,6 @@
 """Match intent text to catalog entries."""
 import re
+
 from .catalog import FlagCatalog, FlagEntry
 
 

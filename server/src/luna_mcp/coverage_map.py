@@ -1,6 +1,8 @@
 """Pure coverage mapper — maps dead JS ranges to C# Class.Method via source markers."""
 from __future__ import annotations
+
 import re
+
 from luna_mcp.cdp_domains import offset_to_line, truncate_lines
 
 _MARKER_RE = re.compile(r"/\*([\w.]+) start\b")

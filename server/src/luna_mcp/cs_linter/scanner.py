@@ -1,8 +1,9 @@
 """Scan C# files for forbidden expressions and required-API violations."""
 from __future__ import annotations
+
 import pathlib
 import re
-from typing import Optional
+
 from .rules import RuleSet
 
 

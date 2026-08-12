@@ -1,7 +1,8 @@
 """Tests for optimize MCP tools (F10)."""
-import pytest
 from unittest.mock import AsyncMock, MagicMock
-from luna_mcp.optimize_macro.estimator import OptimizationSource, CombinedPlan
+
+import pytest
+
 from luna_mcp.optimize_macro.orchestrator import BuildOptimizer
 from luna_mcp.tools import optimize_tools as _mod
 
@@ -118,7 +119,6 @@ async def test_optimize_status_degraded_when_no_orchestrator(monkeypatch):
 # ---- registration ----
 
 def test_register_optimize_tools_returns_dict():
-    from unittest.mock import MagicMock
     mcp = MagicMock()
     result = _mod.register_optimize_tools(mcp, exposed=set())
     assert "optimize_build_size" in result
@@ -126,7 +126,6 @@ def test_register_optimize_tools_returns_dict():
 
 
 def test_register_optimize_tools_with_orchestrator():
-    from unittest.mock import MagicMock
     mcp = MagicMock()
     orch = BuildOptimizer()
     result = _mod.register_optimize_tools(mcp, orchestrator=orch, exposed=set())

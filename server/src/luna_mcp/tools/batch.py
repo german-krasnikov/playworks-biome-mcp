@@ -1,8 +1,9 @@
 """Batch command parser and executor."""
 from __future__ import annotations
+
 import inspect
-import shlex
 import os
+import shlex
 
 _TOOL_REGISTRY: dict[str, tuple] = {}
 _VALIDATE = os.environ.get("LUNA_MCP_VALIDATE", "1") != "0"

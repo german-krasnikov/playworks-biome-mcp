@@ -1,7 +1,8 @@
 """Tests for F6 diagnose_text tool."""
-import pytest
-import re
 import pathlib
+import re
+
+import pytest
 
 JS_PATH = pathlib.Path(__file__).parent.parent.parent / "js" / "luna_helpers.js"
 

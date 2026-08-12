@@ -1,5 +1,6 @@
-import pytest
 from unittest.mock import AsyncMock
+
+import pytest
 
 
 @pytest.fixture
@@ -15,6 +16,7 @@ def send_fn():
 @pytest.fixture
 def tools(call_fn, send_fn):
     from mcp.server.fastmcp import FastMCP
+
     from luna_mcp.tools.state_tools import register_state_tools
     mcp = FastMCP("test")
     return register_state_tools(mcp, call_fn, send_fn), call_fn, send_fn

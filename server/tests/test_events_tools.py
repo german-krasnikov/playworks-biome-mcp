@@ -1,9 +1,6 @@
 """Tests for events_tools — watch, stream_until, get_events, set_event_filter."""
 import asyncio
-import re
-import time
-import pytest
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, MagicMock
 
 
 def _make_bus():
@@ -21,8 +18,9 @@ def _make_bridge(bus=None):
 
 async def test_watch_finds_console_message():
     """watch returns matched text after event arrives via bus."""
-    from luna_mcp.tools.events_tools import register_events_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.events_tools import register_events_tools
 
     bus = _make_bus()
     bridge = _make_bridge(bus)
@@ -42,8 +40,9 @@ async def test_watch_finds_console_message():
 
 async def test_watch_timeout_returns_partial():
     """watch returns TIMEOUT marker when no match arrives."""
-    from luna_mcp.tools.events_tools import register_events_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.events_tools import register_events_tools
 
     bus = _make_bus()
     bridge = _make_bridge(bus)
@@ -56,8 +55,9 @@ async def test_watch_timeout_returns_partial():
 
 
 async def test_watch_invalid_pattern():
-    from luna_mcp.tools.events_tools import register_events_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.events_tools import register_events_tools
 
     bridge = _make_bridge()
     mcp = FastMCP("test")
@@ -69,8 +69,9 @@ async def test_watch_invalid_pattern():
 
 
 async def test_watch_invalid_kinds():
-    from luna_mcp.tools.events_tools import register_events_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.events_tools import register_events_tools
 
     bridge = _make_bridge()
     mcp = FastMCP("test")
@@ -82,8 +83,9 @@ async def test_watch_invalid_kinds():
 
 
 async def test_watch_no_bridge():
-    from luna_mcp.tools.events_tools import register_events_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.events_tools import register_events_tools
 
     mcp = FastMCP("test")
     tools = register_events_tools(mcp, lambda: None, set())
@@ -97,8 +99,9 @@ async def test_watch_no_bridge():
 
 async def test_stream_until_returns_on_truthy():
     """stream_until resolves when eval returns truthy on 3rd call."""
-    from luna_mcp.tools.events_tools import register_events_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.events_tools import register_events_tools
 
     bridge = MagicMock()
     bridge.bus = _make_bus()
@@ -120,8 +123,9 @@ async def test_stream_until_returns_on_truthy():
 
 
 async def test_stream_until_timeout():
-    from luna_mcp.tools.events_tools import register_events_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.events_tools import register_events_tools
 
     bridge = MagicMock()
     bridge.bus = _make_bus()
@@ -138,8 +142,9 @@ async def test_stream_until_timeout():
 # ---- get_events ----
 
 async def test_get_events_returns_snapshot():
-    from luna_mcp.tools.events_tools import register_events_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.events_tools import register_events_tools
 
     bus = _make_bus()
     bus.publish("console", {"text": "hello", "level": "I"})
@@ -156,8 +161,9 @@ async def test_get_events_returns_snapshot():
 
 
 async def test_get_events_kind_validation():
-    from luna_mcp.tools.events_tools import register_events_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.events_tools import register_events_tools
 
     bridge = _make_bridge()
     mcp = FastMCP("test")
@@ -171,8 +177,9 @@ async def test_get_events_kind_validation():
 # ---- set_event_filter ----
 
 async def test_set_event_filter_compiles():
-    from luna_mcp.tools.events_tools import register_events_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.events_tools import register_events_tools
 
     bus = _make_bus()
     bridge = _make_bridge(bus)
@@ -186,8 +193,9 @@ async def test_set_event_filter_compiles():
 
 
 async def test_set_event_filter_clears():
-    from luna_mcp.tools.events_tools import register_events_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.events_tools import register_events_tools
 
     bus = _make_bus()
     bus.set_filter("console", r"noise")
@@ -203,8 +211,9 @@ async def test_set_event_filter_clears():
 
 
 async def test_set_event_filter_bad_regex():
-    from luna_mcp.tools.events_tools import register_events_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.events_tools import register_events_tools
 
     bridge = _make_bridge()
     mcp = FastMCP("test")
@@ -216,8 +225,9 @@ async def test_set_event_filter_bad_regex():
 
 
 async def test_set_event_filter_unknown_kind():
-    from luna_mcp.tools.events_tools import register_events_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.events_tools import register_events_tools
 
     bridge = _make_bridge()
     mcp = FastMCP("test")

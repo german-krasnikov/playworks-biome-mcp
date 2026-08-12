@@ -1,10 +1,11 @@
 """Reflection rules for set_property and set_transform mutations."""
 from __future__ import annotations
+
 import asyncio
 import json
 from typing import Optional
 
-from . import register_rule, Mismatch, _values_close
+from . import Mismatch, _values_close, register_rule
 
 # Module-level call_fn — replaced by server.py after init; patchable in tests.
 _call_fn = None

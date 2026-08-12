@@ -1,9 +1,10 @@
 """Asymmetric Reflection: post-mutation verification middleware."""
 from __future__ import annotations
+
 import math
 import os
 from dataclasses import dataclass
-from typing import Callable, Awaitable, Optional
+from typing import Awaitable, Callable, Optional
 
 __all__ = ["Mismatch", "register_rule", "_RULES", "with_reflect", "_values_close"]
 

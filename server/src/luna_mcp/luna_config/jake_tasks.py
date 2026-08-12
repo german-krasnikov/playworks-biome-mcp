@@ -1,10 +1,10 @@
 """Jake -T task discovery with seed catalog fallback."""
 from __future__ import annotations
+
 import json
 import pathlib
 import re
 import subprocess
-from typing import Optional
 
 _SEED_CATALOG: dict[str, str] = {
     "build": "Build the project",

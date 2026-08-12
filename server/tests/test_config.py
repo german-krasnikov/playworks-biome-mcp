@@ -1,8 +1,6 @@
-import pytest
-from pathlib import Path
 from unittest.mock import patch
 
-from luna_mcp.config import migrate_data_dir, data_dir
+from luna_mcp.config import migrate_data_dir
 
 
 def test_migrate_data_dir_happy_path(tmp_path):

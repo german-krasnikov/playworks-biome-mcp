@@ -1,6 +1,4 @@
 """Tests for ShadowGit atomic apply/revert — RED phase."""
-import pathlib
-import pytest
 from luna_mcp.build_intel.shadow_git import ShadowGit
 
 

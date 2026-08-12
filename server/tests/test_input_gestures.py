@@ -1,6 +1,7 @@
 """Tests for S3.1 synthetic gestures (simulate_swipe, simulate_drag, simulate_pinch, simulate_multitouch)."""
+from unittest.mock import AsyncMock, Mock
+
 import pytest
-from unittest.mock import AsyncMock, Mock, call
 
 
 class FakeMCP:

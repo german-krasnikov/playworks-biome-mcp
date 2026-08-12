@@ -1,8 +1,9 @@
 """Tests for pc_replacer.catalog — RED phase."""
 import json
-import pathlib
+
 import pytest
-from luna_mcp.pc_replacer.catalog import ModuleCatalog, ModuleInfo
+
+from luna_mcp.pc_replacer.catalog import ModuleCatalog
 
 
 def make_json(tmp_path, modules):

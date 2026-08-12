@@ -1,7 +1,4 @@
 """Tests for Jakefile locator — RED phase."""
-import os
-import pathlib
-import pytest
 from luna_mcp.build_intel.locator import find_jakefile
 
 

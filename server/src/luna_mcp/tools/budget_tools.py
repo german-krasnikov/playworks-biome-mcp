@@ -1,9 +1,9 @@
 """Budget management tools exposed to MCP."""
 import pathlib
 
-from . import maybe_expose
-from ..budget import BudgetTracker, ToolRouter, PRESETS
+from ..budget import PRESETS, BudgetTracker, ToolRouter
 from ..budget.visual_router import analyze_visual as _visual_route
+from . import maybe_expose
 
 
 async def _set_budget_auto(
@@ -12,9 +12,10 @@ async def _set_budget_auto(
     data_dir: pathlib.Path | None = None,
 ) -> str:
     """Internal: reload cap from history, apply to tracker, return status string."""
-    from ..budget.history import SessionHistory, get_project_key
-    from ..budget.autotune import compute_cap, estimate_p_success
     from luna_mcp.config import data_dir as _cfg_data_dir
+
+    from ..budget.autotune import compute_cap, estimate_p_success
+    from ..budget.history import SessionHistory, get_project_key
     _data = data_dir or _cfg_data_dir()
 
     # Reuse history already attached to tracker, else open our own

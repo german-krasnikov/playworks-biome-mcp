@@ -1,19 +1,20 @@
 """MCP tools for Jakefile Intelligence (F4)."""
 from __future__ import annotations
+
 import hashlib
 import pathlib
 from typing import Optional
 
-from luna_mcp.build_intel.locator import find_jakefile
 from luna_mcp.build_intel.index import build_index
-from luna_mcp.build_intel.patch_dsl import PatchOp, validate, apply_op
+from luna_mcp.build_intel.locator import find_jakefile
+from luna_mcp.build_intel.patch_dsl import PatchOp, apply_op, validate
 from luna_mcp.build_intel.planner import JakefilePlanner, parse_dsl
-from luna_mcp.build_intel.templates import get_template, list_templates
 from luna_mcp.build_intel.shadow_git import ShadowGit
 from luna_mcp.build_intel.store import PatchStore
+from luna_mcp.build_intel.templates import get_template, list_templates
+from luna_mcp.config import data_dir as _data_dir
 from luna_mcp.tools import maybe_expose
 
-from luna_mcp.config import data_dir as _data_dir
 _DEFAULT_SHADOW = _data_dir() / "jakefile_patches"
 _DEFAULT_DB = _data_dir() / "jakefile_patches.db"
 
@@ -95,7 +96,7 @@ def _make_apply_jakefile_patch(shadow_base: pathlib.Path, store: Optional[PatchS
         sg.stage_file(p, "Jakefile.js.before")
         p.write_text(new_text)
         sg.stage_file(p, "Jakefile.js.after")
-        sha = sg.commit(f"luna-mcp patch {op.id}: {op.intent}")
+        sha = sg.commit(f"biome patch {op.id}: {op.intent}")
         if sha is None:
             p.write_text(text)
             return "[ERROR: shadow commit failed; reverted file]"

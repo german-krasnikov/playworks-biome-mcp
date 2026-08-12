@@ -1,13 +1,13 @@
 """Tests for tools/record_tools.py — RED phase."""
 import json
-import pathlib
+
 import pytest
 
 
 def _make_tool_module(tmp_path):
     """Import record_tools with a fresh recorder pointing at tmp_path."""
-    import importlib
     import luna_mcp.tools.record_tools as rt
+
     # Reset module-level recorder
     from luna_mcp.record.recorder import Recorder
     rt._recorder = Recorder(tmp_path / "recordings")

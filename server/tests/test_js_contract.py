@@ -20,8 +20,9 @@ Matching heuristic (conservative — prefer false-negatives over false-positives
   will still be caught.
 """
 import re
-import pytest
 from pathlib import Path
+
+import pytest
 
 # Paths
 _ROOT = Path(__file__).parent.parent.parent  # repo root
@@ -102,7 +103,7 @@ def test_all_python_calls_have_js_definition():
     py_calls = _extract_python_calls()
     missing = py_calls - js_names
     assert not missing, (
-        f"Python calls JS helpers not defined in luna_helpers.js:\n"
+        "Python calls JS helpers not defined in luna_helpers.js:\n"
         + "\n".join(f"  {n}" for n in sorted(missing))
         + f"\n\nDefined JS helpers: {sorted(js_names)}"
     )

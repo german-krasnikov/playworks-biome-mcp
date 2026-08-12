@@ -1,8 +1,6 @@
 """TDD tests for regression/tools.py — 4 MCP tools."""
 import io
-import pathlib
-import tempfile
-from unittest.mock import AsyncMock, MagicMock, Mock, patch
+from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 from PIL import Image

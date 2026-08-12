@@ -3,8 +3,8 @@
 RED phase — all tests must fail before implementation.
 """
 from __future__ import annotations
-import pytest
 
+import pytest
 
 # ── C3(a): JS readComponentFields caps ──────────────────────────────────────
 # We test the JS-side logic by checking the constants exported from a Python
@@ -27,14 +27,14 @@ def test_js_field_cap_reasonable_defaults():
 
 def test_truncate_value_short_unchanged():
     """Values <= VALUE_CAP are returned as-is."""
-    from luna_mcp.js_field_caps import truncate_value, VALUE_CAP
+    from luna_mcp.js_field_caps import VALUE_CAP, truncate_value
     short = "x" * (VALUE_CAP - 1)
     assert truncate_value(short) == short
 
 
 def test_truncate_value_long_gets_ellipsis():
     """Values > VALUE_CAP get an ellipsis suffix."""
-    from luna_mcp.js_field_caps import truncate_value, VALUE_CAP
+    from luna_mcp.js_field_caps import VALUE_CAP, truncate_value
     long_val = "x" * (VALUE_CAP + 50)
     result = truncate_value(long_val)
     assert result.endswith("…")

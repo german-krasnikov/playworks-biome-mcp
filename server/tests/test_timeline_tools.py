@@ -1,14 +1,13 @@
 """TDD tests for timeline_tools: capture_timeline, analyze_animation,
 compare_animation_states, motion_summary."""
-import asyncio
-import json
-import pathlib
-import pytest
 from unittest.mock import AsyncMock, MagicMock, patch
+
+import pytest
 
 
 def _make_tools(bridge=None, sampling=None):
     from mcp.server.fastmcp import FastMCP
+
     from luna_mcp.timeline import _LabelCache
     from luna_mcp.tools.timeline_tools import register_timeline_tools
     mcp = FastMCP("test")

@@ -1,7 +1,7 @@
 """Tests for F13 Intent Router (smart dispatcher)."""
 import pytest
-from luna_mcp.intent_router.router import route_tier1, route, KEYWORD_ROUTES
 
+from luna_mcp.intent_router.router import KEYWORD_ROUTES, route, route_tier1
 
 # --- Tier 1 pure-Python keyword matching ---
 

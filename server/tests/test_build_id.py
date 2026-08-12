@@ -1,9 +1,8 @@
 """Tests for build_id module."""
 import os
-import pathlib
+
 import pytest
 
-import luna_mcp.build_id as build_id_mod
 from luna_mcp.build_id import get_build_hash, reset_cache
 
 

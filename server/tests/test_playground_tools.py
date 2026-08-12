@@ -1,7 +1,5 @@
 """Tests for playground field tools (S6.3)."""
 import json
-import pytest
-import tempfile
 from pathlib import Path
 from unittest.mock import AsyncMock, Mock
 
@@ -19,8 +17,9 @@ def _make_playground_json(tmp_path: Path, fields: dict) -> Path:
 
 def test_get_playground_fields_returns_fields(tmp_path):
     """get_playground_fields reads and formats fields from playground.json."""
-    from luna_mcp.tools.build_tools import get_playground_fields
     import asyncio
+
+    from luna_mcp.tools.build_tools import get_playground_fields
 
     _make_playground_json(tmp_path, {
         "gameplay": {"speed": {"type": "float", "defaultValue": "1.0", "title": "Speed"}}
@@ -41,6 +40,7 @@ def test_get_playground_fields_exposed():
 def test_set_playground_field_calls_setfield():
     """set_playground_field delegates to call_fn('setField', ...) with correct args."""
     import asyncio
+
     from luna_mcp.tools.playground_tools import register_playground_tools
 
     mock_mcp = Mock()
@@ -58,6 +58,7 @@ def test_set_playground_field_calls_setfield():
 def test_set_playground_field_not_persisted_disclaimer():
     """Output must contain 'session' or 'not persisted' disclaimer."""
     import asyncio
+
     from luna_mcp.tools.playground_tools import register_playground_tools
 
     mock_mcp = Mock()
@@ -80,7 +81,6 @@ def test_set_playground_field_exposed():
 
 def test_set_playground_field_in_batch_registry():
     """set_playground_field must be in batch registry."""
-    import luna_mcp.server  # populates registry
     from luna_mcp.tools.batch import _TOOL_REGISTRY
     assert "set_playground_field" in _TOOL_REGISTRY
 
@@ -98,8 +98,9 @@ def test_no_override_channel_invented():
 def test_set_playground_field_float_uses_number_type():
     """M5: float string value → call_fn called with coerced float and 'number' type."""
     import asyncio
-    from luna_mcp.tools.playground_tools import register_playground_tools
     from unittest.mock import AsyncMock, Mock
+
+    from luna_mcp.tools.playground_tools import register_playground_tools
 
     mock_mcp = Mock()
     mock_mcp.tool.return_value = lambda fn: fn
@@ -115,8 +116,9 @@ def test_set_playground_field_float_uses_number_type():
 def test_set_playground_field_bool_uses_boolean_type():
     """M5: 'true' string → call_fn called with True and 'boolean' type."""
     import asyncio
-    from luna_mcp.tools.playground_tools import register_playground_tools
     from unittest.mock import AsyncMock, Mock
+
+    from luna_mcp.tools.playground_tools import register_playground_tools
 
     mock_mcp = Mock()
     mock_mcp.tool.return_value = lambda fn: fn
@@ -131,8 +133,9 @@ def test_set_playground_field_bool_uses_boolean_type():
 def test_set_playground_field_int_uses_number_type():
     """M5: integer string value → call_fn called with int and 'number' type."""
     import asyncio
-    from luna_mcp.tools.playground_tools import register_playground_tools
     from unittest.mock import AsyncMock, Mock
+
+    from luna_mcp.tools.playground_tools import register_playground_tools
 
     mock_mcp = Mock()
     mock_mcp.tool.return_value = lambda fn: fn
@@ -147,8 +150,9 @@ def test_set_playground_field_int_uses_number_type():
 def test_set_playground_field_string_stays_string():
     """M5: plain string value → call_fn called with str and 'string' type."""
     import asyncio
-    from luna_mcp.tools.playground_tools import register_playground_tools
     from unittest.mock import AsyncMock, Mock
+
+    from luna_mcp.tools.playground_tools import register_playground_tools
 
     mock_mcp = Mock()
     mock_mcp.tool.return_value = lambda fn: fn
@@ -163,8 +167,9 @@ def test_set_playground_field_string_stays_string():
 def test_set_playground_field_disclaimer_still_present():
     """M5/M7: session-only disclaimer must still be in output."""
     import asyncio
-    from luna_mcp.tools.playground_tools import register_playground_tools
     from unittest.mock import AsyncMock, Mock
+
+    from luna_mcp.tools.playground_tools import register_playground_tools
 
     mock_mcp = Mock()
     mock_mcp.tool.return_value = lambda fn: fn
@@ -180,7 +185,8 @@ def test_set_playground_field_disclaimer_still_present():
 
 def test_step_frame_registered_read_only_false():
     """M4: step_frame mutates game state (timeScale 0→1→0) — must NOT be read_only."""
-    from unittest.mock import Mock, AsyncMock
+    from unittest.mock import AsyncMock, Mock
+
     from luna_mcp.tools import _HAS_ANNOTATIONS
     from luna_mcp.tools.playworks_tools import register_playworks_tools
 

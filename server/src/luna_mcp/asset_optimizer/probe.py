@@ -3,6 +3,7 @@
 Degrades gracefully: falls back to Pillow in-memory estimate when binaries absent.
 """
 from __future__ import annotations
+
 import logging
 import pathlib
 import shutil

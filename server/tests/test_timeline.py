@@ -1,10 +1,9 @@
 """TDD tests for TimelineCapture + _LabelCache."""
-import asyncio
 import pathlib
 import time
-import pytest
-from unittest.mock import AsyncMock, MagicMock
+from unittest.mock import AsyncMock
 
+import pytest
 
 # ── TimelineCapture ──────────────────────────────────────────────────────────
 

@@ -1,9 +1,10 @@
 """BuildOptimizer — orchestrates F4+F5+F6 for unified build size optimization."""
 from __future__ import annotations
-import re
-from typing import Optional, Callable
 
-from .estimator import OptimizationSource, CombinedPlan
+import re
+from typing import Callable, Optional
+
+from .estimator import CombinedPlan, OptimizationSource
 
 # TODO: allow env override LUNA_OPTIMIZE_SPLIT (e.g. "30,35,35")
 DEFAULT_SPLIT = {"jakefile": 0.30, "pc_modules": 0.35, "assets": 0.35}

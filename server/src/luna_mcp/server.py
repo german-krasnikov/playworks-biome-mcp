@@ -1,45 +1,49 @@
 from __future__ import annotations
 
-import asyncio
 import logging
 import os
-import time
 from contextlib import asynccontextmanager
 
 # Migration MUST run before any other luna_mcp import touches data_dir()
 # (e.g. record_tools creates ~/.playworks-biome-mcp/recordings/ at import
 # time, which would make the migration a permanent no-op if it ran first).
-from luna_mcp.config import data_dir as _cfg_data_dir, migrate_data_dir as _migrate_data_dir
+from luna_mcp.config import data_dir as _cfg_data_dir
+from luna_mcp.config import migrate_data_dir as _migrate_data_dir
+
 _migrate_data_dir()
 
 from mcp.server.fastmcp import FastMCP
 from mcp.server.fastmcp.exceptions import ToolError
 
-from .cdp_bridge import CDPBridge
-from .debugger import Debugger
-from .luna_runtime import LunaRuntime
-from .source_mapper import SourceMapper
-from .typemap_resolver import TypemapResolver
-from .tools.batch import execute_batch, register_batch_tool
-from .tools.modify_tools import _parse_value  # noqa: F401 — used by tests
-from .reflect import with_reflect
 import luna_mcp.schema_guard as _sg_module
+import luna_mcp.tools.record_tools as _record_mod
+
 from .budget import BudgetTracker, ToolRouter
 from .budget.metrics import MetricsRegistry
 from .budget.sinks import JsonlSink, NullSink
-from .lessons.store import LessonStore
+from .cdp_bridge import CDPBridge
+from .composition import apply_composition
+from .debugger import Debugger
+from .degradation import GracefulDegradation
+from .hinter import ToolHinter
 from .lessons.seeds import seed_default
+from .lessons.store import LessonStore
 from .lessons.typemap_seeds import seed_typemap_lessons
-from .watchdog.scanner import Watchdog
+from .lifespan import wire_features
+from .luna_runtime import LunaRuntime
+from .reflect import with_reflect
 from .schema_cache import SchemaCache
 from .schema_guard import SchemaGuard
-from .hinter import ToolHinter
-from .degradation import GracefulDegradation
-from .server_helpers import _maybe_inject_lesson, _LESSON_INJECT_CMDS  # noqa: F401 — _maybe_inject_lesson unused here but re-exported; _LESSON_INJECT_CMDS used at line 308
-from .wiring import EXPOSED_TOOLS, register_all_tools
-from .composition import apply_composition
-from .lifespan import wire_features
-import luna_mcp.tools.record_tools as _record_mod
+from .server_helpers import (  # noqa: F401 — _maybe_inject_lesson unused here but re-exported; _LESSON_INJECT_CMDS used at line 308
+    _LESSON_INJECT_CMDS,
+    _maybe_inject_lesson,
+)
+from .source_mapper import SourceMapper
+from .tools.batch import execute_batch, register_batch_tool
+from .tools.modify_tools import _parse_value  # noqa: F401 — used by tests
+from .typemap_resolver import TypemapResolver
+from .watchdog.scanner import Watchdog
+from .wiring import register_all_tools
 
 logger = logging.getLogger(__name__)
 bridge: CDPBridge | None = None
@@ -55,17 +59,20 @@ _metrics: MetricsRegistry = MetricsRegistry(
 )
 _budget_tracker: BudgetTracker = _metrics
 from .budget.calibrator import CostCalibrator as _CostCalibrator
+
 _calibrator: _CostCalibrator = _CostCalibrator()
 _budget_router: ToolRouter = ToolRouter(_metrics, calibrator=_calibrator)
 _lessons_store: LessonStore | None = None
 _watchdog: Watchdog | None = None
 from .watchdog.brain_scan import BrainScanner as _BrainScanner
+
 _brain_scanner: "_BrainScanner | None" = None
 _hinter: ToolHinter = ToolHinter()
 _degradation: GracefulDegradation | None = None
 
 # Recorder singleton — shared with record_tools module
 from .record.recorder import Recorder as _Recorder
+
 _rec_data_dir = _cfg_data_dir()
 _recorder = _Recorder(_rec_data_dir / "recordings")
 _record_mod._recorder = _recorder
@@ -127,7 +134,8 @@ def _init_sink():
 
 
 # Backward-compat adapters (used by existing tests)
-from .composition import _gated as _comp_gated, _observe as _comp_observe
+from .composition import _gated as _comp_gated
+from .composition import _observe as _comp_observe
 
 
 def _gated(name: str, fn, router, tracker, all_tools_dict: dict):
@@ -222,7 +230,7 @@ async def lifespan(app):
         await bridge.close()
 
 
-mcp = FastMCP("LunaMCP", lifespan=lifespan)
+mcp = FastMCP("PlayworksBiomeMCP", lifespan=lifespan)
 
 
 @mcp.tool()

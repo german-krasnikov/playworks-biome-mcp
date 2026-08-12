@@ -1,9 +1,11 @@
 """S5.2 C# Linter + Required-API Auditor — pure Python, no Chrome."""
 from __future__ import annotations
+
 import pathlib
-from . import maybe_expose
+
 from ..cs_linter.rules import load_rules
 from ..cs_linter.scanner import scan_forbidden, scan_required_apis
+from . import maybe_expose
 
 
 def register_cs_linter_tools(mcp, *, exposed: set = frozenset()):

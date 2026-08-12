@@ -1,8 +1,8 @@
 """TDD tests for Cost Budget + Adaptive Routing (feature #6)."""
 import os
-import pytest
 from unittest.mock import AsyncMock, patch
 
+import pytest
 
 # ── Registry ──────────────────────────────────────────────────────────────────
 
@@ -16,7 +16,7 @@ def test_registry_lookup_known():
 
 
 def test_registry_lookup_unknown():
-    from luna_mcp.budget.registry import cost_of, DEFAULT
+    from luna_mcp.budget.registry import DEFAULT, cost_of
     c = cost_of("nonexistent_tool_xyz", {})
     assert c == DEFAULT
 
@@ -81,8 +81,8 @@ def test_tracker_reset():
 # ── Router ────────────────────────────────────────────────────────────────────
 
 def test_router_run_at_low_pct():
+    from luna_mcp.budget.router import ToolRouter
     from luna_mcp.budget.tracker import BudgetTracker
-    from luna_mcp.budget.router import ToolRouter, Decision
     t = BudgetTracker(cap=100_000)
     r = ToolRouter(t)
     d = r.decide("get_component", {"path": "/UI"})
@@ -90,8 +90,8 @@ def test_router_run_at_low_pct():
 
 
 def test_router_skip_at_95_pct_mid_tier():
-    from luna_mcp.budget.tracker import BudgetTracker
     from luna_mcp.budget.router import ToolRouter
+    from luna_mcp.budget.tracker import BudgetTracker
     t = BudgetTracker(cap=10_000)
     t.record("filler", 9_600)  # 96%
     r = ToolRouter(t)
@@ -100,8 +100,8 @@ def test_router_skip_at_95_pct_mid_tier():
 
 
 def test_router_downgrade_screenshot_to_analyze_visual():
-    from luna_mcp.budget.tracker import BudgetTracker
     from luna_mcp.budget.router import ToolRouter
+    from luna_mcp.budget.tracker import BudgetTracker
     t = BudgetTracker(cap=1_000)
     t.record("filler", 990)  # near full
     r = ToolRouter(t)
@@ -112,8 +112,8 @@ def test_router_downgrade_screenshot_to_analyze_visual():
 
 
 def test_router_hint_at_50_expensive():
-    from luna_mcp.budget.tracker import BudgetTracker
     from luna_mcp.budget.router import ToolRouter
+    from luna_mcp.budget.tracker import BudgetTracker
     # cap large enough so remaining (30k) > screenshot cost (12400), but >50% spent
     t = BudgetTracker(cap=100_000)
     t.record("filler", 60_000)  # 60% spent, 40k remaining > 12400
@@ -124,9 +124,9 @@ def test_router_hint_at_50_expensive():
 
 
 def test_router_skip_at_80_expensive_no_downgrade():
-    from luna_mcp.budget.tracker import BudgetTracker
-    from luna_mcp.budget.router import ToolRouter, ToolCost
     from luna_mcp.budget import registry as reg
+    from luna_mcp.budget.router import ToolCost, ToolRouter
+    from luna_mcp.budget.tracker import BudgetTracker
     # Patch a tool without downgrade that is expensive
     original = reg.TOOL_COSTS.get("audit_textures")
     reg.TOOL_COSTS["__test_exp__"] = ToolCost(400, 5000, "expensive", None)
@@ -141,8 +141,8 @@ def test_router_skip_at_80_expensive_no_downgrade():
 
 
 def test_router_hard_stop_proj_over_remaining():
-    from luna_mcp.budget.tracker import BudgetTracker
     from luna_mcp.budget.router import ToolRouter
+    from luna_mcp.budget.tracker import BudgetTracker
     t = BudgetTracker(cap=500)
     t.record("filler", 490)  # 10 remaining, screenshot costs 12400
     r = ToolRouter(t)
@@ -186,8 +186,8 @@ async def test_visual_router_fallback_to_visual_summary():
 # ── ENV disable ───────────────────────────────────────────────────────────────
 
 def test_disabled_env_always_runs():
-    from luna_mcp.budget.tracker import BudgetTracker
     from luna_mcp.budget.router import ToolRouter
+    from luna_mcp.budget.tracker import BudgetTracker
     t = BudgetTracker(cap=10)  # tiny cap
     t.record("filler", 10)     # 100%
     r = ToolRouter(t)
@@ -216,9 +216,9 @@ def test_set_budget_mode_switch():
 @pytest.mark.asyncio
 async def test_compose_budget_gates_before_inner():
     """budget gate fires FIRST — inner fn never called when skip."""
-    from luna_mcp.budget.tracker import BudgetTracker
-    from luna_mcp.budget.router import ToolRouter
     from luna_mcp.budget.registry import ToolCost
+    from luna_mcp.budget.router import ToolRouter
+    from luna_mcp.budget.tracker import BudgetTracker
 
     inner_called = []
     async def inner_fn(**kw): inner_called.append(kw); return "inner"
@@ -244,8 +244,8 @@ async def test_compose_budget_gates_before_inner():
 @pytest.mark.asyncio
 async def test_compose_budget_records_after_inner():
     """When action=run, tracker.record is called with the tool's est_in + out_tokens."""
-    from luna_mcp.budget.tracker import BudgetTracker
     from luna_mcp.budget.router import ToolRouter
+    from luna_mcp.budget.tracker import BudgetTracker
 
     async def inner_fn(**kw): return "hello world"
 
@@ -267,14 +267,11 @@ async def test_compose_budget_records_after_inner():
 @pytest.mark.asyncio
 async def test_set_budget_actually_updates_router_decisions():
     """set_budget('warmup') caps at 5000; expensive tool at 4500 spent gets skipped (M1)."""
-    from luna_mcp.budget.tracker import BudgetTracker
-    from luna_mcp.budget.router import ToolRouter
+    # Use the module-level tracker/router (the ones _gated closure captures)
+    import luna_mcp.server as srv
     from luna_mcp.budget import registry as reg
     from luna_mcp.budget.registry import ToolCost
     from luna_mcp.server import _gated
-
-    # Use the module-level tracker/router (the ones _gated closure captures)
-    import luna_mcp.server as srv
 
     orig_cap = srv._budget_tracker.cap
     orig_spent = srv._budget_tracker.spent

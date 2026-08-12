@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import pathlib
+
 from .reader import read_config
 
 

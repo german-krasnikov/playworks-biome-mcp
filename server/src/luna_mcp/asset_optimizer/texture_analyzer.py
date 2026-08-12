@@ -1,5 +1,6 @@
 """Texture analyzer — Pillow histogram + entropy + classification."""
 from __future__ import annotations
+
 import math
 from dataclasses import dataclass
 

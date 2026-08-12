@@ -1,10 +1,11 @@
 """Tests for get_build_environment, get_startup_timing, luna_report (Phase 18)."""
 import json
+from unittest.mock import AsyncMock, Mock
+
 import pytest
-from unittest.mock import AsyncMock, Mock, patch
+from mcp.server.fastmcp.exceptions import ToolError
 
 import luna_mcp.server as server_module
-from mcp.server.fastmcp.exceptions import ToolError
 
 
 @pytest.fixture(autouse=True)
@@ -173,8 +174,9 @@ async def test_luna_report_eval_exception_graceful(mock_bridge):
 
 def _make_get_console(msgs):
     """Helper: build get_console fn via register_diagnostics_tools with given msgs."""
-    from luna_mcp.tools.diagnostics_tools import register_diagnostics_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.diagnostics_tools import register_diagnostics_tools
     bridge = Mock()
     bridge.get_console_messages = Mock(return_value=msgs)
     ret = register_diagnostics_tools(FastMCP("t"), AsyncMock(), AsyncMock(), lambda: bridge)

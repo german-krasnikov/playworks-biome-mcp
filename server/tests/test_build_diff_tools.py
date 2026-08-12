@@ -1,8 +1,5 @@
 """Tests for tools/build_diff_tools.py — RED phase."""
-import pathlib
 import pytest
-
-import luna_mcp.tools.build_diff_tools as _mod
 
 
 async def _noop_visual(a, b):
@@ -11,10 +8,9 @@ async def _noop_visual(a, b):
 
 def _make_tool_env(tmp_path):
     """Create fresh tool module state for isolation."""
-    from luna_mcp.build_diff.storage import BuildStore
-    from luna_mcp.build_diff.semantic_diff import SemanticDiff
     from luna_mcp.build_diff.router import TierRouter
-    from luna_mcp.build_diff.bisector import Bisector
+    from luna_mcp.build_diff.semantic_diff import SemanticDiff
+    from luna_mcp.build_diff.storage import BuildStore
 
     store = BuildStore(tmp_path / "store")
     router = TierRouter(SemanticDiff(None), _noop_visual)
@@ -24,15 +20,18 @@ def _make_tool_env(tmp_path):
 @pytest.fixture()
 def tools(tmp_path):
     """Returns (index_build, diff_builds, list_builds, bisect_change) with isolated store."""
-    from luna_mcp.build_diff.storage import BuildStore
-    from luna_mcp.build_diff.semantic_diff import SemanticDiff
     from luna_mcp.build_diff.router import TierRouter
+    from luna_mcp.build_diff.semantic_diff import SemanticDiff
+    from luna_mcp.build_diff.storage import BuildStore
 
     store = BuildStore(tmp_path / "store")
     router = TierRouter(SemanticDiff(None), _noop_visual)
 
     from luna_mcp.tools.build_diff_tools import (
-        _make_index_build, _make_diff_builds, _make_list_builds, _make_bisect_change
+        _make_bisect_change,
+        _make_diff_builds,
+        _make_index_build,
+        _make_list_builds,
     )
     return (
         _make_index_build(store),

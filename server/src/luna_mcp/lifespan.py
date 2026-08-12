@@ -3,8 +3,6 @@ from __future__ import annotations
 
 import logging
 
-from .config import data_dir as _cfg_data_dir
-
 logger = logging.getLogger(__name__)
 
 
@@ -12,20 +10,21 @@ def wire_features(*, call_fn, sampling, ping_fn, lessons_store,
                   rec_data_dir, build_semantic, pc_validator, metrics,
                   all_tools: dict):
     """Wire feature-module singletons that depend on lifespan-created objects."""
-    import luna_mcp.tools.stats_tools as _stats_mod
+    import luna_mcp.reflect.rules_modify as _reflect_modify
+    import luna_mcp.reflect.rules_runtime as _reflect_runtime
     import luna_mcp.tools.flag_explorer_tools as _flag_mod
     import luna_mcp.tools.optimize_tools as _optimize_mod
     import luna_mcp.tools.physics_tools as _physics_mod
-    import luna_mcp.reflect.rules_modify as _reflect_modify
-    import luna_mcp.reflect.rules_runtime as _reflect_runtime
+    import luna_mcp.tools.stats_tools as _stats_mod
+
     from .budget import visual_router as _visual_router_mod
 
     _stats_mod._metrics = metrics
 
     # Hidden Flags (F9)
     from .flag_explorer.catalog import FlagCatalog
-    from .flag_explorer.seeds import seed_default as _seed_flags
     from .flag_explorer.recommender import FlagRecommender
+    from .flag_explorer.seeds import seed_default as _seed_flags
     _flag_catalog = FlagCatalog(rec_data_dir / "flag_catalog.json")
     _seed_flags(_flag_catalog)
     _flag_mod._catalog = _flag_catalog
@@ -40,9 +39,9 @@ def wire_features(*, call_fn, sampling, ping_fn, lessons_store,
     )
 
     # Physics Detective
+    from .lessons.luna_issue_seeds import seed_luna_issues
     from .physics_detective.diagnose_flow import PhysicsDiagnostic
     from .physics_detective.seeds import seed_physics_lessons
-    from .lessons.luna_issue_seeds import seed_luna_issues
     if lessons_store is not None:
         try:
             seed_physics_lessons(lessons_store)

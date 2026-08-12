@@ -1,6 +1,7 @@
 """Starter patch templates for common build size reductions."""
-from .patch_dsl import PatchOp
 from typing import Optional
+
+from .patch_dsl import PatchOp
 
 TEMPLATE_LOWER_JPEG = PatchOp(
     id="lower_jpeg_quality",

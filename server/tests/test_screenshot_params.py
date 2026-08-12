@@ -3,7 +3,7 @@ import base64
 import io
 import struct
 import zlib
-import asyncio
+
 import pytest
 
 
@@ -105,8 +105,9 @@ async def test_screenshot_clip_passed_through():
 async def test_screenshot_max_width_downscales():
     """max_width=100 on 200px PNG → decoded width==100."""
     pytest.importorskip("PIL")
-    from luna_mcp.cdp_bridge import CDPBridge
     from PIL import Image
+
+    from luna_mcp.cdp_bridge import CDPBridge
 
     async def fake_send(method, params=None, timeout=30.0):
         png_b64 = base64.b64encode(_make_png(200, 200)).decode()
@@ -124,8 +125,9 @@ async def test_screenshot_max_width_downscales():
 async def test_screenshot_jpeg_max_width_returns_jpeg_bytes():
     """format=jpeg + max_width → returned bytes must be JPEG (\\xff\\xd8\\xff magic) at correct width."""
     pytest.importorskip("PIL")
-    from luna_mcp.cdp_bridge import CDPBridge
     from PIL import Image
+
+    from luna_mcp.cdp_bridge import CDPBridge
 
     async def fake_send(method, params=None, timeout=30.0):
         png_b64 = base64.b64encode(_make_png(200, 200)).decode()
@@ -163,10 +165,12 @@ async def test_screenshot_max_width_noop_without_max_width():
 async def test_jpeg_vs_png_baseline_pixel_diff_inflation():
     """JPEG q60 and PNG of same image should differ measurably (documents hazard)."""
     pytest.importorskip("PIL")
-    from PIL import Image
-    from luna_mcp.build_diff.visual_diff import diff_pngs
     import pathlib
-    import tempfile, os
+    import tempfile
+
+    from PIL import Image
+
+    from luna_mcp.build_diff.visual_diff import diff_pngs
 
     # Use gradient pattern so JPEG lossy encoding introduces measurable pixel differences
     img = Image.new("RGB", (100, 100))
@@ -195,8 +199,7 @@ async def test_jpeg_vs_png_baseline_pixel_diff_inflation():
 @pytest.mark.asyncio
 async def test_llm_screenshot_saves_jpg_extension():
     """_take_screenshot in llm_tools must save file with .jpg extension."""
-    import os
-    from unittest.mock import MagicMock, AsyncMock, patch
+    from unittest.mock import AsyncMock, MagicMock, patch
 
     # Patch screenshot to return PNG bytes
     png_bytes = _make_png()
@@ -229,7 +232,6 @@ async def test_llm_screenshot_saves_jpg_extension():
         pass
 
     # Direct approach: monkey-patch bridge and run _take_screenshot
-    from luna_mcp import tools as tools_pkg
     # The path should end with .jpg based on config
     from luna_mcp import config as cfg
     fmt = getattr(cfg, "SCREENSHOT_FORMAT", "png")

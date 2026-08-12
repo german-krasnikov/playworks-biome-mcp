@@ -1,9 +1,9 @@
 """TDD tests for SamplingService (luna playable ad visual LLM)."""
 import asyncio
 import os
-import pytest
 from unittest.mock import AsyncMock, MagicMock, Mock, patch
 
+import pytest
 
 # ── SamplingService tests ────────────────────────────────────────────────────
 
@@ -48,8 +48,10 @@ async def test_subprocess_spawned_with_haiku(monkeypatch, tmp_path):
 
     with patch("shutil.which", return_value="/usr/bin/claude"), \
          patch("asyncio.create_subprocess_exec", new=AsyncMock(return_value=mock_proc)) as mock_exec:
+        import importlib
+
         from luna_mcp import sampling as smod
-        import importlib; importlib.reload(smod)
+        importlib.reload(smod)
         svc = smod.SamplingService()
         result = await svc.describe_image("What is this?", str(png))
 
@@ -72,8 +74,10 @@ async def test_timeout_kills_process(monkeypatch, tmp_path):
 
     with patch("shutil.which", return_value="/usr/bin/claude"), \
          patch("asyncio.create_subprocess_exec", new=AsyncMock(return_value=mock_proc)):
+        import importlib
+
         from luna_mcp import sampling as smod
-        import importlib; importlib.reload(smod)
+        importlib.reload(smod)
         svc = smod.SamplingService()
         result = await svc._run(["claude", "-p", "test"], timeout=0.01)
 
@@ -111,8 +115,10 @@ async def test_concurrency_semaphore(monkeypatch):
 
     with patch("shutil.which", return_value="/usr/bin/claude"), \
          patch("asyncio.create_subprocess_exec", new=AsyncMock(side_effect=lambda *a, **kw: make_proc())):
+        import importlib
+
         from luna_mcp import sampling as smod
-        import importlib; importlib.reload(smod)
+        importlib.reload(smod)
         svc = smod.SamplingService()
         svc._semaphore = None  # reset class-level semaphore
 
@@ -156,8 +162,10 @@ def test_screenshot_path_passed_as_arg(monkeypatch, tmp_path):
 
     with patch("shutil.which", return_value="/usr/bin/claude"), \
          patch("asyncio.create_subprocess_exec", new=capture):
+        import importlib
+
         from luna_mcp import sampling as smod
-        import importlib; importlib.reload(smod)
+        importlib.reload(smod)
         svc = smod.SamplingService()
         asyncio.run(svc.describe_image("describe", str(png)))
 
@@ -187,8 +195,10 @@ async def test_diff_passes_two_images(monkeypatch, tmp_path):
 
     with patch("shutil.which", return_value="/usr/bin/claude"), \
          patch("asyncio.create_subprocess_exec", new=capture):
+        import importlib
+
         from luna_mcp import sampling as smod
-        import importlib; importlib.reload(smod)
+        importlib.reload(smod)
         svc = smod.SamplingService()
         result = await svc.verify_visual_diff(str(before), str(after), "what changed?")
 
@@ -209,8 +219,9 @@ async def test_tool_degraded_when_disabled(monkeypatch):
     mock_bridge = MagicMock()
     mock_bridge.screenshot = AsyncMock(return_value=b"\x89PNG\r\n\x1a\n")
 
-    from luna_mcp.tools.llm_tools import register_llm_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.llm_tools import register_llm_tools
     mock_mcp = FastMCP("test")
     tools = register_llm_tools(mock_mcp, svc, lambda: mock_bridge, exposed=set())
 
@@ -227,9 +238,10 @@ async def test_compare_screenshots_rejects_etc_passwd(monkeypatch):
     """compare_screenshots with /etc/passwd path must return [INVALID: ...], not subprocess (M3)."""
     monkeypatch.setenv("LUNA_VISUAL_LLM", "1")
 
+    from mcp.server.fastmcp import FastMCP
+
     from luna_mcp.sampling import SamplingService
     from luna_mcp.tools.llm_tools import register_llm_tools
-    from mcp.server.fastmcp import FastMCP
 
     svc = MagicMock(spec=SamplingService)
     svc.enabled = True
@@ -253,9 +265,10 @@ async def test_compare_screenshots_rejects_nonexistent_tmp_path(monkeypatch, tmp
     """compare_screenshots with non-existent file under /tmp returns [INVALID: file not found]."""
     monkeypatch.setenv("LUNA_VISUAL_LLM", "1")
 
+    from mcp.server.fastmcp import FastMCP
+
     from luna_mcp.sampling import SamplingService
     from luna_mcp.tools.llm_tools import register_llm_tools
-    from mcp.server.fastmcp import FastMCP
 
     svc = MagicMock(spec=SamplingService)
     svc.enabled = True
@@ -281,9 +294,11 @@ async def test_compare_screenshots_rejects_nonexistent_tmp_path(monkeypatch, tmp
 def test_atexit_cleanup_kills_active_processes():
     """_cleanup_subprocesses kills all procs in _active_procs and is registered with atexit."""
     import atexit
+    import importlib
     from unittest.mock import MagicMock
+
     from luna_mcp import sampling as smod
-    import importlib; importlib.reload(smod)
+    importlib.reload(smod)
 
     mock_proc = MagicMock()
     mock_proc.returncode = None  # still running

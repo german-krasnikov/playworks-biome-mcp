@@ -1,6 +1,7 @@
 """TDD: macro tools (do/ask/endcard/gameplay/monetization)."""
+from unittest.mock import AsyncMock, MagicMock
+
 import pytest
-from unittest.mock import AsyncMock, MagicMock, patch
 
 
 def _make_sampling(enabled=True, plan_result="find_objects query=CTA"):
@@ -12,6 +13,7 @@ def _make_sampling(enabled=True, plan_result="find_objects query=CTA"):
 
 def _make_tools(sampling=None, execute_fn=None, tool_reg=None):
     from mcp.server.fastmcp import FastMCP
+
     from luna_mcp.tools.macro_tools import register_macro_tools
     mcp = FastMCP("test")
     if sampling is None:
@@ -290,6 +292,7 @@ def test_reconnect_resets_build_id_cache(monkeypatch):
 def test_on_reconnect_calls_build_id_reset():
     """M2: server._on_reconnect must import and call build_id.reset_cache()."""
     import inspect
+
     import luna_mcp.server as srv
     # The _on_reconnect is defined inside lifespan — check source contains the call
     src = inspect.getsource(srv)
@@ -306,6 +309,7 @@ def test_macro_tools_use_maybe_expose_not_mcp_decorator():
     With maybe_expose it only registers when in exposed.
     """
     from mcp.server.fastmcp import FastMCP
+
     from luna_mcp.tools.macro_tools import register_macro_tools
 
     mcp_empty = FastMCP("test-empty")
@@ -328,6 +332,7 @@ def test_macro_tools_use_maybe_expose_not_mcp_decorator():
 def test_macro_tools_register_when_in_exposed():
     """Macro tools must register with FastMCP when their name is in the exposed set."""
     from mcp.server.fastmcp import FastMCP
+
     from luna_mcp.tools.macro_tools import register_macro_tools
 
     mcp_full = FastMCP("test-full")

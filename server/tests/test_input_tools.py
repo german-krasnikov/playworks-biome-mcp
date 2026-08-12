@@ -1,5 +1,6 @@
-import pytest
 from unittest.mock import AsyncMock, Mock
+
+import pytest
 
 
 @pytest.fixture
@@ -12,6 +13,7 @@ def mock_bridge():
 @pytest.fixture
 def tools(mock_bridge):
     from mcp.server.fastmcp import FastMCP
+
     from luna_mcp.tools.input_tools import register_input_tools
     mcp = FastMCP("test")
     reg = register_input_tools(mcp, lambda: mock_bridge, AsyncMock())

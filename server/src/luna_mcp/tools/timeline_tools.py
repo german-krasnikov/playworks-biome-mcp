@@ -5,9 +5,9 @@ import pathlib
 import tempfile
 from typing import Callable, Optional
 
-from . import maybe_expose
 from .. import tmp_cleanup
 from ..timeline import TimelineCapture, _LabelCache
+from . import maybe_expose
 
 
 def register_timeline_tools(

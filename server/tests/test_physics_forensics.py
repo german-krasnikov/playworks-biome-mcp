@@ -1,7 +1,7 @@
 """Tests for S3.4 physics forensics tools."""
 import pathlib
+
 import pytest
-from unittest.mock import AsyncMock, Mock
 
 JS_PATH = pathlib.Path(__file__).parent.parent.parent / "js" / "luna_helpers.js"
 

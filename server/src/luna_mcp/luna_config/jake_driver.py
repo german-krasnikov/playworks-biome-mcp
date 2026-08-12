@@ -20,7 +20,7 @@ class JakeDriver:
         return True, "ok"
 
     def _cmd(self) -> str:
-        return f"./jake build"
+        return "./jake build"
 
     def build(self, dry_run: bool = True, execute: bool = False) -> dict[str, Any]:
         valid, reason = self._validate()

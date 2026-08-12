@@ -1,8 +1,8 @@
 """Tests for BuildOptimizer orchestrator (F10)."""
 import pytest
-from luna_mcp.optimize_macro.orchestrator import BuildOptimizer, DEFAULT_SPLIT
-from luna_mcp.optimize_macro.estimator import OptimizationSource, CombinedPlan
 
+from luna_mcp.optimize_macro.estimator import CombinedPlan
+from luna_mcp.optimize_macro.orchestrator import DEFAULT_SPLIT, BuildOptimizer
 
 # ---- helpers ----
 

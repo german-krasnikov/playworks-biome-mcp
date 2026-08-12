@@ -1,6 +1,4 @@
 """TDD tests for AutoTuner (feature #8: Budget Auto-tuning)."""
-import math
-import time
 import pytest
 
 
@@ -17,13 +15,13 @@ def make_rows(spents, cap=30000, hit_cap=0, success=1, project_key="abc"):
 # ── compute_cap ───────────────────────────────────────────────────────────────
 
 def test_cold_start_returns_work_preset():
-    from luna_mcp.budget.autotune import compute_cap, PRESETS
+    from luna_mcp.budget.autotune import PRESETS, compute_cap
     rows = make_rows([1000, 2000, 3000])  # < 5
     assert compute_cap(rows) == PRESETS["work"]
 
 
 def test_cold_start_empty():
-    from luna_mcp.budget.autotune import compute_cap, PRESETS
+    from luna_mcp.budget.autotune import PRESETS, compute_cap
     assert compute_cap([]) == PRESETS["work"]
 
 
@@ -80,7 +78,7 @@ def test_high_variance_uses_max_observed():
 
 
 def test_hard_upper_clamp():
-    from luna_mcp.budget.autotune import compute_cap, HARD_UPPER
+    from luna_mcp.budget.autotune import HARD_UPPER, compute_cap
     rows = make_rows([HARD_UPPER] * 20)
     cap = compute_cap(rows)
     assert cap <= HARD_UPPER

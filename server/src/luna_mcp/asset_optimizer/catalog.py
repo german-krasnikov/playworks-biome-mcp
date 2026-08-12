@@ -1,5 +1,6 @@
 """Asset catalog — walk dir, classify by extension."""
 from __future__ import annotations
+
 import pathlib
 from dataclasses import dataclass
 

@@ -1,7 +1,7 @@
 """Extract anchors, task names, and version SHA from a Jakefile.js."""
 import hashlib
-import re
 import pathlib
+import re
 from dataclasses import dataclass
 
 _TASK_RE = re.compile(r"task\s*\(\s*['\"]([^'\"]+)['\"]")

@@ -3,12 +3,14 @@
 Tests mock the CDP eval; no Chrome required.
 """
 from __future__ import annotations
-import json
-import pytest
-from unittest.mock import AsyncMock
-from luna_mcp.pc_replacer.scanner import UsageScanner
-from luna_mcp.pc_replacer.catalog import ModuleCatalog, ModuleInfo
 
+import json
+from unittest.mock import AsyncMock
+
+import pytest
+
+from luna_mcp.pc_replacer.catalog import ModuleCatalog, ModuleInfo
+from luna_mcp.pc_replacer.scanner import UsageScanner
 
 # ---------------------------------------------------------------------------
 # Helpers

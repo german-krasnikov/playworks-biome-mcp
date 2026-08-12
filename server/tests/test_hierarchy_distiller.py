@@ -1,7 +1,7 @@
 """Tests for F16 Hierarchy Distiller — TDD RED phase."""
 from __future__ import annotations
-import pytest
 
+import pytest
 
 SMALL_HIERARCHY = """Main Camera [Camera, AudioListener]
 Directional Light [Light]

@@ -2,71 +2,73 @@
 from __future__ import annotations
 
 import pathlib
+
 from mcp.server.fastmcp import FastMCP
 
-from .tools.typemap_tools import register_typemap_tools
+import luna_mcp.tools.distiller_tools as _distiller_mod
+
+from .budget import BudgetTracker, ToolRouter
+from .config import data_dir as _cfg_data_dir
+from .regression.store import BaselineStore
+from .regression.tools import register_regression_tools
+from .sampling import SamplingService
 from .tools.analysis_tools import register_analysis_tools
-from .tools.playworks_tools import register_playworks_tools
-from .tools.batch import execute_batch, register_batch_tool
+from .tools.asset_tools import register_asset_tools
+from .tools.batch import execute_batch
+from .tools.budget_tools import register_budget_tools
+from .tools.build_diff_tools import register_build_diff_tools
+from .tools.build_tools import register_build_tools
+from .tools.compliance_tools import register_compliance_tools
+from .tools.coverage_tools import register_coverage_tools
+from .tools.cs_linter_tools import register_cs_linter_tools
+from .tools.debug_native_tools import register_debug_native_tools
 from .tools.debugger_tools import register_debugger_tools
 from .tools.diagnostics_tools import register_diagnostics_tools
-from .tools.input_tools import register_input_tools
-from .tools.modify_tools import register_modify_tools
-from .tools.network_tools import register_network_tools
-from .tools.scene_tools import register_scene_tools
-from .tools.reflection_tools import register_reflection_tools
-from .tools.state_tools import register_state_tools
-from .tools.visual_tools import register_visual_tools
-from .tools.source_tools import register_source_tools
-from .tools.build_tools import register_build_tools
-from .tools.llm_tools import register_llm_tools
-from .tools.som_tools import register_som_tools
-from .tools.budget_tools import register_budget_tools
-from .tools.events_tools import register_events_tools
-from .tools.template_tools import register_template_tools
-from .tools.stats_tools import register_stats_tools
-from .tools.macro_tools import register_macro_tools
-from .tools.record_tools import register_record_tools
-from .tools.physics_tools import register_physics_tools
-from .tools.particle_tools import register_particle_tools
-from .tools.text_tools import register_text_tools
-from .tools.debug_native_tools import register_debug_native_tools
-from .tools.build_diff_tools import register_build_diff_tools
-from .tools.jakefile_tools import register_jakefile_tools
-from .tools.pc_replacer_tools import register_pc_replacer_tools
-from .tools.asset_tools import register_asset_tools
-from .tools.flag_explorer_tools import register_flag_explorer_tools
-from .tools.optimize_tools import register_optimize_tools
-from .tools.watchdog_tools import register_watchdog_tools
-from .tools.triage_tools import register_triage_tools
-from .tools.luna_config_tools import register_luna_config_tools
-from .tools.compliance_tools import register_compliance_tools
 from .tools.distiller_tools import register_distiller_tools
-from .tools.explainer_tools import register_explainer_tools
-from .tools.playtest_tools import register_playtest_tools
-from .tools.intent_tools import register_intent_tools
-from .tools.perf_tools import register_perf_tools
 from .tools.emulation_tools import register_emulation_tools
-from .tools.netcond_tools import register_netcond_tools
+from .tools.events_tools import register_events_tools
+from .tools.explainer_tools import register_explainer_tools
+from .tools.flag_explorer_tools import register_flag_explorer_tools
 from .tools.heap_tools import register_heap_tools
-from .tools.trace_tools import register_trace_tools
-from .tools.coverage_tools import register_coverage_tools
+from .tools.input_tools import register_input_tools
 from .tools.insights_tools import register_insights_tools
-from .tools.tappable_tools import register_tappable_tools
-from .tools.lifecycle_tools import register_lifecycle_tools
-from .tools.tween_tools import register_tween_tools
-from .tools.physics_forensics_tools import register_physics_forensics_tools
-from .tools.cs_linter_tools import register_cs_linter_tools
+from .tools.intent_tools import register_intent_tools
 from .tools.jake_tasks_tools import register_jake_tasks_tools
+from .tools.jakefile_tools import register_jakefile_tools
+from .tools.lifecycle_tools import register_lifecycle_tools
+from .tools.llm_tools import register_llm_tools
+from .tools.luna_config_tools import register_luna_config_tools
+from .tools.macro_tools import register_macro_tools
+from .tools.modify_tools import register_modify_tools
+from .tools.netcond_tools import register_netcond_tools
+from .tools.network_tools import register_network_tools
+from .tools.optimize_tools import register_optimize_tools
+from .tools.particle_tools import register_particle_tools
+from .tools.pc_replacer_tools import register_pc_replacer_tools
+from .tools.perf_tools import register_perf_tools
+from .tools.physics_forensics_tools import register_physics_forensics_tools
+from .tools.physics_tools import register_physics_tools
 from .tools.playground_tools import register_playground_tools
-from .regression.tools import register_regression_tools
+from .tools.playtest_tools import register_playtest_tools
+from .tools.playworks_tools import register_playworks_tools
+from .tools.record_tools import register_record_tools
+from .tools.reflection_tools import register_reflection_tools
+from .tools.scene_tools import register_scene_tools
+from .tools.som_tools import register_som_tools
+from .tools.source_tools import register_source_tools
+from .tools.state_tools import register_state_tools
+from .tools.stats_tools import register_stats_tools
+from .tools.tappable_tools import register_tappable_tools
+from .tools.template_tools import register_template_tools
+from .tools.text_tools import register_text_tools
 from .tools.timeline_tools import register_timeline_tools
-from .regression.store import BaselineStore
-from .sampling import SamplingService
-from .budget import BudgetTracker, ToolRouter
-from .budget import visual_router as _visual_router_mod
-from .config import data_dir as _cfg_data_dir
-import luna_mcp.tools.distiller_tools as _distiller_mod
+from .tools.trace_tools import register_trace_tools
+from .tools.triage_tools import register_triage_tools
+from .tools.tween_tools import register_tween_tools
+from .tools.typemap_tools import register_typemap_tools
+from .tools.visual_tools import register_visual_tools
+from .tools.watchdog_tools import register_watchdog_tools
+
 
 def merge_tool_groups(all_tools: dict, group: dict) -> dict:
     """Merge group into all_tools; raise ValueError on name collision."""
@@ -232,10 +234,10 @@ def register_all_tools(
     merge_tool_groups(all_tools, register_debug_native_tools(mcp, call_fn, exposed=EXPOSED_TOOLS))
 
     # Build Diff
-    from .build_diff.storage import BuildStore as _BuildStore
-    from .build_diff.semantic_diff import SemanticDiff as _SemanticDiff
-    from .build_diff.visual_diff import diff_pngs as _diff_pngs
     from .build_diff.router import TierRouter as _TierRouter
+    from .build_diff.semantic_diff import SemanticDiff as _SemanticDiff
+    from .build_diff.storage import BuildStore as _BuildStore
+    from .build_diff.visual_diff import diff_pngs as _diff_pngs
     _build_store = _BuildStore(_cfg_data_dir() / "builds")
     build_semantic = _SemanticDiff(None)  # wired in lifespan
     _build_router = _TierRouter(build_semantic, _diff_pngs)
@@ -252,10 +254,10 @@ def register_all_tools(
     ))
 
     # PC Module Replacer (F5)
-    from .pc_replacer.catalog import ModuleCatalog as _ModuleCatalog
-    from .pc_replacer.scanner import UsageScanner as _UsageScanner
-    from .pc_replacer.recommender import Recommender as _Recommender
     from .pc_replacer.applier import StubApplier as _StubApplier
+    from .pc_replacer.catalog import ModuleCatalog as _ModuleCatalog
+    from .pc_replacer.recommender import Recommender as _Recommender
+    from .pc_replacer.scanner import UsageScanner as _UsageScanner
     from .pc_replacer.validator import Validator as _Validator
     _pc_catalog_path = pathlib.Path(__file__).parent / "pc_replacer" / "data" / "pc_modules.json"
     _pc_catalog = _ModuleCatalog(_pc_catalog_path)

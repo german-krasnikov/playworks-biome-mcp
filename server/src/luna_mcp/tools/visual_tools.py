@@ -1,10 +1,9 @@
 from __future__ import annotations
-import time
 
 from mcp.server.fastmcp.exceptions import ToolError
 
-from .modify_tools import _parse_value
 from . import maybe_expose
+from .modify_tools import _parse_value
 
 
 def register_visual_tools(mcp, call_fn, bridge_getter, *, exposed: set = frozenset()):

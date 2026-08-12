@@ -1,6 +1,7 @@
 """Phase 12: Luna Debugger Deep Integration — TDD tests."""
-import pytest
 from unittest.mock import AsyncMock, Mock
+
+import pytest
 from mcp.server.fastmcp.exceptions import ToolError
 
 import luna_mcp.server as server_module
@@ -229,8 +230,9 @@ async def test_get_deep_link_not_initialized():
 # ── Batch registration ────────────────────────────────────────────────────────
 
 def test_new_tools_registered_in_reflection():
-    from luna_mcp.tools.reflection_tools import register_reflection_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.reflection_tools import register_reflection_tools
     mcp = FastMCP("test")
     tools = register_reflection_tools(mcp, AsyncMock())
     assert "get_component_fields" in tools
@@ -240,8 +242,9 @@ def test_new_tools_registered_in_reflection():
 
 
 def test_new_tools_registered_in_visual():
-    from luna_mcp.tools.visual_tools import register_visual_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.visual_tools import register_visual_tools
     mcp = FastMCP("test")
     tools = register_visual_tools(mcp, AsyncMock(), lambda: None)
     assert "edit_animator_state" in tools
@@ -249,17 +252,19 @@ def test_new_tools_registered_in_visual():
 
 
 def test_new_tools_registered_in_analysis():
-    from luna_mcp.tools.analysis_tools import register_analysis_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.analysis_tools import register_analysis_tools
     mcp = FastMCP("test")
     tools = register_analysis_tools(mcp, AsyncMock())
     assert "get_deep_property" in tools
 
 
 def test_get_console_has_since_param():
-    from luna_mcp.tools.diagnostics_tools import register_diagnostics_tools
-    from luna_mcp.tools.batch import derive_params
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.batch import derive_params
+    from luna_mcp.tools.diagnostics_tools import register_diagnostics_tools
     mcp = FastMCP("test")
     bridge = Mock()
     bridge.get_console_messages = Mock(return_value=[])

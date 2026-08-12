@@ -1,6 +1,6 @@
 """RED: FlagExplorer MCP tools."""
 import asyncio
-import pathlib
+
 import pytest
 
 import luna_mcp.tools.flag_explorer_tools as ft

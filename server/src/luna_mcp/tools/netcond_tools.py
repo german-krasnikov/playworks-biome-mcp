@@ -1,6 +1,6 @@
 """S4.5 Network condition tools — throttle, block URLs, reset."""
-from . import maybe_expose
 from ..cdp_domains import NETWORK_PRESETS
+from . import maybe_expose
 
 _VALID_PROFILES = "|".join(sorted(NETWORK_PRESETS.keys()))
 

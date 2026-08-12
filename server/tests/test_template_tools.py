@@ -1,11 +1,5 @@
 """Tests for template MCP tools."""
-import pathlib
-import pytest
-from unittest.mock import AsyncMock, patch, MagicMock
-
-from luna_mcp.templates.registry import Template, TemplateRegistry
-from luna_mcp.templates.placeholders import expand
-
+from unittest.mock import AsyncMock, patch
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 

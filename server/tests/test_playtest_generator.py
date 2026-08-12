@@ -1,13 +1,13 @@
 """Tests for F18: Auto-Playtest Script Generator."""
-import pytest
 from unittest.mock import AsyncMock, MagicMock
+
+import pytest
 
 from luna_mcp.playtest.generator import (
     TEMPLATES,
-    match_template,
     generate_playtest_script,
+    match_template,
 )
-
 
 # ── match_template ────────────────────────────────────────────────────────────
 
@@ -126,6 +126,7 @@ async def test_generate_tier2_haiku_not_enabled():
 
 def test_register_playtest_tools_returns_dict():
     from unittest.mock import MagicMock
+
     from luna_mcp.tools.playtest_tools import register_playtest_tools
 
     mcp = MagicMock()
@@ -145,6 +146,7 @@ def test_register_playtest_tools_returns_dict():
 async def test_generate_playtest_tool_cta():
     """generate_playtest tool returns CTA script for CTA intent."""
     from unittest.mock import MagicMock
+
     from luna_mcp.tools.playtest_tools import register_playtest_tools
 
     mcp = MagicMock()
@@ -165,6 +167,7 @@ async def test_generate_playtest_tool_cta():
 async def test_run_generated_playtest_executes():
     """run_generated_playtest calls execute_batch with given script."""
     from unittest.mock import MagicMock
+
     from luna_mcp.tools.playtest_tools import register_playtest_tools
 
     mcp = MagicMock()

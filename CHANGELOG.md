@@ -11,11 +11,27 @@ Chrome DevTools Protocol (CDP).
 
 ---
 
-## [Unreleased]
+## [v0.2.0] — 2026-08-12
+
+### Added
+- CI infrastructure: ruff lint gate, test matrix (Python 3.10–3.13), coverage (90%), codecov
+- `codecov.yml` with auto target and 1% threshold
+- `dependabot.yml` for weekly dependency and monthly GHA updates
+- `__version__` via `importlib.metadata` for programmatic version access
+- `pyproject.toml`: ruff config (E/F/I/C4), coverage config, strict markers, timeout
 
 ### Changed
 - Renamed package from `luna-kiss-mcp` to `playworks-biome-mcp`
 - Data directory moved from `~/.luna_mcp` to `~/.playworks-biome-mcp` (auto-migration on first start)
+- FastMCP display name updated to `PlayworksBiomeMCP`
+- Shadow git identity updated to `playworks-biome@local`
+- CLI help text updated to Playworks Biome branding
+- Import sorting enforced across all source and test files
+- `templates/registry.py` uses `data_dir()` instead of hardcoded path
+
+### Fixed
+- Broken `EXPOSED_TOOLS` import in test_consolidation.py (moved to wiring.py)
+- Unclosed file handles in test_asset_tools.py (ResourceWarning)
 
 ---
 

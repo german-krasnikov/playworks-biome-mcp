@@ -1,5 +1,6 @@
 """CombinedPlan estimator — aggregates F4+F5+F6 savings."""
 from __future__ import annotations
+
 from dataclasses import dataclass, field
 from typing import List
 

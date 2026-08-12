@@ -1,5 +1,6 @@
 """Load Roslyn lint rules from roslyn-data.json or seeded fallback."""
 from __future__ import annotations
+
 import json
 import os
 import pathlib

@@ -4,12 +4,12 @@ TypemapResolver parses Playworks typemap JSON files to resolve C# -> JS names.
 No Chrome needed.
 """
 from __future__ import annotations
+
 import json
 import os
-import pytest
-from pathlib import Path
-from unittest.mock import AsyncMock, MagicMock
+from unittest.mock import MagicMock
 
+import pytest
 
 # ── Fixtures ─────────────────────────────────────────────────────────────────
 
@@ -205,8 +205,8 @@ async def test_get_class_api_tool(typemap_tools):
 
 @pytest.mark.asyncio
 async def test_tools_no_plugin(mock_mcp):
-    from luna_mcp.typemap_resolver import TypemapResolver
     from luna_mcp.tools.typemap_tools import register_typemap_tools
+    from luna_mcp.typemap_resolver import TypemapResolver
     os.environ.pop("LUNA_PLUGIN_PATH", None)
     r = TypemapResolver(plugin_path=None)
     tools = register_typemap_tools(mock_mcp, lambda: r)

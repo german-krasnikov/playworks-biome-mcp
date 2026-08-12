@@ -1,7 +1,5 @@
 """TDD tests for regression/store.py — BaselineStore + get_build_hash."""
 import asyncio
-import json
-import pathlib
 import time
 from unittest.mock import AsyncMock, MagicMock, patch
 

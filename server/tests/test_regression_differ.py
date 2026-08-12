@@ -2,9 +2,7 @@
 import io
 import pathlib
 
-import pytest
-from PIL import Image, ImageDraw
-
+from PIL import Image
 
 FIXTURES = pathlib.Path(__file__).parent / "fixtures" / "regression"
 
@@ -110,7 +108,8 @@ def test_full_diff_no_mask_smoke():
     buf_b = io.BytesIO()
     Image.new("RGB", (20, 20), color=(0, 0, 255)).save(buf_a, format="PNG")
     Image.new("RGB", (20, 20), color=(255, 0, 0)).save(buf_b, format="PNG")
-    import tempfile, pathlib as pl
+    import pathlib as pl
+    import tempfile
     tmp = pl.Path(tempfile.mktemp(suffix=".png"))
     tmp.write_bytes(buf_a.getvalue())
     try:

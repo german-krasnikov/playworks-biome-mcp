@@ -1,7 +1,8 @@
 """S4.4 HeapProfiler sampling tool."""
 import asyncio
-from . import maybe_expose
+
 from ..heap_summary import summarize
+from . import maybe_expose
 
 
 def register_heap_tools(mcp, get_bridge, *, exposed: set = frozenset()):

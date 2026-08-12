@@ -1,7 +1,7 @@
 """PhysicsDiagnostic orchestrator: detect → classify → query lessons → report."""
 from .backend_detector import detect_backend
-from .symptom_classifier import SymptomClassifier
 from .knowledge_query import PhysicsKnowledge
+from .symptom_classifier import SymptomClassifier
 
 
 class PhysicsDiagnostic:

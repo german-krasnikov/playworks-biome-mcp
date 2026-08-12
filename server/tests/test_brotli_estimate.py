@@ -1,14 +1,13 @@
 """TDD tests for brotli wire-size estimation (C1)."""
 from __future__ import annotations
-from unittest.mock import patch, MagicMock
-import pytest
+
+from unittest.mock import MagicMock, patch
 
 from luna_mcp.optimize_macro.compress_util import (
-    brotli_compressed_size,
     BrotliBackend,
+    brotli_compressed_size,
     wire_size_label,
 )
-
 
 # ── backend detection ──────────────────────────────────────────────────────────
 
@@ -82,7 +81,7 @@ def test_binary_backend_writes_stdin():
     mock_result.returncode = 0
     mock_result.stdout = b""
 
-    import tempfile, pathlib
+    import pathlib
     call_args_holder = {}
 
     def capturing_run(cmd, **kwargs):
@@ -144,7 +143,7 @@ def test_estimator_source_wire_defaults_to_none():
 
 def test_combined_plan_to_text_includes_wire_size():
     """to_text shows brotli wire size when available."""
-    from luna_mcp.optimize_macro.estimator import OptimizationSource, CombinedPlan
+    from luna_mcp.optimize_macro.estimator import CombinedPlan, OptimizationSource
     plan = CombinedPlan(target_kb=200)
     plan.sources.append(
         OptimizationSource("assets", 100, 2, "compress JPEG",
@@ -157,7 +156,7 @@ def test_combined_plan_to_text_includes_wire_size():
 
 def test_combined_plan_to_text_no_wire_size_unchanged():
     """to_text stays backward-compatible when wire_size_kb is None."""
-    from luna_mcp.optimize_macro.estimator import OptimizationSource, CombinedPlan
+    from luna_mcp.optimize_macro.estimator import CombinedPlan, OptimizationSource
     plan = CombinedPlan(target_kb=200)
     plan.sources.append(OptimizationSource("jakefile", 50, 1, "strip unused"))
     text = plan.to_text()

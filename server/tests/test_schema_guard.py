@@ -1,17 +1,17 @@
 """Tests for SchemaGuard, SchemaCache, BatchPathCache, and middleware."""
 import os
-import pytest
 from unittest.mock import AsyncMock, MagicMock
+
+import pytest
 
 os.environ.setdefault("LUNA_MCP_VALIDATE", "1")
 
 
 # ── imports (will fail until modules exist) ──────────────────────────────────
 
-from luna_mcp.schema_cache import SchemaCache, BatchPathCache
-from luna_mcp.schema_guard import SchemaGuard
 from luna_mcp.middleware import wrap_with_guard
-
+from luna_mcp.schema_cache import BatchPathCache, SchemaCache
+from luna_mcp.schema_guard import SchemaGuard
 
 # ── fixtures ─────────────────────────────────────────────────────────────────
 
@@ -190,7 +190,7 @@ async def test_fail_open_on_exception():
 @pytest.mark.asyncio
 async def test_batch_pre_flight_aborts_at_first_invalid_step():
     """Batch dry_run=True aborts at first invalid step, no tools executed."""
-    from luna_mcp.tools.batch import execute_batch, register_batch_tool, _TOOL_REGISTRY
+    from luna_mcp.tools.batch import _TOOL_REGISTRY, execute_batch, register_batch_tool
 
     original = dict(_TOOL_REGISTRY)
     try:
@@ -239,7 +239,7 @@ def test_cache_invalidate_on_reconnect():
 @pytest.mark.asyncio
 async def test_dry_run_returns_ok_without_cdp_eval():
     """execute_batch dry_run=True with valid commands returns OK message."""
-    from luna_mcp.tools.batch import execute_batch, register_batch_tool, _TOOL_REGISTRY
+    from luna_mcp.tools.batch import _TOOL_REGISTRY, execute_batch, register_batch_tool
 
     original = dict(_TOOL_REGISTRY)
     try:

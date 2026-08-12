@@ -1,7 +1,7 @@
 """Binary search to find regression culprit in log(N) probes."""
 from __future__ import annotations
 
-from typing import Callable, Awaitable
+from typing import Awaitable, Callable
 
 
 class Bisector:

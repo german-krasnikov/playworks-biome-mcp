@@ -1,8 +1,10 @@
 """Tests for record/replayer.py — RED phase."""
 import json
 import pathlib
+
 import pytest
-from luna_mcp.record.replayer import Replayer, ReplayReport
+
+from luna_mcp.record.replayer import Replayer
 
 
 def _make_session(path: pathlib.Path, steps: list[dict], name: str = "test") -> pathlib.Path:
@@ -73,7 +75,6 @@ async def test_replay_all_match_returns_ok(tmp_path):
 @pytest.mark.asyncio
 async def test_replay_hash_mismatch_diverges(tmp_path):
     from luna_mcp.record.fingerprint import hash_result
-    from luna_mcp.record.redact import redact_result
     step = {
         "tool": "ping", "args": {},
         "summary": "pong",

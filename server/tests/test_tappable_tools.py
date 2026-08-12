@@ -1,5 +1,6 @@
 """Tests for tappable_tools (S2.2)."""
 import pathlib
+
 import pytest
 
 _JS_FILE = pathlib.Path(__file__).parent.parent.parent / "js" / "luna_helpers.js"

@@ -5,6 +5,7 @@ import tempfile
 import time
 
 from mcp.server.fastmcp.exceptions import ToolError
+
 from . import maybe_expose
 
 _CONSOLE_MSG_CAP = 200
@@ -26,7 +27,7 @@ def register_diagnostics_tools(mcp, send_fn, call_fn, bridge_getter, ensure_fn=N
 
     async def screenshot() -> str:
         """Capture a full-page screenshot, saved to /tmp. Returns the file path. Use to visually verify scene state, UI layout, or collider overlays."""
-        from ..config import SCREENSHOT_FORMAT, SCREENSHOT_QUALITY, SCREENSHOT_MAX_WIDTH
+        from ..config import SCREENSHOT_FORMAT, SCREENSHOT_MAX_WIDTH, SCREENSHOT_QUALITY
         if ensure_fn:
             await ensure_fn()
         bridge = bridge_getter()

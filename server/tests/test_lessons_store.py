@@ -1,11 +1,8 @@
 """Tests for LessonStore and seeds."""
-import pathlib
-import pytest
 
-from luna_mcp.lessons.store import Lesson, LessonStore, _project_namespace
-from luna_mcp.lessons.seeds import seed_default, LUNA_SEEDS
 from luna_mcp.lessons.matcher import matches
-
+from luna_mcp.lessons.seeds import LUNA_SEEDS, seed_default
+from luna_mcp.lessons.store import Lesson, LessonStore, _project_namespace
 
 # --- LessonStore ---
 

@@ -4,13 +4,9 @@ from __future__ import annotations
 import json
 import os
 import pathlib
-import shutil
-import subprocess
-import tempfile
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
 
 import pytest
-
 
 # ---------------------------------------------------------------------------
 # Config locator tests
@@ -100,7 +96,7 @@ def test_config_writer_creates_backup(tmp_path):
 def test_config_writer_revert_from_backup(tmp_path):
     cfg = tmp_path / "config.json"
     cfg.write_text('{"quality": "high"}')
-    from luna_mcp.luna_config.writer import write_config, revert_config
+    from luna_mcp.luna_config.writer import revert_config, write_config
     write_config(cfg, {"quality": "ultra"})
     revert_config(cfg)
     data = json.loads(cfg.read_text())
@@ -127,6 +123,7 @@ def test_config_writer_validates_json(tmp_path):
 def test_config_writer_no_mktemp(tmp_path):
     """write_config must NOT use tempfile.mktemp (TOCTOU race). Verify via source."""
     import inspect
+
     from luna_mcp.luna_config import writer
     src = inspect.getsource(writer)
     assert "mktemp(" not in src, "mktemp() is TOCTOU-unsafe; use NamedTemporaryFile"
@@ -138,7 +135,6 @@ def test_config_writer_cleans_up_tmp_on_error(tmp_path):
     cfg.write_text('{}')
     from luna_mcp.luna_config.writer import write_config
     # Patch replace to fail after write
-    import pathlib
     original_replace = pathlib.Path.replace
 
     def boom(self, target):
@@ -227,8 +223,9 @@ def test_luna_config_diff_tool(tmp_path):
     cfg_b = tmp_path / "b.json"
     cfg_a.write_text('{"quality": "high"}')
     cfg_b.write_text('{"quality": "ultra"}')
-    from luna_mcp.tools.luna_config_tools import luna_config_diff
     import asyncio
+
+    from luna_mcp.tools.luna_config_tools import luna_config_diff
     result = asyncio.run(luna_config_diff(str(cfg_a), str(cfg_b)))
     assert "quality" in result
 
@@ -282,8 +279,9 @@ def test_jake_driver_execute_false_no_subprocess(tmp_path):
 def test_jake_build_tool_dry_run(tmp_path):
     """MCP tool jake_build returns dry-run output without subprocess."""
     (tmp_path / "Jakefile.js").write_text("// jake")
-    from luna_mcp.tools.luna_config_tools import jake_build
     import asyncio
+
+    from luna_mcp.tools.luna_config_tools import jake_build
     result = asyncio.run(jake_build(project_path=str(tmp_path)))
     assert "jake" in result.lower() or "dry" in result.lower()
     assert "execute" not in result.lower() or "false" in result.lower() or "dry" in result.lower()
@@ -308,8 +306,9 @@ def test_jake_build_tool_execute_mocked(tmp_path):
 # ---------------------------------------------------------------------------
 
 def test_register_luna_config_tools():
-    from luna_mcp.tools.luna_config_tools import register_luna_config_tools
     from unittest.mock import MagicMock
+
+    from luna_mcp.tools.luna_config_tools import register_luna_config_tools
     mcp = MagicMock()
     mcp.tool.return_value = lambda fn: fn
     tools = register_luna_config_tools(mcp, exposed=set())
@@ -321,8 +320,9 @@ def test_register_luna_config_tools():
 
 def test_exposed_only_get_and_diff():
     """Only luna_config_get and luna_config_diff should be exposed."""
-    from luna_mcp.tools.luna_config_tools import register_luna_config_tools
     from unittest.mock import MagicMock
+
+    from luna_mcp.tools.luna_config_tools import register_luna_config_tools
     mcp = MagicMock()
     mcp.tool.return_value = lambda fn: fn
     exposed = {"luna_config_get", "luna_config_diff"}

@@ -1,7 +1,6 @@
 """Testable helpers extracted from server.py wrapper logic."""
 from typing import Optional
 
-
 _LESSON_INJECT_CMDS = frozenset({"set_property", "set_transform", "get_component", "get_object_detail"})
 
 

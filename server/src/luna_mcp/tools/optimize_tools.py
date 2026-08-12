@@ -1,5 +1,6 @@
 """2 MCP tools for Build Optimization Macro (F10)."""
 from __future__ import annotations
+
 from typing import Optional
 
 from ..optimize_macro.orchestrator import BuildOptimizer

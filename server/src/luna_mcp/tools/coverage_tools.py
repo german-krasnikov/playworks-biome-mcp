@@ -1,7 +1,8 @@
 """S4.1 Coverage profiler tools."""
 import asyncio
-from . import maybe_expose
+
 from ..coverage_map import map_dead_functions
+from . import maybe_expose
 
 
 def register_coverage_tools(mcp, get_bridge, require_source_mapper, *, exposed: set = frozenset()):

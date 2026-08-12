@@ -1,8 +1,7 @@
 """Tests for build_diff/semantic_diff.py — RED phase."""
-import pathlib
 import pytest
 
-from luna_mcp.build_diff.semantic_diff import SemanticDiff, CHUNK_SIZE
+from luna_mcp.build_diff.semantic_diff import CHUNK_SIZE, SemanticDiff
 
 
 class _MockSampling:

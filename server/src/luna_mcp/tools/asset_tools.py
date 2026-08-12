@@ -1,12 +1,13 @@
 """4 MCP tools for Asset Pipeline Co-pilot (F6)."""
 from __future__ import annotations
+
 import pathlib
 
-from ..tools import maybe_expose
 from ..asset_optimizer.catalog import AssetCatalog
-from ..asset_optimizer.texture_analyzer import TextureAnalyzer
+from ..asset_optimizer.plan import OptimizationPlan, make_plan
 from ..asset_optimizer.recommender import Recommender
-from ..asset_optimizer.plan import make_plan, OptimizationPlan
+from ..asset_optimizer.texture_analyzer import TextureAnalyzer
+from ..tools import maybe_expose
 
 # Module-level singletons (wired by server.py or created lazily here)
 _texture_analyzer: TextureAnalyzer = TextureAnalyzer()

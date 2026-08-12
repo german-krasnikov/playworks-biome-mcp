@@ -30,6 +30,7 @@ def test_hinter_has_10_rules_total():
 
 def test_hinter_file_under_200_lines():
     import inspect
+
     import luna_mcp.hinter as mod
     src = inspect.getsource(mod)
     lines = src.splitlines()

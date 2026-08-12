@@ -5,14 +5,14 @@ Usage: python -m luna_mcp.cli.replay <session_name> [--dry-run]
 NOTE: Live replay requires a running MCP server stack (Chrome + bridge).
 Standalone CLI invocation supports only --dry-run for now.
 """
-import asyncio
 import argparse
-import sys
+import asyncio
 import pathlib
+import sys
 
 
 async def main():
-    parser = argparse.ArgumentParser(description="Replay a recorded Luna MCP session")
+    parser = argparse.ArgumentParser(description="Replay a recorded Playworks Biome session")
     parser.add_argument("name", help="Session name (without .jsonl)")
     parser.add_argument("--dry-run", action="store_true", help="Print steps without executing")
     parser.add_argument("--data-dir", default=None, help="Base path for recordings")

@@ -1,6 +1,6 @@
-import json
+from unittest.mock import AsyncMock, Mock
+
 import pytest
-from unittest.mock import AsyncMock, Mock, call, patch
 
 from luna_mcp.luna_runtime import LunaRuntime
 

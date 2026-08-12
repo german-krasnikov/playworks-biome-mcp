@@ -1,7 +1,8 @@
 """S4.3 Tracing tool — frame timing profiler via CDP Tracing domain."""
 import asyncio
-from . import maybe_expose
+
 from ..trace_summary import summarize
+from . import maybe_expose
 
 _CATEGORIES = "disabled-by-default-devtools.timeline,blink.user_timing,toplevel"
 

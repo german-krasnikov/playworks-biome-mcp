@@ -5,9 +5,16 @@ from pathlib import Path
 
 from . import maybe_expose
 from .build_helpers import (
-    biggest_files, fmt_kb, fmt_playground, read_json,
-    recommendations, stage3, stage4, walk_sizes,
+    biggest_files,
+    fmt_kb,
+    fmt_playground,
+    read_json,
+    recommendations,
+    stage3,
+    stage4,
+    walk_sizes,
 )
+
 
 async def analyze_build(build_path: str) -> str:
     """Analyze Luna build output. build_path = Unity project root with LunaTemp/."""

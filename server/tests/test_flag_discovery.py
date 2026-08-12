@@ -1,9 +1,7 @@
 """RED: FlagDiscovery — regex scan jakefile for flag names."""
-import pathlib
 import pytest
 
 from luna_mcp.flag_explorer.discovery import scan_jakefile_flags
-
 
 SAMPLE_JAKEFILE = """
 // Jakefile.js sample

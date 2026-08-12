@@ -1,9 +1,7 @@
 """Tests for typemap-aware matcher helper."""
-import pathlib
-import pytest
-from luna_mcp.lessons.store import Lesson, LessonStore
 from luna_mcp.lessons.keys import class_hash, sig_hash
 from luna_mcp.lessons.matcher import find_lesson_for_class
+from luna_mcp.lessons.store import Lesson, LessonStore
 
 
 def _store(tmp_path) -> LessonStore:

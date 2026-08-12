@@ -1,12 +1,12 @@
 """Tests for CostCalibrator wiring into ToolRouter.decide + auto-mode wiring."""
 import os
-import pytest
 import time
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
+
 from luna_mcp.budget.calibrator import CostCalibrator
+from luna_mcp.budget.history import SessionHistory, SessionRow
 from luna_mcp.budget.router import ToolRouter
 from luna_mcp.budget.tracker import BudgetTracker
-from luna_mcp.budget.history import SessionHistory, SessionRow
 
 
 def _make_tracker(cap=50_000):
@@ -198,7 +198,6 @@ def test_router_budget_disabled_bypasses_calibrator():
 
 def test_probe_tools_registered():
     """get_gpu_info, get_vram_usage, get_startup_timing must all be in batch registry."""
-    import luna_mcp.server  # populates _TOOL_REGISTRY
     from luna_mcp.tools.batch import _TOOL_REGISTRY
     for name in ("get_gpu_info", "get_vram_usage", "get_startup_timing"):
         assert name in _TOOL_REGISTRY, f"{name} missing from batch registry"

@@ -1,5 +1,6 @@
-import pytest
 from unittest.mock import AsyncMock, Mock
+
+import pytest
 
 
 @pytest.fixture
@@ -14,6 +15,7 @@ def mock_bridge():
 @pytest.fixture
 def tools(mock_bridge):
     from mcp.server.fastmcp import FastMCP
+
     from luna_mcp.tools.network_tools import register_network_tools
     mcp = FastMCP("test")
     send_fn = AsyncMock(return_value="n/a")

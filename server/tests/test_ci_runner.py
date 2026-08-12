@@ -1,8 +1,6 @@
 """Tests for headless CI runner (cli/ci_runner.py). No real Chrome."""
 import asyncio
-import pytest
 from unittest.mock import AsyncMock, MagicMock, patch
-
 
 # ── helper to run async tests ────────────────────────────────────────────────
 
@@ -185,8 +183,9 @@ def test_ci_runner_terminate_called_on_poll_timeout():
 
 def test_default_poll_returns_true_on_200():
     """M2: _default_poll returns True when server responds 200."""
-    import aiohttp
-    from unittest.mock import AsyncMock as _AM, patch as _patch, MagicMock as _MM
+    from unittest.mock import AsyncMock as _AM
+    from unittest.mock import MagicMock as _MM
+    from unittest.mock import patch as _patch
 
     async def _run_poll():
         from luna_mcp.cli.ci_runner import _default_poll
@@ -215,8 +214,11 @@ def test_default_poll_returns_true_on_200():
 def test_default_poll_returns_false_after_deadline():
     """M2: _default_poll returns False when deadline passes without 200."""
     async def _run_poll():
+        from unittest.mock import AsyncMock as _AM
+        from unittest.mock import MagicMock as _MM
+        from unittest.mock import patch as _patch
+
         from luna_mcp.cli.ci_runner import _default_poll
-        from unittest.mock import patch as _patch, MagicMock as _MM, AsyncMock as _AM
 
         mock_session = _MM()
         mock_session.__aenter__ = _AM(return_value=mock_session)
@@ -236,6 +238,7 @@ def test_default_poll_returns_false_after_deadline():
 def test_make_launch_fn_appends_file_url_when_build_path():
     """M3: cmd must include file:// URL when build_path is non-empty."""
     import os
+
     from luna_mcp.cli.ci import _make_launch_fn
 
     captured_cmds = []

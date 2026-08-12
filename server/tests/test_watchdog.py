@@ -1,8 +1,9 @@
 """Tests for Watchdog post-write scanner."""
 import asyncio
+
 import pytest
 
-from luna_mcp.watchdog.scanner import Watchdog, WRITE_CMDS
+from luna_mcp.watchdog.scanner import WRITE_CMDS, Watchdog
 
 
 @pytest.fixture

@@ -1,5 +1,6 @@
+from unittest.mock import AsyncMock, Mock
+
 import pytest
-from unittest.mock import AsyncMock, Mock, patch
 
 from luna_mcp.source_mapper import SourceMapper
 
@@ -238,9 +239,9 @@ def test_bridge_has_scripts_dict():
 
 async def test_bridge_tracks_script_parsed():
     """Simulate _read_loop processing a Debugger.scriptParsed event."""
-    import json
     import asyncio
-    from unittest.mock import patch, MagicMock
+    import json
+
     from luna_mcp.cdp_bridge import CDPBridge
 
     bridge = CDPBridge()

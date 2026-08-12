@@ -1,8 +1,7 @@
 """Tests for build_diff/storage.py — RED phase."""
-import pytest
 
-from luna_mcp.build_diff.storage import BuildStore
 from luna_mcp.build_diff.indexer import BuildIndex
+from luna_mcp.build_diff.storage import BuildStore
 
 
 def _make_store(tmp_path):

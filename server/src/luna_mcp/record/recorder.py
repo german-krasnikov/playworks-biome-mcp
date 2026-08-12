@@ -45,8 +45,8 @@ class Recorder:
         return path
 
     def log(self, tool: str, args: dict, result: str, ms: int) -> None:
-        from .redact import redact_args, redact_result
         from .fingerprint import hash_result
+        from .redact import redact_args, redact_result
         with self._lock:
             if self._active is None:
                 return

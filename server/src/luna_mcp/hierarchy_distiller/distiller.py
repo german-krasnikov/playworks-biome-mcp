@@ -1,5 +1,6 @@
 """Hierarchy Distiller — Tier 1 stats + optional Tier 2 Haiku anomaly detection."""
 from __future__ import annotations
+
 import re
 from collections import Counter
 

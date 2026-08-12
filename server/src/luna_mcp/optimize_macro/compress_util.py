@@ -6,6 +6,7 @@ Priority:
   3. Heuristic: return raw byte length, label as uncompressed/heuristic
 """
 from __future__ import annotations
+
 import importlib
 import shutil
 import subprocess

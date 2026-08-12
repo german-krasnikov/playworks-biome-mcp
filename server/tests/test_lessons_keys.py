@@ -1,6 +1,5 @@
 """Tests for lessons/keys.py — class_hash, sig_hash, make_key."""
-import pytest
-from luna_mcp.lessons.keys import class_hash, sig_hash, make_key
+from luna_mcp.lessons.keys import class_hash, make_key, sig_hash
 
 
 def test_class_hash_stable_across_runs():

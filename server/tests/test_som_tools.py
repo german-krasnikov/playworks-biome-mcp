@@ -1,10 +1,9 @@
 """TDD tests for Set-of-Mark (SoM) feature — luna_mcp."""
 import io
 import time
-import pytest
-from unittest.mock import AsyncMock, MagicMock, patch
-from PIL import Image
 
+import pytest
+from PIL import Image
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 
@@ -151,7 +150,6 @@ MOCK_RECTS_TEXT = (
 async def test_screenshot_som_populates_map():
     """screenshot_som: JS text → parsed → MarkerMap populated."""
     from luna_mcp.tools.som_tools import _parse_rect_lines
-    from luna_mcp.state.marker_map import MarkerMap, Rect
     rects = _parse_rect_lines(MOCK_RECTS_TEXT)
     assert len(rects) == 3
     assert rects[0]["path"] == "/Canvas/EndCard/InstallBtn"
@@ -163,6 +161,7 @@ async def test_screenshot_som_populates_map():
 async def test_screenshot_som_returns_path_and_legend():
     """screenshot_som returns file path + numbered legend."""
     import os
+
     from luna_mcp.state.marker_map import MarkerMap
     from luna_mcp.tools.som_tools import _build_som_result
 

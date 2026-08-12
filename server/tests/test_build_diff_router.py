@@ -1,10 +1,11 @@
 """Tests for build_diff/router.py — RED phase."""
 import pathlib
+
 import pytest
 
 from luna_mcp.build_diff.indexer import BuildIndex
-from luna_mcp.build_diff.semantic_diff import SemanticDiff
 from luna_mcp.build_diff.router import TierRouter
+from luna_mcp.build_diff.semantic_diff import SemanticDiff
 
 
 def _scan(root, label, files):

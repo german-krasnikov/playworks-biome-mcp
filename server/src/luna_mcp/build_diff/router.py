@@ -2,10 +2,10 @@
 from __future__ import annotations
 
 import pathlib
-from typing import Callable, Awaitable, Optional
+from typing import Awaitable, Callable, Optional
 
 from .file_diff import diff_manifests, format_text
-from .indexer import Manifest, _TEXT_KINDS
+from .indexer import _TEXT_KINDS, Manifest
 
 
 class TierRouter:

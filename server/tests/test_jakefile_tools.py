@@ -1,16 +1,16 @@
 """Tests for Jakefile MCP tools — RED phase."""
-import asyncio
 import pathlib
+from unittest.mock import MagicMock
+
 import pytest
-from unittest.mock import AsyncMock, MagicMock, patch
+
 from luna_mcp.tools.jakefile_tools import (
     _make_analyze_jakefile,
-    _make_suggest_jakefile_patch,
     _make_apply_jakefile_patch,
     _make_revert_jakefile_patch,
+    _make_suggest_jakefile_patch,
     register_jakefile_tools,
 )
-
 
 SAMPLE_JAKE = """\
 // Line 1
@@ -183,7 +183,6 @@ def test_register_returns_dict():
 
 
 def test_register_returns_tuple_format():
-    from luna_mcp.tools.batch import derive_params
     mcp_mock = MagicMock()
     result = register_jakefile_tools(mcp_mock, planner=None, shadow_base=pathlib.Path("/tmp"))
     for name, val in result.items():

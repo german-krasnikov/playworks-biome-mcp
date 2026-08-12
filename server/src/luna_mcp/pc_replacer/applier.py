@@ -1,8 +1,9 @@
 """Runtime monkey-patch: stub pc.X exports for testing."""
 from __future__ import annotations
-import re
+
 import json
-from typing import Callable, Awaitable
+import re
+from typing import Awaitable, Callable
 
 _SAFE_ID = re.compile(r'^[a-z0-9_-]{1,64}$')
 _SAFE_EXPORT = re.compile(r'^[a-zA-Z0-9_.]{1,80}$')

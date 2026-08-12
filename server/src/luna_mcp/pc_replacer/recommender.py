@@ -1,5 +1,6 @@
 """Heuristic recommender: ranks unused modules by size."""
 from __future__ import annotations
+
 from .catalog import ModuleCatalog
 
 

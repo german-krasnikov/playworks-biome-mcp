@@ -1,6 +1,5 @@
 """Tests for budget registry coverage — EXPOSED_TOOLS ⊆ TOOL_COSTS regression guard."""
-import pytest
-from luna_mcp.budget.registry import TOOL_COSTS, DEFAULT
+from luna_mcp.budget.registry import DEFAULT, TOOL_COSTS
 from luna_mcp.wiring import EXPOSED_TOOLS
 
 

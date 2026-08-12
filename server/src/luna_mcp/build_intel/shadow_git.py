@@ -26,8 +26,8 @@ class ShadowGit:
         rc, _ = self._run("git", "init", "-q")
         if rc != 0:
             return False
-        self._run("git", "config", "user.email", "luna-mcp@local")
-        self._run("git", "config", "user.name", "LunaMCP")
+        self._run("git", "config", "user.email", "playworks-biome@local")
+        self._run("git", "config", "user.name", "PlayworksBiome")
         self._run("git", "commit", "--allow-empty", "-q", "-m", "init", "--no-gpg-sign")
         return True
 

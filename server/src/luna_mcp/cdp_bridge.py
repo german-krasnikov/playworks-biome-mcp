@@ -221,8 +221,9 @@ class CDPBridge:
         raw = base64.b64decode(result["result"]["data"])
         if max_width > 0:
             try:
-                from PIL import Image
                 import io
+
+                from PIL import Image
                 img = Image.open(io.BytesIO(raw))
                 if img.width > max_width:
                     ratio = max_width / img.width

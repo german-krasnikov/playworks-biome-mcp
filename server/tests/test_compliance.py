@@ -1,8 +1,9 @@
 """Tests for F12 Compliance Checker — RED phase."""
 from __future__ import annotations
-import pathlib
-import pytest
 
+import pathlib
+
+import pytest
 
 # ---------------------------------------------------------------------------
 # Helpers

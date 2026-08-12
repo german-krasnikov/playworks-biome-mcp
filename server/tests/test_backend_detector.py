@@ -1,5 +1,6 @@
 """Tests for BackendInfo parser and detect_backend."""
 import pytest
+
 from luna_mcp.physics_detective.backend_detector import BackendInfo
 
 

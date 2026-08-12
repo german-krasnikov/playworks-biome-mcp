@@ -1,19 +1,17 @@
 """RED tests for Wave 3 code-reviewer fixes (C1-B, M1, M2, M4, m1, m2, m3)."""
-import asyncio
-import os
 import pathlib
 import time
-import pytest
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, MagicMock
 
+import pytest
 
 # ── C1-B: find_lesson_for_class wired into _hinted-like wrapper ──────────────
 
 @pytest.mark.asyncio
 async def test_lesson_injected_for_set_property_with_known_class(tmp_path):
     """LESSON: prefix injected when store has lesson for the class."""
-    from luna_mcp.lessons.store import LessonStore, Lesson
     from luna_mcp.lessons.keys import class_hash, sig_hash
+    from luna_mcp.lessons.store import Lesson, LessonStore
 
     store = LessonStore(tmp_path / "l.db")
     ch = class_hash("UnityEngine.UI.Button")
@@ -162,7 +160,7 @@ def test_lost_context_no_fire_without_get_hierarchy():
 
 def test_label_cache_lru_access_updates_timestamp():
     """Accessing an item prevents it from being the eviction victim."""
-    from luna_mcp.timeline import _LabelCache, TimelineFrame
+    from luna_mcp.timeline import TimelineFrame, _LabelCache
     frames = [TimelineFrame(t_ms=0, path=pathlib.Path("/tmp/x.png"))]
 
     cache = _LabelCache(max_labels=2, ttl_s=60.0)

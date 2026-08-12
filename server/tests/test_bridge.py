@@ -1,11 +1,11 @@
 import asyncio
 import json
+from unittest.mock import AsyncMock, MagicMock, Mock, patch
+
 import pytest
-from unittest.mock import AsyncMock, Mock, patch, MagicMock
 import websockets
 
 from luna_mcp.cdp_bridge import CDPBridge
-
 
 # ── Step 1: Pure logic ──────────────────────────────────────────────────────
 
@@ -798,7 +798,6 @@ def test_connected_false_after_reader_dead():
 
 async def test_read_loop_logs_warning_on_unexpected_iterator_exception():
     """Outer except must log at warning level, not silently swallow."""
-    import logging
     bridge = CDPBridge()
 
     async def fake_iter():

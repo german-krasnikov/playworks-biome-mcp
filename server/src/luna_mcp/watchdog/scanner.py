@@ -2,7 +2,7 @@
 import asyncio
 import hashlib
 import time
-from typing import Callable, Awaitable, Optional
+from typing import Awaitable, Callable, Optional
 
 WRITE_CMDS = frozenset({"set_property", "set_transform", "eval_js", "simulate_click", "simulate_touch", "simulate_key"})
 

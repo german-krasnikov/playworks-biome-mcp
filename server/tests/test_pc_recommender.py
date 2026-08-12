@@ -1,5 +1,6 @@
 """Tests for pc_replacer.recommender — RED phase."""
 import pytest
+
 from luna_mcp.pc_replacer.catalog import ModuleInfo
 from luna_mcp.pc_replacer.recommender import Recommender
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 320" width="780" height="320" role="img" aria-labelledby="qst-title qst-desc">
-  <title id="qst-title">Luna MCP Quickstart terminal</title>
+  <title id="qst-title">Playworks Biome MCP Quickstart terminal</title>
   <desc id="qst-desc">An animated terminal window typing the three quickstart commands: clone and install, launch Chrome with remote debugging, and ask the AI assistant to inspect the Luna scene hierarchy.</desc>
 
   <defs>

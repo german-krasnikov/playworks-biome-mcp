@@ -1,4 +1,4 @@
-// Luna MCP helpers. Injected via CDP. All output TEXT (no JSON).
+// Playworks Biome MCP helpers. Injected via CDP. All output TEXT (no JSON).
 // Version 1.6.1
 (function() {
     if (window.__luna_mcp) return;

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./.github/assets/hero.svg" width="100%" alt="Luna MCP — AI-native debugger for Luna playable builds: a deep-space banner with a twinkling starfield, an orbiting moon, and the title Luna MCP"/>
+<img src="./.github/assets/hero.svg" width="100%" alt="Playworks Biome MCP — AI-native debugger for Luna playable builds: a deep-space banner with a twinkling starfield, an orbiting moon, and the title Playworks Biome"/>
 
 <a href="https://github.com/german-krasnikov/playworks-biome-mcp">
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=900&color=39E0FF&center=true&vCenter=true&width=760&lines=Debug+Luna+builds+from+Claude.;Token-minimized+MCP+tools.;80-95%25+batch+token+savings.;Scene+.+Physics+.+Visual+.+Build." alt="Debug Luna builds from Claude — token-minimized MCP tools — 80-95% batch token savings">
@@ -33,7 +33,7 @@
 
 <img src="./.github/assets/divider.svg" width="100%" alt="" />
 
-## Why Luna MCP?
+## Why Playworks Biome?
 
 - **Stop burning tokens on boilerplate.** Each `batch` call replaces 5–20 individual MCP round-trips — **80–95% fewer tokens** on the same work.
 - **Stop copy-pasting from Chrome DevTools.** Your assistant inspects the live Luna scene, edits runtime properties, captures screenshots, and triages console errors — all over CDP, without leaving the chat.
@@ -153,7 +153,7 @@ Restart your client. Ask: *"Inspect the Luna scene hierarchy"* — done.
 <img src="./.github/assets/divider.svg" width="100%" alt="" />
 
 > [!IMPORTANT]
-> **Unofficial community tool.** Luna MCP is an independent, community-built project. **Luna** is a product of **Luna Labs**. This project is **not affiliated with, endorsed by, or sponsored by Luna Labs.**
+> **Unofficial community tool.** Playworks Biome MCP is an independent, community-built project. **Luna** is a product of **Luna Labs**. This project is **not affiliated with, endorsed by, or sponsored by Luna Labs.**
 
 <div align="center">
 

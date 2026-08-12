@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" width="920" height="380" role="img" aria-labelledby="tsav__title tsav__desc">
-  <title id="tsav__title">Luna MCP token-economy savings panel</title>
+  <title id="tsav__title">Playworks Biome MCP token-economy savings panel</title>
   <desc id="tsav__desc">Animated telemetry panel. Six savings mechanisms shown as glowing bars that grow on load: batch 80 percent plus, Visual Tier 1 30 to 100 times, JPEG screenshots 3 to 5 times, Set-of-Mark 70 to 90 percent, Budget Router up to 92 percent, and server-side sampling about 28000 tokens saved.</desc>
 
   <defs>

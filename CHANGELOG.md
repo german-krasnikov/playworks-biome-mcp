@@ -1,11 +1,11 @@
 # Changelog
 
-All notable changes to **Luna MCP** (`playworks-biome-mcp`) are documented here.
+All notable changes to **Playworks Biome MCP** (`playworks-biome-mcp`) are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-Luna MCP is a token-minimal MCP server that lets an AI coding assistant debug
+Playworks Biome MCP is a token-minimal MCP server that lets an AI coding assistant debug
 Luna (a Unity-to-JS transpiler) playable-ad builds running in Chrome over the
 Chrome DevTools Protocol (CDP).
 
@@ -143,7 +143,7 @@ The brain of the server: learning, prediction, and server-side AI.
 ### Added
 
 - Initial refactor and audit pass establishing the core architecture:
-  AI Assistant ↔ (stdio) ↔ Luna MCP (Python, FastMCP) ↔ (CDP WebSocket) ↔ Chrome.
+  AI Assistant ↔ (stdio) ↔ Playworks Biome MCP (Python, FastMCP) ↔ (CDP WebSocket) ↔ Chrome.
 - CDP bridge with auto-reconnect, JS helper injection into the Luna iframe,
   JS→C# source mapping, and the Playworks typemap resolver.
 - Engineering guardrails: SOLID / DRY / KISS / TDD (Red-Green-Refactor),

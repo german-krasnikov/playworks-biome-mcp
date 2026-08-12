@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" width="1200" height="360" preserveAspectRatio="xMidYMid meet">
-  <title>Luna MCP live console — you ask a question in plain language, the matching debug tool fires and returns telemetry</title>
+  <title>Playworks Biome MCP live console — you ask a question in plain language, the matching debug tool fires and returns telemetry</title>
 
   <defs>
     <linearGradient id="demo__skyGrad" x1="0" y1="0" x2="0" y2="1">
@@ -116,7 +116,7 @@
           path="M 26,0 A 26,11 0 1,1 -26,0 A 26,11 0 1,1 26,0"/>
       </circle>
     </g>
-    <text x="116" y="52" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" fill="#7E879F">luna-mcp · chrome :9222 · CDP</text>
+    <text x="116" y="52" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" fill="#7E879F">playworks-biome · chrome :9222 · CDP</text>
 
     <!-- prompt line: human asks in plain language -->
     <text x="48" y="116" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" fill="#566079">you</text>

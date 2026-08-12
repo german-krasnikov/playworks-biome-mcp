@@ -5,11 +5,15 @@ on:
     branches: [main]
     paths:
       - "server/**"
+      - "js/**"
+      - "tests/js/**"
       - ".github/workflows/test.yml"
   pull_request:
     branches: [main]
     paths:
       - "server/**"
+      - "js/**"
+      - "tests/js/**"
       - ".github/workflows/test.yml"
   workflow_dispatch:
 
@@ -73,3 +77,36 @@ jobs:
           files: server/coverage.xml
           fail_ci_if_error: false
           token: ${{ secrets.CODECOV_TOKEN }}
+
+  js-test:
+    needs: lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: "tests/js/package-lock.json"
+
+      - name: Install dependencies
+        working-directory: tests/js
+        run: npm ci
+
+      - name: Install Playwright browsers
+        working-directory: tests/js
+        run: npx playwright install chromium --with-deps
+
+      - name: Run Playwright tests
+        working-directory: tests/js
+        run: npx playwright test
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-test-results
+          path: tests/js/test-results/
+          retention-days: 7

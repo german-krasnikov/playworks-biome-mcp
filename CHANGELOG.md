@@ -11,6 +11,19 @@ Chrome DevTools Protocol (CDP).
 
 ---
 
+## [v0.2.2] — 2026-08-12
+
+### Added
+- Playwright browser test suite for `luna_helpers.js` — 40 tests across 10 spec files running in real headless Chromium
+- Mock architecture: factory functions for Luna scene graph (`createNode`, `wireScene`), PlayCanvas/UnityEngine stubs
+- CI: parallel `js-test` job in `test.yml` (Node 20, Chromium, ~52s) alongside Python test matrix
+- Path filters extended: `js/**` and `tests/js/**` trigger CI
+
+### Changed
+- CI `test.yml` now has 3 jobs: `lint`, `test` (Python 3.10–3.13), `js-test` (Playwright)
+
+---
+
 ## [v0.2.1] — 2026-08-12
 
 ### Changed

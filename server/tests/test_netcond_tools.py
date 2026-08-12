@@ -175,8 +175,8 @@ async def test_netcond_degraded_no_bridge():
 # --- read_only=False ---
 
 def test_netcond_read_only_false():
-    from luna_mcp.tools.netcond_tools import register_netcond_tools
     from luna_mcp.tools import _HAS_ANNOTATIONS
+    from luna_mcp.tools.netcond_tools import register_netcond_tools
     recorded = []
     class CaptureMCP:
         def tool(self, **kw):

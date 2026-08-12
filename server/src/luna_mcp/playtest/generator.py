@@ -4,7 +4,8 @@ Tier 1: keyword → pre-built template (no LLM).
 Tier 2: Haiku plan() + dry_run validation.
 """
 from __future__ import annotations
-from typing import Optional, Callable
+
+from typing import Callable, Optional
 
 from luna_mcp.macro.planner import clean_dsl
 

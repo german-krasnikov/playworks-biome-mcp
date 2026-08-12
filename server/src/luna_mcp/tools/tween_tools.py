@@ -1,6 +1,7 @@
 """S3.2 DOTween inventory and control tools."""
 import asyncio
 import re
+
 from . import maybe_expose
 
 _VALID_ACTIONS = {"pause", "play", "kill", "complete"}
@@ -62,7 +63,7 @@ def register_tween_tools(mcp, call_fn, *, exposed: set = frozenset()):
     async def tween_control(action: str) -> str:
         """Control all tweens: pause|play|kill|complete."""
         if action not in _VALID_ACTIONS:
-            return f"[INVALID: action must be pause|play|kill|complete]"
+            return "[INVALID: action must be pause|play|kill|complete]"
         return await call_fn("tweenControl", action)
     maybe_expose(mcp, tween_control, exposed, read_only=False)
 

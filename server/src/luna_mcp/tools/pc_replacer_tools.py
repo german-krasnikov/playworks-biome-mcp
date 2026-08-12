@@ -1,6 +1,5 @@
 """5 MCP tools for PlayCanvas Module Replacement Recommender (F5)."""
 from __future__ import annotations
-from typing import Optional
 
 from ..tools import maybe_expose
 

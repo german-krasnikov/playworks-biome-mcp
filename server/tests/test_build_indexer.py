@@ -4,8 +4,7 @@ import time
 
 import pytest
 
-from luna_mcp.build_diff.indexer import BuildIndex, FileEntry, Manifest, _TS_RE
-
+from luna_mcp.build_diff.indexer import _TS_RE, BuildIndex, FileEntry
 
 # --- classify ---
 

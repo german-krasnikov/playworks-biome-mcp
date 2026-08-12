@@ -1,6 +1,6 @@
 """Tests for GracefulDegradation middleware."""
-import pytest
 from unittest.mock import MagicMock
+
 from luna_mcp.degradation import GracefulDegradation
 
 

@@ -1,7 +1,8 @@
 """S5.4 Jake task discovery tool — pure Python, no Chrome."""
 from __future__ import annotations
+
+from ..luna_config.jake_tasks import _FALLBACK_KEY, discover_tasks
 from . import maybe_expose
-from ..luna_config.jake_tasks import discover_tasks, _FALLBACK_KEY
 
 
 def register_jake_tasks_tools(mcp, *, exposed: set = frozenset()):

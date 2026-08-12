@@ -3,8 +3,8 @@ import time
 from collections import deque
 from typing import Optional
 
+from .sinks import NullSink, Sink
 from .tracker import BudgetTracker
-from .sinks import Sink, NullSink
 
 
 class MetricsRegistry(BudgetTracker):

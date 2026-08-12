@@ -1,6 +1,5 @@
-from mcp.server.fastmcp.exceptions import ToolError
-from . import maybe_expose
 from ..hierarchy_distiller.distiller import distill_tier1, format_stats
+from . import maybe_expose
 
 # Auto-distill when hierarchy response exceeds this many characters
 HIERARCHY_SIZE_THRESHOLD = 3000

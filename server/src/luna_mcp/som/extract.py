@@ -1,5 +1,6 @@
 """Parse and filter rects from Luna collectInteractiveRects output."""
 from __future__ import annotations
+
 import hashlib
 from typing import Optional
 

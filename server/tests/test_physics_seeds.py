@@ -1,7 +1,6 @@
 """Tests for physics lesson seeds."""
-import pytest
 from luna_mcp.lessons.store import LessonStore
-from luna_mcp.physics_detective.seeds import seed_physics_lessons, PHYSICS_SEEDS
+from luna_mcp.physics_detective.seeds import PHYSICS_SEEDS, seed_physics_lessons
 
 
 def test_9_seeds_present(tmp_path):

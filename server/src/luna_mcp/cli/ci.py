@@ -37,13 +37,13 @@ def _make_dispatch_fn(tool_registry: dict):
     async def dispatch(name: str, build_path: str = ""):
         fn, _ = tool_registry.get("visual_baseline_check", (None, None))
         if fn is None:
-            return f"FAIL: visual_baseline_check not found"
+            return "FAIL: visual_baseline_check not found"
         return await fn(name=name)
     return dispatch
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Luna MCP headless CI runner")
+    parser = argparse.ArgumentParser(description="Playworks Biome headless CI runner")
     parser.add_argument("--baselines", required=True,
                         help="Comma-separated baseline names")
     parser.add_argument("--build-path", default="", help="Build path")

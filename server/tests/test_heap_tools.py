@@ -1,6 +1,7 @@
 """Tests for S4.4 heap sampling tools."""
-import pytest
 from unittest.mock import patch
+
+import pytest
 
 
 class FakeMCP:

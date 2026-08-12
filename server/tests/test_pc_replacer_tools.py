@@ -1,15 +1,17 @@
 """Tests for pc_replacer MCP tools — RED phase."""
-import pytest
 from unittest.mock import AsyncMock, MagicMock
+
+import pytest
+
+from luna_mcp.pc_replacer.catalog import ModuleInfo
 from luna_mcp.tools.pc_replacer_tools import (
+    _make_apply_pc_replacement,
     _make_audit_pc_modules,
     _make_recommend_pc_replacements,
-    _make_apply_pc_replacement,
-    _make_validate_pc_replacement,
     _make_revert_pc_replacement,
+    _make_validate_pc_replacement,
     register_pc_replacer_tools,
 )
-from luna_mcp.pc_replacer.catalog import ModuleInfo
 
 
 def make_catalog(entries=None):

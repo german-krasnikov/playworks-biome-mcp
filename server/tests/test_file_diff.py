@@ -1,10 +1,8 @@
 """Tests for build_diff/file_diff.py — RED phase."""
 import pathlib
 
-import pytest
-
+from luna_mcp.build_diff.file_diff import diff_manifests, format_text
 from luna_mcp.build_diff.indexer import BuildIndex, Manifest
-from luna_mcp.build_diff.file_diff import diff_manifests, format_text, FileChange
 
 
 def _make_manifest(root, label, files: dict[str, str]) -> Manifest:

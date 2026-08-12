@@ -1,5 +1,6 @@
 """F12 Compliance Checker — Tier 1 pure Python checks against ad network rules."""
 from __future__ import annotations
+
 from pathlib import Path
 
 NETWORK_RULES: dict[str, dict] = {

@@ -1,5 +1,6 @@
 """Tests for Sprint 2: S2.3 get_animator_graph, S2.4 get_luna_counters."""
 import pathlib
+
 import pytest
 
 _JS_FILE = pathlib.Path(__file__).parent.parent.parent / "js" / "luna_helpers.js"

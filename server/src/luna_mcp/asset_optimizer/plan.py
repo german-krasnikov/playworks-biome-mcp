@@ -1,8 +1,10 @@
 """OptimizationPlan dataclass + serializer."""
 from __future__ import annotations
+
 import time
 import uuid
 from dataclasses import dataclass, field
+
 from .recommender import AssetAction
 
 

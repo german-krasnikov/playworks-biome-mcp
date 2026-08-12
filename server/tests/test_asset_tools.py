@@ -1,9 +1,9 @@
 """Tests for asset MCP tools — RED phase."""
 from __future__ import annotations
+
 import pathlib
+
 import pytest
-import asyncio
-from PIL import Image
 
 
 # M2 — plan_id uniqueness under rapid successive calls
@@ -17,8 +17,8 @@ FIXTURES = pathlib.Path(__file__).parent / "fixtures" / "textures"
 
 @pytest.fixture
 def assets_dir(tmp_path):
-    (tmp_path / "sprite.png").write_bytes(open(FIXTURES / "sprite.png", "rb").read())
-    (tmp_path / "photo.png").write_bytes(open(FIXTURES / "photo_large.png", "rb").read())
+    (tmp_path / "sprite.png").write_bytes((FIXTURES / "sprite.png").read_bytes())
+    (tmp_path / "photo.png").write_bytes((FIXTURES / "photo_large.png").read_bytes())
     (tmp_path / "audio.mp3").write_bytes(b"fake_audio" * 100)
     return tmp_path
 
@@ -105,7 +105,7 @@ async def test_recommend_invalid_path():
 
 @pytest.mark.asyncio
 async def test_recommend_stores_plan_for_apply(assets_dir):
-    from luna_mcp.tools.asset_tools import recommend_asset_optimization, apply_asset_optimization
+    from luna_mcp.tools.asset_tools import apply_asset_optimization, recommend_asset_optimization
     rec_result = await recommend_asset_optimization(str(assets_dir), 100)
     if "no actions" in rec_result:
         pytest.skip("no actions generated")
@@ -126,7 +126,7 @@ async def test_apply_unknown_plan_id():
 
 @pytest.mark.asyncio
 async def test_apply_real_returns_degraded(assets_dir):
-    from luna_mcp.tools.asset_tools import recommend_asset_optimization, apply_asset_optimization
+    from luna_mcp.tools.asset_tools import apply_asset_optimization, recommend_asset_optimization
     rec_result = await recommend_asset_optimization(str(assets_dir), 100)
     if "no actions" in rec_result:
         pytest.skip("no actions generated")
@@ -137,7 +137,7 @@ async def test_apply_real_returns_degraded(assets_dir):
 
 @pytest.mark.asyncio
 async def test_apply_dry_run_shows_action_count(assets_dir):
-    from luna_mcp.tools.asset_tools import recommend_asset_optimization, apply_asset_optimization
+    from luna_mcp.tools.asset_tools import apply_asset_optimization, recommend_asset_optimization
     rec_result = await recommend_asset_optimization(str(assets_dir), 10000)
     if "no actions" in rec_result:
         pytest.skip("no actions generated")

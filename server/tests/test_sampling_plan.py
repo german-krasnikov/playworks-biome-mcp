@@ -1,7 +1,7 @@
 """TDD: SamplingService.plan() method."""
-import asyncio
-import pytest
 from unittest.mock import AsyncMock, MagicMock, Mock, patch
+
+import pytest
 
 
 @pytest.mark.asyncio
@@ -31,8 +31,10 @@ async def test_plan_calls_run_without_image(monkeypatch):
 
     with patch("shutil.which", return_value="/usr/bin/claude"), \
          patch("asyncio.create_subprocess_exec", new=capture):
+        import importlib
+
         from luna_mcp import sampling as smod
-        import importlib; importlib.reload(smod)
+        importlib.reload(smod)
         svc = smod.SamplingService()
         result = await svc.plan("find CTA", "you are a planner")
 
@@ -59,8 +61,10 @@ async def test_plan_passes_full_prompt(monkeypatch):
 
     with patch("shutil.which", return_value="/usr/bin/claude"), \
          patch("asyncio.create_subprocess_exec", new=capture):
+        import importlib
+
         from luna_mcp import sampling as smod
-        import importlib; importlib.reload(smod)
+        importlib.reload(smod)
         svc = smod.SamplingService()
         await svc.plan("my_intent_text", "my_system_prompt")
 
@@ -88,8 +92,10 @@ async def test_plan_with_ctx_appends(monkeypatch):
 
     with patch("shutil.which", return_value="/usr/bin/claude"), \
          patch("asyncio.create_subprocess_exec", new=capture):
+        import importlib
+
         from luna_mcp import sampling as smod
-        import importlib; importlib.reload(smod)
+        importlib.reload(smod)
         svc = smod.SamplingService()
         await svc.plan("intent", "system", ctx="extra_context_xyz")
 
@@ -115,8 +121,10 @@ async def test_plan_without_ctx_no_context_section(monkeypatch):
 
     with patch("shutil.which", return_value="/usr/bin/claude"), \
          patch("asyncio.create_subprocess_exec", new=capture):
+        import importlib
+
         from luna_mcp import sampling as smod
-        import importlib; importlib.reload(smod)
+        importlib.reload(smod)
         svc = smod.SamplingService()
         await svc.plan("intent", "system", ctx="")
 

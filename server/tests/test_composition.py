@@ -1,9 +1,9 @@
 """Tests for composition.py — 6-layer composition stack."""
 from __future__ import annotations
 
-import pytest
-from unittest.mock import MagicMock, AsyncMock, patch
+from unittest.mock import AsyncMock, MagicMock, patch
 
+import pytest
 
 # ---- helpers ----
 

@@ -1,6 +1,7 @@
 """Phase 14: Engine tools -- render stats, VRAM, GPU, step frame, toggle active, move camera. TDD."""
-import pytest
 from unittest.mock import AsyncMock, Mock
+
+import pytest
 from mcp.server.fastmcp.exceptions import ToolError
 
 import luna_mcp.server as server_module

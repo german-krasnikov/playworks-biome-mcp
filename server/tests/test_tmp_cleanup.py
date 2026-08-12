@@ -1,11 +1,9 @@
 """TDD tests for tmp_cleanup helper (m2)."""
 import time
-import pytest
-import pathlib
 
 
 def test_track_adds_to_set(tmp_path):
-    from luna_mcp.tmp_cleanup import _TRACKED, track, _LOCK
+    from luna_mcp.tmp_cleanup import _LOCK, _TRACKED, track
     f = tmp_path / "test.png"
     f.write_bytes(b"x")
     with _LOCK:
@@ -81,6 +79,7 @@ def test_cleanup_handles_missing_files(tmp_path):
 def test_atexit_registered():
     """cleanup_all must be registered with atexit."""
     import atexit
+
     from luna_mcp import tmp_cleanup
     # atexit doesn't expose its registry publicly, so we re-import and check
     # the module registers via atexit.register at import time.

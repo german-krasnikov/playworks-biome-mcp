@@ -1,6 +1,7 @@
 """Tests for S4.1 coverage_report and coverage_raw tools."""
-import pytest
 from unittest.mock import patch
+
+import pytest
 
 
 class FakeMCP:

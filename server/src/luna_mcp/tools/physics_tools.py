@@ -1,5 +1,6 @@
 """Physics Detective MCP tools: detect, diagnose, health check, compare states."""
-from typing import Optional, Callable
+from typing import Callable, Optional
+
 from . import maybe_expose
 
 # Module-level singletons — set by server.py lifespan

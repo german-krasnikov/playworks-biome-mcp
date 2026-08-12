@@ -1,8 +1,10 @@
 """F13 Intent Router tools."""
 from __future__ import annotations
-from typing import Callable, Optional
+
+from typing import Callable
 
 from luna_mcp.intent_router.router import route
+
 from . import maybe_expose
 
 

@@ -1,6 +1,7 @@
 """Tests for SymptomClassifier."""
 import pytest
-from luna_mcp.physics_detective.symptom_classifier import SymptomClassifier, CATEGORIES
+
+from luna_mcp.physics_detective.symptom_classifier import CATEGORIES, SymptomClassifier
 
 
 @pytest.mark.asyncio

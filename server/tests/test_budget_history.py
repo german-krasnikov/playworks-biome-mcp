@@ -1,11 +1,6 @@
 """TDD tests for SessionHistory (feature #8: Budget Auto-tuning)."""
-import asyncio
-import os
-import pathlib
-import time
 import threading
-import pytest
-
+import time
 
 # ── get_project_key ───────────────────────────────────────────────────────────
 

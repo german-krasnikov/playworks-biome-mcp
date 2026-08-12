@@ -1,6 +1,6 @@
 """Regex scan of Jakefile.js for flag references."""
-import re
 import pathlib
+import re
 
 _LUNA_JSON_BRACKET_RE = re.compile(r'luna\.json\[?\s*[\'"](\w+)[\'"]')
 _LUNA_JSON_DOT_RE = re.compile(r'luna\.json\.(\w+)')

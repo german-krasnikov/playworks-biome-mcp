@@ -1,7 +1,7 @@
 """Tests for F11 Smart Error Triage — TDD RED phase."""
 import pytest
-from luna_mcp.error_triage.triage import triage, triage_with_llm
 
+from luna_mcp.error_triage.triage import triage, triage_with_llm
 
 # --- Tier 1: triage() ---
 

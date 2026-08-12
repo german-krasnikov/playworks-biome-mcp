@@ -1,11 +1,8 @@
 """Tests for MetricsRegistry and sinks."""
 import json
-import pathlib
-import pytest
 
 from luna_mcp.budget.metrics import MetricsRegistry
-from luna_mcp.budget.sinks import NullSink, JsonlSink
-
+from luna_mcp.budget.sinks import JsonlSink, NullSink
 
 # --- MetricsRegistry ---
 
@@ -199,7 +196,6 @@ def test_budget_tracker_is_metrics_registry():
 def test_router_decisions_use_same_spent_as_metrics():
     """M3: spending via record_call on _metrics is visible to router (same tracker)."""
     import luna_mcp.server as srv
-    from luna_mcp.budget import ToolRouter
     # router was created with _budget_tracker — check they share state
     before = srv._metrics.spent
     srv._metrics.record_call("ping", 50, 1.0)

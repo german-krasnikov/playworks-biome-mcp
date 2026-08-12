@@ -1,8 +1,8 @@
 """MCP tool: distill_hierarchy (F16 Hierarchy Distiller)."""
 from __future__ import annotations
 
-from ..tools import maybe_expose
 from ..hierarchy_distiller.distiller import distill
+from ..tools import maybe_expose
 
 # Module-level sampling reference — wired by server.py (or None for tests)
 _sampling = None

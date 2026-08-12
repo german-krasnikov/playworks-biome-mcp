@@ -1,7 +1,10 @@
 """Tests for AssetCatalog — RED phase."""
 from __future__ import annotations
+
 import pathlib
+
 import pytest
+
 from luna_mcp.asset_optimizer.catalog import Asset, AssetCatalog
 
 

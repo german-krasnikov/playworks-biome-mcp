@@ -1,10 +1,9 @@
 """Wave 4 review: TDD tests for C1, C2, M1, M2, minors."""
-import os
 import asyncio
-import pathlib
-import pytest
-from unittest.mock import MagicMock, patch, AsyncMock
+import os
+from unittest.mock import MagicMock
 
+import pytest
 
 # ── C1: lifespan auto mode calls _init_budget_auto ───────────────────────────
 
@@ -56,8 +55,8 @@ def test_set_budget_auto_applies_cap_to_tracker(tmp_path, monkeypatch):
     monkeypatch.setenv("LUNA_PROJECT", "c2-test-proj")
 
     from luna_mcp.budget.history import SessionHistory, SessionRow, get_project_key
-    from luna_mcp.budget.tracker import BudgetTracker
     from luna_mcp.budget.router import ToolRouter
+    from luna_mcp.budget.tracker import BudgetTracker
 
     # Pre-populate 10 sessions at 15k
     h = SessionHistory(tmp_path / "history.db")
@@ -88,8 +87,8 @@ def test_set_budget_auto_returns_cap_info(tmp_path, monkeypatch):
     monkeypatch.setenv("LUNA_MCP_DATA_DIR", str(tmp_path))
     monkeypatch.setenv("LUNA_PROJECT", "c2b-proj")
 
-    from luna_mcp.budget.tracker import BudgetTracker
     from luna_mcp.budget.router import ToolRouter
+    from luna_mcp.budget.tracker import BudgetTracker
 
     tracker = BudgetTracker(cap=30_000)
     router = ToolRouter(tracker)
@@ -105,8 +104,8 @@ def test_set_budget_tool_auto_applies_cap(tmp_path, monkeypatch):
     monkeypatch.setenv("LUNA_PROJECT", "c2c-proj")
 
     from luna_mcp.budget.history import SessionHistory, SessionRow, get_project_key
-    from luna_mcp.budget.tracker import BudgetTracker
     from luna_mcp.budget.router import ToolRouter
+    from luna_mcp.budget.tracker import BudgetTracker
     from luna_mcp.tools.budget_tools import register_budget_tools
 
     h = SessionHistory(tmp_path / "history.db")

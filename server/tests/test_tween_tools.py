@@ -1,7 +1,7 @@
 """Tests for S3.2 DOTween inventory and control tools."""
 import pathlib
+
 import pytest
-from unittest.mock import AsyncMock, Mock
 
 JS_PATH = pathlib.Path(__file__).parent.parent.parent / "js" / "luna_helpers.js"
 
@@ -73,6 +73,7 @@ async def test_control_invalid():
 
 def test_control_is_destructive():
     import inspect
+
     from luna_mcp.tools.tween_tools import register_tween_tools
     src = inspect.getsource(register_tween_tools)
     # tween_control must be registered with read_only=False

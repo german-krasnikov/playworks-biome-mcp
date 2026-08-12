@@ -5,8 +5,7 @@ import pathlib
 import sqlite3
 import threading
 import time
-from dataclasses import dataclass, field
-from typing import Optional
+from dataclasses import dataclass
 
 from luna_mcp.lessons.version_store import VersionStoreMixin
 

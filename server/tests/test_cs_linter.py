@@ -1,8 +1,8 @@
 """S5.2 — C# linter + required-API auditor tests (RED phase)."""
 import json
 import pathlib
-import pytest
 
+import pytest
 
 # ── fixtures ─────────────────────────────────────────────────────────────────
 
@@ -16,7 +16,7 @@ def _write_cs(path: pathlib.Path, code: str) -> pathlib.Path:
 # ── rules loading ─────────────────────────────────────────────────────────────
 
 def test_load_rules_returns_ruleset(tmp_path):
-    from luna_mcp.cs_linter.rules import load_rules, RuleSet
+    from luna_mcp.cs_linter.rules import RuleSet, load_rules
     rs = load_rules(None)
     assert isinstance(rs, RuleSet)
 
@@ -61,24 +61,24 @@ def test_load_rules_valid_json_parsed(tmp_path):
 
 def test_navmesh_flagged_unsupported(tmp_path):
     proj = _write_cs(tmp_path / "proj", "NavMesh.CalculatePath(start, end, mask, path);")
-    from luna_mcp.cs_linter.scanner import scan_forbidden
     from luna_mcp.cs_linter.rules import load_rules
+    from luna_mcp.cs_linter.scanner import scan_forbidden
     hits = scan_forbidden(proj, load_rules(None))
     assert any("NavMesh" in h for h in hits)
 
 
 def test_openurl_flagged_lp3014(tmp_path):
     proj = _write_cs(tmp_path / "proj", "Application.OpenURL(\"http://example.com\");")
-    from luna_mcp.cs_linter.scanner import scan_forbidden
     from luna_mcp.cs_linter.rules import load_rules
+    from luna_mcp.cs_linter.scanner import scan_forbidden
     hits = scan_forbidden(proj, load_rules(None))
     assert any("LP3014" in h or "OpenURL" in h for h in hits)
 
 
 def test_no_hits_for_clean_code(tmp_path):
     proj = _write_cs(tmp_path / "proj", "var x = 1 + 2;")
-    from luna_mcp.cs_linter.scanner import scan_forbidden
     from luna_mcp.cs_linter.rules import load_rules
+    from luna_mcp.cs_linter.scanner import scan_forbidden
     hits = scan_forbidden(proj, load_rules(None))
     assert hits == []
 
@@ -87,8 +87,8 @@ def test_required_api_violation_analytics(tmp_path):
     """2× Analytics.LogEvent < min 3 → required API violation."""
     proj = _write_cs(tmp_path / "proj",
         "Analytics.LogEvent(\"level_start\");\nAnalytics.LogEvent(\"level_end\");")
-    from luna_mcp.cs_linter.scanner import scan_required_apis
     from luna_mcp.cs_linter.rules import load_rules
+    from luna_mcp.cs_linter.scanner import scan_required_apis
     violations = scan_required_apis(proj, load_rules(None))
     assert any("LogEvent" in v or "Analytics" in v for v in violations)
 
@@ -96,8 +96,8 @@ def test_required_api_violation_analytics(tmp_path):
 def test_no_plugin_seeded_rules_degraded(tmp_path):
     """No plugin path → seeded rules, DEGRADED prefix in output."""
     proj = _write_cs(tmp_path / "proj", "Application.OpenURL(\"x\");")
-    from luna_mcp.cs_linter.scanner import scan_forbidden
     from luna_mcp.cs_linter.rules import load_rules
+    from luna_mcp.cs_linter.scanner import scan_forbidden
     rs = load_rules(None)
     assert rs.is_fallback
     hits = scan_forbidden(proj, rs)
@@ -161,8 +161,8 @@ def test_bare_gameobject_produces_no_assignment_hit(tmp_path):
     """Bare 'new GameObject()' / GetComponent<GameObject>() must NOT trigger assignment rule."""
     proj = _write_cs(tmp_path / "proj",
         "var go = new GameObject();\nvar comp = go.GetComponent<GameObject>();")
-    from luna_mcp.cs_linter.scanner import scan_forbidden
     from luna_mcp.cs_linter.rules import load_rules
+    from luna_mcp.cs_linter.scanner import scan_forbidden
     hits = scan_forbidden(proj, load_rules(None))
     # no assignment-rule hit for bare GameObject token
     assert not any("GameObject" in h and ("LP-" in h or "assignment" in h.lower()) for h in hits)
@@ -172,8 +172,8 @@ def test_bare_animationcurve_produces_no_assignment_hit(tmp_path):
     """Bare 'AnimationCurve curve = new AnimationCurve()' must NOT trigger assignment rule."""
     proj = _write_cs(tmp_path / "proj",
         "AnimationCurve curve = new AnimationCurve();\ncurve.keys.Length;")
-    from luna_mcp.cs_linter.scanner import scan_forbidden
     from luna_mcp.cs_linter.rules import load_rules
+    from luna_mcp.cs_linter.scanner import scan_forbidden
     hits = scan_forbidden(proj, load_rules(None))
     assert not any("AnimationCurve" in h and ("LP-" in h or "assignment" in h.lower()) for h in hits)
 
@@ -182,8 +182,8 @@ def test_specific_findgameobjectwithtag_flagged(tmp_path):
     """GameObject.FindGameObjectWithTag should be flagged with an actionable rule."""
     proj = _write_cs(tmp_path / "proj",
         'var go = GameObject.FindGameObjectWithTag("Player");')
-    from luna_mcp.cs_linter.scanner import scan_forbidden
     from luna_mcp.cs_linter.rules import load_rules
+    from luna_mcp.cs_linter.scanner import scan_forbidden
     hits = scan_forbidden(proj, load_rules(None))
     assert any("FindGameObjectWithTag" in h for h in hits), f"Expected hit for FindGameObjectWithTag, got: {hits}"
 
@@ -192,8 +192,8 @@ def test_specific_animationcurve_addkey_flagged(tmp_path):
     """AnimationCurve.AddKey should be flagged with an actionable rule."""
     proj = _write_cs(tmp_path / "proj",
         "curve.AnimationCurve.AddKey(0f, 1f);")
-    from luna_mcp.cs_linter.scanner import scan_forbidden
     from luna_mcp.cs_linter.rules import load_rules
+    from luna_mcp.cs_linter.scanner import scan_forbidden
     hits = scan_forbidden(proj, load_rules(None))
     assert any("AddKey" in h for h in hits), f"Expected hit for AnimationCurve.AddKey, got: {hits}"
 

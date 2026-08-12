@@ -1,9 +1,10 @@
 """Tests for PhysicsKnowledge query."""
+
 import pytest
-import pathlib
+
 from luna_mcp.lessons.store import LessonStore
-from luna_mcp.physics_detective.seeds import seed_physics_lessons
 from luna_mcp.physics_detective.knowledge_query import PhysicsKnowledge
+from luna_mcp.physics_detective.seeds import seed_physics_lessons
 
 
 @pytest.fixture

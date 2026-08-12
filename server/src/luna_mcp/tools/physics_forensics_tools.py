@@ -1,6 +1,6 @@
 """S3.4 Physics forensics tools: inspect bodies, query, contact pairs."""
-from . import maybe_expose
 from ..physics_detective.backend_detector import BackendInfo
+from . import maybe_expose
 
 _VALID_KINDS = {"raycast2d", "overlap2d", "raycast3d"}
 

@@ -1,8 +1,9 @@
 """Tests for wiring.py validation logic."""
 from __future__ import annotations
 
+from unittest.mock import AsyncMock, MagicMock
+
 import pytest
-from unittest.mock import MagicMock, patch, AsyncMock
 
 from luna_mcp.wiring import merge_tool_groups
 

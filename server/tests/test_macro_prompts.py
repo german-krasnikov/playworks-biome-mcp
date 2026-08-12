@@ -34,7 +34,7 @@ def test_monetization_tail_mentions_cta_or_mraid():
 
 
 def test_kind_to_tail_unknown_falls_back_to_do():
-    from luna_mcp.macro.prompts import KIND_TO_TAIL, DO_TAIL
+    from luna_mcp.macro.prompts import DO_TAIL, KIND_TO_TAIL
     assert KIND_TO_TAIL.get("unknown_kind", DO_TAIL) is DO_TAIL
 
 
@@ -58,7 +58,7 @@ def test_build_prompt_ask_includes_readonly_note():
 
 
 def test_build_prompt_unknown_kind_uses_do_tail():
-    from luna_mcp.macro.prompts import build_prompt, DO_TAIL
+    from luna_mcp.macro.prompts import DO_TAIL, build_prompt
     result = build_prompt("nonexistent_kind", "tools")
     # Should fall back to DO_TAIL content
     first_word = DO_TAIL.split()[0]

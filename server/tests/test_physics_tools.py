@@ -1,9 +1,9 @@
 """Tests for physics MCP tools."""
+
 import pytest
-import pathlib
+
 from luna_mcp.lessons.store import LessonStore
 from luna_mcp.physics_detective.seeds import seed_physics_lessons
-
 
 # --- detect_physics_backend ---
 

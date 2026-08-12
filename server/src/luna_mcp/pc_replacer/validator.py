@@ -1,6 +1,7 @@
 """Validator: wraps existing visual_baseline_check."""
 from __future__ import annotations
-from typing import Callable, Awaitable
+
+from typing import Awaitable, Callable
 
 
 class Validator:

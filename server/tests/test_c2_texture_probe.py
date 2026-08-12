@@ -7,13 +7,11 @@
 All tests either mock subprocess or use a tiny synthetic image — no Chrome, no binaries needed.
 """
 from __future__ import annotations
-import io
-import pathlib
-import shutil
-import pytest
-from unittest.mock import patch, MagicMock
-from PIL import Image
 
+import pathlib
+from unittest.mock import MagicMock, patch
+
+from PIL import Image
 
 # ---------------------------------------------------------------------------
 # C2(c) — Pillow cheap-tier: TextureAnalyzer.estimate_webp_size
@@ -38,8 +36,9 @@ def test_estimate_webp_size_returns_int(tmp_path):
 
 def test_estimate_webp_size_quality_affects_size(tmp_path):
     """Lower quality should produce smaller WEBP estimate on noisy image."""
-    from luna_mcp.asset_optimizer.texture_analyzer import TextureAnalyzer
     import random
+
+    from luna_mcp.asset_optimizer.texture_analyzer import TextureAnalyzer
     # Noisy image — quality has measurable effect
     img = Image.new("RGB", (256, 256))
     img.putdata([(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
@@ -85,10 +84,11 @@ def test_estimate_webp_size_on_photo_fixture():
 
 def test_recommend_includes_pillow_estimate():
     """AssetAction should carry webp_estimate_bytes when Pillow is available."""
-    from luna_mcp.asset_optimizer.recommender import Recommender, AssetAction
-    from luna_mcp.asset_optimizer.texture_analyzer import TextureAnalyzer
-    from luna_mcp.asset_optimizer.catalog import Asset
     import pathlib
+
+    from luna_mcp.asset_optimizer.catalog import Asset
+    from luna_mcp.asset_optimizer.recommender import Recommender
+    from luna_mcp.asset_optimizer.texture_analyzer import TextureAnalyzer
 
     # Use existing photo fixture which classifies as "photo" and has real file size
     fixture = pathlib.Path(__file__).parent / "fixtures" / "textures" / "photo_large.png"
@@ -211,7 +211,6 @@ def test_probe_subprocess_error_returns_zero(tmp_path):
 
 def test_probe_exception_is_logged_not_silenced_webp(tmp_path):
     """Subprocess exception must be logged at DEBUG level, not silently swallowed."""
-    import logging
     from luna_mcp.asset_optimizer.probe import CompressionProbe
 
     img = _make_rgba_image((32, 32))
@@ -230,7 +229,6 @@ def test_probe_exception_is_logged_not_silenced_webp(tmp_path):
 
 def test_probe_exception_is_logged_not_silenced_png(tmp_path):
     """Subprocess exception in probe_png must be logged at DEBUG level."""
-    import logging
     from luna_mcp.asset_optimizer.probe import CompressionProbe
 
     img = _make_rgba_image((32, 32))
@@ -252,11 +250,12 @@ def test_probe_exception_is_logged_not_silenced_png(tmp_path):
 
 def test_recommend_with_probe_uses_real_bytes():
     """When CompressionProbe is passed, AssetAction.real_probe_bytes is set."""
+    import pathlib
+
+    from luna_mcp.asset_optimizer.catalog import Asset
+    from luna_mcp.asset_optimizer.probe import CompressionProbe
     from luna_mcp.asset_optimizer.recommender import Recommender
     from luna_mcp.asset_optimizer.texture_analyzer import TextureAnalyzer
-    from luna_mcp.asset_optimizer.probe import CompressionProbe
-    from luna_mcp.asset_optimizer.catalog import Asset
-    import pathlib
 
     # Use real photo fixture that classifies correctly
     fixture = pathlib.Path(__file__).parent / "fixtures" / "textures" / "photo_large.png"

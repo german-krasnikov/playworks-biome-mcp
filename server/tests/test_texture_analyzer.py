@@ -1,8 +1,10 @@
 """Tests for TextureAnalyzer — RED phase."""
 from __future__ import annotations
+
 import pathlib
-import pytest
+
 from PIL import Image
+
 from luna_mcp.asset_optimizer.texture_analyzer import TextureAnalyzer, TextureInfo
 
 FIXTURES = pathlib.Path(__file__).parent / "fixtures" / "textures"

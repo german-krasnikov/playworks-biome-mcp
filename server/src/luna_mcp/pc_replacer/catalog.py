@@ -1,5 +1,6 @@
 """Static catalog of known PlayCanvas modules with size estimates."""
 from __future__ import annotations
+
 import json
 import pathlib
 from dataclasses import dataclass

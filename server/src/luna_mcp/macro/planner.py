@@ -37,8 +37,8 @@ async def plan_batch(
     """Returns batch DSL string or '' if disabled. May raise PlanError on failure."""
     if sampling is None or not sampling.enabled:
         return ""
-    from .whitelist import snapshot
     from .prompts import build_prompt
+    from .whitelist import snapshot
     whitelist = snapshot(tool_registry)
     system = build_prompt(kind, whitelist)
     raw = await sampling.plan(intent, system, ctx)

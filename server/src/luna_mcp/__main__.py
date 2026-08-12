@@ -1,1 +1,3 @@
-from luna_mcp.server import main; main()
+from luna_mcp.server import main
+
+main()

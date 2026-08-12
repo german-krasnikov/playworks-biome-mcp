@@ -1,10 +1,12 @@
 """Template registry: load, cache, list, save."""
-import re
 import pathlib
+import re
 from typing import Optional
 
+from luna_mcp.config import data_dir as _data_dir
+
 _BUNDLED_DIR = pathlib.Path(__file__).resolve().parent / "builtin"
-_USER_DIR = pathlib.Path.home() / ".playworks-biome-mcp" / "templates"
+_USER_DIR = _data_dir() / "templates"
 
 _HEADER_RE = re.compile(r'^#\s*(params|desc|version):\s*(.*)$', re.MULTILINE)
 

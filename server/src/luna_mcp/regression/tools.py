@@ -1,12 +1,12 @@
 """4 MCP regression tools: save/check/list/invalidate baselines."""
+import pathlib
 import re
 import tempfile
-import pathlib
 import uuid
 
-from .store import BaselineStore, get_build_hash
-from .differ import diff_pct
 from . import determinism as _determinism_mod
+from .differ import diff_pct
+from .store import BaselineStore, get_build_hash
 
 _NAME_RE = re.compile(r"^[a-z0-9_-]{1,64}$")
 
@@ -26,7 +26,7 @@ class RegressionTools:
                                    pixel_threshold: float = 1.0) -> str:
         """Capture screenshot and save as named baseline."""
         if not _validate_name(name):
-            return f"[INVALID: name must match ^[a-z0-9_-]{{1,64}}$]"
+            return "[INVALID: name must match ^[a-z0-9_-]{1,64}$]"
         bh = await get_build_hash(self._bridge)
         png = await self._bridge.screenshot()
         await self._store.save(bh, name, png, mask_zones=mask_zones,
@@ -37,7 +37,7 @@ class RegressionTools:
     async def visual_baseline_check(self, name: str, semantic_hint: str = "") -> str:
         """Compare current screenshot to saved baseline."""
         if not _validate_name(name):
-            return f"[INVALID: name must match ^[a-z0-9_-]{{1,64}}$]"
+            return "[INVALID: name must match ^[a-z0-9_-]{1,64}$]"
         bh = await get_build_hash(self._bridge)
         loaded = self._store.load(bh, name)
         if loaded is None:

@@ -1,6 +1,6 @@
 """Tests for Tracing event handling added to CDPBridge."""
 import asyncio
-import json
+
 import pytest
 
 

@@ -1,7 +1,9 @@
 """Tests for TemplateRegistry."""
 import time
+
 import pytest
-from luna_mcp.templates.registry import Template, TemplateRegistry
+
+from luna_mcp.templates.registry import TemplateRegistry
 
 
 @pytest.fixture

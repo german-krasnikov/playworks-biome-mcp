@@ -1,6 +1,7 @@
 """Tests for record/fingerprint.py — RED phase."""
 import pytest
-from luna_mcp.record.fingerprint import scene_fp, hash_result
+
+from luna_mcp.record.fingerprint import hash_result, scene_fp
 
 
 @pytest.mark.asyncio

@@ -1,6 +1,6 @@
 """Redaction helpers — trim sensitive data before storing to JSONL."""
-import re
 import hashlib
+import re
 
 _EMAIL_RE = re.compile(r'\b[\w.+-]+@[\w-]+\.[\w.-]+\b')
 _JWT_RE = re.compile(r'eyJ[A-Za-z0-9._-]{20,}')

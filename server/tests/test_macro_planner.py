@@ -1,12 +1,12 @@
 """TDD: macro/planner.py + macro/whitelist.py"""
-import pytest
 from unittest.mock import AsyncMock, MagicMock
 
+import pytest
 
 # ── whitelist ────────────────────────────────────────────────────────────────
 
 def test_whitelist_snapshot_format():
-    from luna_mcp.macro.whitelist import snapshot, reset_cache
+    from luna_mcp.macro.whitelist import reset_cache, snapshot
     reset_cache()
     reg = {"find_objects": None, "get_hierarchy": None, "set_property": None}
     result = snapshot(reg)
@@ -16,7 +16,7 @@ def test_whitelist_snapshot_format():
 
 
 def test_whitelist_snapshot_sorted():
-    from luna_mcp.macro.whitelist import snapshot, reset_cache
+    from luna_mcp.macro.whitelist import reset_cache, snapshot
     reset_cache()
     reg = {"zzz": None, "aaa": None, "mmm": None}
     result = snapshot(reg)
@@ -25,7 +25,7 @@ def test_whitelist_snapshot_sorted():
 
 
 def test_whitelist_cache():
-    from luna_mcp.macro.whitelist import snapshot, reset_cache
+    from luna_mcp.macro.whitelist import reset_cache, snapshot
     reset_cache()
     reg1 = {"tool_a": None}
     reg2 = {"tool_b": None}
@@ -35,7 +35,7 @@ def test_whitelist_cache():
 
 
 def test_whitelist_reset_cache():
-    from luna_mcp.macro.whitelist import snapshot, reset_cache
+    from luna_mcp.macro.whitelist import reset_cache, snapshot
     reset_cache()
     reg1 = {"tool_a": None}
     r1 = snapshot(reg1)
@@ -80,7 +80,7 @@ def test_clean_dsl_keeps_command_lines():
 
 def test_clean_dsl_max_lines_caps_12():
     from luna_mcp.macro.planner import clean_dsl
-    raw = "\n".join(f"ping" for _ in range(20))
+    raw = "\n".join("ping" for _ in range(20))
     result = clean_dsl(raw)
     assert len(result.split("\n")) <= 12
 

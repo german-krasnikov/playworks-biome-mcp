@@ -1,17 +1,18 @@
 """Set-of-Mark tools: annotated screenshot + marker-based interaction."""
 from __future__ import annotations
+
 import io
-import os
 import pathlib
 import uuid
-from typing import Callable, Awaitable
+from typing import Callable
 
 from PIL import Image
 
 from ..som.extract import extract_rects
-from ..som.overlay import annotate, _leaf
+from ..som.overlay import _leaf, annotate
 from ..state.marker_map import MarkerMap, Rect
-from ..tmp_cleanup import track as _track_tmp, cleanup_old as _cleanup_old_tmp
+from ..tmp_cleanup import cleanup_old as _cleanup_old_tmp
+from ..tmp_cleanup import track as _track_tmp
 from . import maybe_expose
 
 # Module-level singleton map (shared across tools)

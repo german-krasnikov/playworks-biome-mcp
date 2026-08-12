@@ -1,5 +1,5 @@
 """4 starter flag entries for FlagCatalog (compressTexturesWebP removed — UNVERIFIED)."""
-from .catalog import FlagEntry, FlagCatalog
+from .catalog import FlagCatalog, FlagEntry
 
 SEED_FLAGS = [
     FlagEntry(

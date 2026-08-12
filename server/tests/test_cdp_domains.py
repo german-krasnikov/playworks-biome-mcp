@@ -1,6 +1,5 @@
 """Tests for cdp_domains pure utilities."""
-import pytest
-from luna_mcp.cdp_domains import offset_to_line, truncate_lines, NETWORK_PRESETS
+from luna_mcp.cdp_domains import NETWORK_PRESETS, offset_to_line, truncate_lines
 
 
 def test_offset_to_line_first_line():

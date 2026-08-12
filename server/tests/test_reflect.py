@@ -1,16 +1,16 @@
 """Tests for Asymmetric Reflection middleware."""
 import os
-import math
-import pytest
 from unittest.mock import AsyncMock, patch
 
+import pytest
 
 # ── imports (will fail until modules exist) ───────────────────────────────────
-
 from luna_mcp.reflect import (
-    Mismatch, register_rule, _RULES, with_reflect, _values_close,
+    _RULES,
+    _values_close,
+    register_rule,
+    with_reflect,
 )
-
 
 # ── test_registry_register_rule ───────────────────────────────────────────────
 
@@ -31,6 +31,7 @@ def test_registry_register_rule():
 @pytest.mark.asyncio
 async def test_set_property_match_silent():
     import json
+
     import luna_mcp.reflect.rules_modify as rm
     snap = json.dumps({"ok": True, "exists": True, "value": 42})
     orig = rm._call_fn
@@ -52,6 +53,7 @@ async def test_set_property_match_silent():
 @pytest.mark.asyncio
 async def test_set_property_mismatch_returns_marker():
     import json
+
     import luna_mcp.reflect.rules_modify as rm
     snap = json.dumps({"ok": True, "exists": True, "value": 99})
     orig = rm._call_fn
@@ -73,6 +75,7 @@ async def test_set_property_mismatch_returns_marker():
 @pytest.mark.asyncio
 async def test_set_property_destroyed_after_write():
     import json
+
     import luna_mcp.reflect.rules_modify as rm
     snap = json.dumps({"ok": True, "exists": False})
     orig = rm._call_fn
@@ -94,6 +97,7 @@ async def test_set_property_destroyed_after_write():
 @pytest.mark.asyncio
 async def test_set_transform_vector_close():
     import json
+
     import luna_mcp.reflect.rules_modify as rm
     # Within 1e-4 rel tolerance
     snap = json.dumps({"ok": True, "exists": True, "value": {"x": 1.0000001, "y": 2.0, "z": 3.0}})
@@ -213,6 +217,7 @@ async def test_skip_on_error_response():
 async def test_with_reflect_composes_with_guard():
     """wrap_with_guard then with_reflect: guard blocks invalid args, reflect adds marker on mismatch."""
     import json
+
     from luna_mcp.middleware import wrap_with_guard
     from luna_mcp.schema_cache import SchemaCache
     from luna_mcp.schema_guard import SchemaGuard
@@ -281,6 +286,7 @@ def test_values_close_dict_vector():
 async def test_set_property_velocity_skipped():
     """set_property velocity (Rigidbody) must produce NO [REFLECT:] marker (M2)."""
     import json
+
     import luna_mcp.reflect.rules_modify as rm
 
     # readBack returns different value — would normally trigger REFLECT
@@ -302,6 +308,7 @@ async def test_set_property_velocity_skipped():
 async def test_set_property_angular_velocity_skipped():
     """angularVelocity is also in skip-list — no reflect marker."""
     import json
+
     import luna_mcp.reflect.rules_modify as rm
 
     snap = json.dumps({"ok": True, "exists": True, "value": 0.0})

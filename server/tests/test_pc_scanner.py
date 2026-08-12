@@ -1,6 +1,7 @@
 """Tests for pc_replacer.scanner — RED phase."""
 import pytest
-from luna_mcp.pc_replacer.catalog import ModuleCatalog, ModuleInfo
+
+from luna_mcp.pc_replacer.catalog import ModuleInfo
 from luna_mcp.pc_replacer.scanner import UsageScanner
 
 
@@ -209,7 +210,8 @@ async def test_physics3d_collider_present_classifies_used():
 
 def test_physics3d_catalog_has_no_fake_names():
     """A2: shipped catalog must use real names, not RigidBodyComponent/CollisionComponent."""
-    import pathlib, json
+    import json
+    import pathlib
     data_path = pathlib.Path(__file__).parent.parent / "src/luna_mcp/pc_replacer/data/pc_modules.json"
     data = json.loads(data_path.read_text())
     p3d = next(m for m in data["modules"] if m["id"] == "physics3d")

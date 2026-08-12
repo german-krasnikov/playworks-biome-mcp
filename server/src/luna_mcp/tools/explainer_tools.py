@@ -1,8 +1,8 @@
 """F14: Transpiled Code Explainer tools."""
 from __future__ import annotations
-from typing import Optional
-from . import maybe_expose
+
 from ..code_explainer.explainer import CodeExplainer
+from . import maybe_expose
 
 
 def register_explainer_tools(mcp, call_fn, *, typemap, sampling, exposed: set = frozenset()):

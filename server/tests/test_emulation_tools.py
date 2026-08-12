@@ -1,6 +1,6 @@
 """Tests for S4.2 emulation tools."""
+
 import pytest
-from unittest.mock import Mock, AsyncMock
 
 
 class FakeMCP:
@@ -112,8 +112,8 @@ async def test_emulation_degraded_no_bridge():
 
 def test_emulation_read_only_false():
     """All 3 tools must be registered as read_only=False."""
-    from luna_mcp.tools.emulation_tools import register_emulation_tools
     from luna_mcp.tools import _HAS_ANNOTATIONS
+    from luna_mcp.tools.emulation_tools import register_emulation_tools
     recorded = []
     class CaptureMCP:
         def tool(self, **kw):

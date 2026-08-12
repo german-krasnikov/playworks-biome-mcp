@@ -6,7 +6,7 @@ TODO: scene_fp, console errors delta (not yet wired).
 import json
 import pathlib
 from dataclasses import dataclass, field
-from typing import Callable, Awaitable
+from typing import Awaitable, Callable
 
 
 @dataclass

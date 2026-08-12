@@ -1,6 +1,5 @@
 """Tests for CombinedPlan estimator (F10)."""
-import pytest
-from luna_mcp.optimize_macro.estimator import OptimizationSource, CombinedPlan
+from luna_mcp.optimize_macro.estimator import CombinedPlan, OptimizationSource
 
 
 def test_source_fields():

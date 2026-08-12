@@ -1,7 +1,9 @@
 """Tests for EventBus and Subscription — RED phase."""
 import asyncio
+
 import pytest
-from luna_mcp.cdp_bridge import EventBus, Subscription
+
+from luna_mcp.cdp_bridge import EventBus
 
 
 @pytest.fixture

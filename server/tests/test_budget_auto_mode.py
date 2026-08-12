@@ -1,9 +1,7 @@
 """TDD tests for auto mode integration (feature #8: Budget Auto-tuning)."""
-import os
-import time
-import pathlib
+from unittest.mock import MagicMock
+
 import pytest
-from unittest.mock import MagicMock, patch
 
 
 def make_rows(n=10, spent=10_000, cap=30_000, hit_cap=0, success=1):
@@ -140,8 +138,8 @@ def test_on_shutdown_skipped_counter():
 # ── sigmoid router ────────────────────────────────────────────────────────────
 
 def test_router_uses_sigmoid_when_p_success_set():
-    from luna_mcp.budget.tracker import BudgetTracker
     from luna_mcp.budget.router import ToolRouter
+    from luna_mcp.budget.tracker import BudgetTracker
     tracker = BudgetTracker(cap=10_000)
     tracker.record("filler", 5_000)  # 50%
     router = ToolRouter(tracker, sigmoid_p_success=0.85)
@@ -150,10 +148,10 @@ def test_router_uses_sigmoid_when_p_success_set():
 
 
 def test_router_sigmoid_blocks_expensive_at_high_pct():
-    from luna_mcp.budget.tracker import BudgetTracker
-    from luna_mcp.budget.router import ToolRouter
     from luna_mcp.budget import registry as reg
     from luna_mcp.budget.registry import ToolCost
+    from luna_mcp.budget.router import ToolRouter
+    from luna_mcp.budget.tracker import BudgetTracker
     reg.TOOL_COSTS["__sig_exp__"] = ToolCost(400, 5000, "expensive", None)
     try:
         tracker = BudgetTracker(cap=10_000)
@@ -168,8 +166,8 @@ def test_router_sigmoid_blocks_expensive_at_high_pct():
 
 def test_router_hard_thresholds_when_p_success_none():
     """When sigmoid_p_success is None, original hard threshold logic is used."""
-    from luna_mcp.budget.tracker import BudgetTracker
     from luna_mcp.budget.router import ToolRouter
+    from luna_mcp.budget.tracker import BudgetTracker
     tracker = BudgetTracker(cap=10_000)
     tracker.record("filler", 9_600)  # 96%
     router = ToolRouter(tracker, sigmoid_p_success=None)
@@ -181,13 +179,12 @@ def test_router_hard_thresholds_when_p_success_none():
 def test_set_budget_auto_returns_derived_cap(tmp_path, monkeypatch):
     monkeypatch.setenv("LUNA_MCP_DATA_DIR", str(tmp_path))
     monkeypatch.setenv("LUNA_PROJECT", "budget-tool-proj")
-    import luna_mcp.tools.budget_tools as bt
     import luna_mcp.server as srv
+    import luna_mcp.tools.budget_tools as bt
 
     orig_cap = srv._budget_tracker.cap
     orig_spent = srv._budget_tracker.spent
     try:
-        from luna_mcp.tools.budget_tools import register_budget_tools
         # call set_budget("auto") if exposed
         # We test the module directly
         result = None

@@ -1,5 +1,6 @@
 """Middleware: wrap tool functions with SchemaGuard pre-flight validation."""
 from __future__ import annotations
+
 import logging
 
 logger = logging.getLogger(__name__)

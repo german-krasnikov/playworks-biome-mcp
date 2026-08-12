@@ -1,6 +1,7 @@
 """Tests for F2 luna_debug native channel tools."""
-import pytest
 import pathlib
+
+import pytest
 
 JS_PATH = pathlib.Path(__file__).parent.parent.parent / "js" / "luna_helpers.js"
 

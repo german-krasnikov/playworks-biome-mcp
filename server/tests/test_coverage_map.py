@@ -1,5 +1,6 @@
 """Unit tests for coverage_map pure functions."""
 import pytest
+
 from luna_mcp.coverage_map import _build_marker_index, _enclosing_marker, _is_dead_fn
 
 

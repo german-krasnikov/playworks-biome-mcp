@@ -1,5 +1,4 @@
 """Tests for per-tool invocation counter in MetricsRegistry (C5b)."""
-import pytest
 
 from luna_mcp.budget.metrics import MetricsRegistry
 

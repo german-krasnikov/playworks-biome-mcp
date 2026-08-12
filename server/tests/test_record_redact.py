@@ -1,6 +1,5 @@
 """Tests for record/redact.py — RED phase."""
-import pytest
-from luna_mcp.record.redact import redact_text, redact_args, redact_result
+from luna_mcp.record.redact import redact_args, redact_result, redact_text
 
 
 def test_redact_text_emails():

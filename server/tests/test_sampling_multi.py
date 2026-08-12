@@ -1,7 +1,8 @@
 """TDD tests for SamplingService.describe_image_multi."""
 import asyncio
-import pytest
 from unittest.mock import AsyncMock, MagicMock, Mock, patch
+
+import pytest
 
 
 @pytest.mark.asyncio
@@ -19,8 +20,10 @@ async def test_describe_image_multi_empty_paths_returns_none(monkeypatch):
     """Returns None for empty image list."""
     monkeypatch.setenv("LUNA_VISUAL_LLM", "1")
     with patch("shutil.which", return_value="/usr/bin/claude"):
+        import importlib
+
         from luna_mcp import sampling as smod
-        import importlib; importlib.reload(smod)
+        importlib.reload(smod)
         svc = smod.SamplingService()
         result = await svc.describe_image_multi("prompt", [])
     assert result is None
@@ -49,8 +52,10 @@ async def test_describe_image_multi_passes_all_images_to_subprocess(monkeypatch,
 
     with patch("shutil.which", return_value="/usr/bin/claude"), \
          patch("asyncio.create_subprocess_exec", new=capture):
+        import importlib
+
         from luna_mcp import sampling as smod
-        import importlib; importlib.reload(smod)
+        importlib.reload(smod)
         svc = smod.SamplingService()
         result = await svc.describe_image_multi("describe motion", [str(img1), str(img2)])
 
@@ -80,8 +85,10 @@ async def test_describe_image_multi_uses_haiku_model(monkeypatch, tmp_path):
 
     with patch("shutil.which", return_value="/usr/bin/claude"), \
          patch("asyncio.create_subprocess_exec", new=cap):
+        import importlib
+
         from luna_mcp import sampling as smod
-        import importlib; importlib.reload(smod)
+        importlib.reload(smod)
         svc = smod.SamplingService()
         await svc.describe_image_multi("test", [str(img)])
 
@@ -121,8 +128,10 @@ async def test_describe_image_multi_concurrency_semaphore(monkeypatch):
 
     with patch("shutil.which", return_value="/usr/bin/claude"), \
          patch("asyncio.create_subprocess_exec", new=AsyncMock(side_effect=lambda *a, **kw: make_proc())):
+        import importlib
+
         from luna_mcp import sampling as smod
-        import importlib; importlib.reload(smod)
+        importlib.reload(smod)
         svc = smod.SamplingService()
         svc._semaphore = None  # reset
 

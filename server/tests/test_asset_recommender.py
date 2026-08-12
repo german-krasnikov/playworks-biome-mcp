@@ -1,11 +1,13 @@
 """Tests for Recommender — RED phase."""
 from __future__ import annotations
+
 import pathlib
-import pytest
+
 from PIL import Image
-from luna_mcp.asset_optimizer.catalog import Asset, AssetCatalog
+
+from luna_mcp.asset_optimizer.catalog import Asset
+from luna_mcp.asset_optimizer.recommender import AssetAction, Recommender
 from luna_mcp.asset_optimizer.texture_analyzer import TextureAnalyzer
-from luna_mcp.asset_optimizer.recommender import Recommender, AssetAction
 
 FIXTURES = pathlib.Path(__file__).parent / "fixtures" / "textures"
 
@@ -91,7 +93,7 @@ def test_risk_field_present():
 
 def _make_noisy_png(path: pathlib.Path, w: int, h: int) -> str:
     """Create a high-entropy RGB PNG (photo-like) without numpy."""
-    import random, struct, zlib
+    import random
     # Use Pillow with random pixel data via bytes
     data = bytes(random.randint(0, 255) for _ in range(w * h * 3))
     img = Image.frombytes("RGB", (w, h), data)

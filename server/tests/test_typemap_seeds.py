@@ -1,10 +1,9 @@
 """Tests for Playworks-specific typemap seed lessons."""
-import pathlib
 import sqlite3
-import pytest
-from luna_mcp.lessons.store import LessonStore
-from luna_mcp.lessons.typemap_seeds import seed_typemap_lessons, PLAYWORKS_SEEDS
+
 from luna_mcp.lessons.keys import class_hash
+from luna_mcp.lessons.store import LessonStore
+from luna_mcp.lessons.typemap_seeds import PLAYWORKS_SEEDS, seed_typemap_lessons
 
 
 def _store(tmp_path) -> LessonStore:

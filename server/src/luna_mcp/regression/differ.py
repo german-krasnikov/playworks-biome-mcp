@@ -2,7 +2,6 @@
 import io
 import pathlib
 import re
-from typing import Optional
 
 from PIL import Image, ImageChops, ImageDraw
 

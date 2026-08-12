@@ -1,9 +1,10 @@
 """Reflection rule for eval_js: verify iframe still responsive after assignment."""
 from __future__ import annotations
+
 import re
 from typing import Optional
 
-from . import register_rule, Mismatch
+from . import Mismatch, register_rule
 
 # Patchable in tests
 _ping_fn = None

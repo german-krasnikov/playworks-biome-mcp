@@ -8,9 +8,10 @@ import tempfile
 import uuid
 from typing import Callable, Optional
 
+from ..sampling import SYS_UI
+from ..tmp_cleanup import cleanup_old as _cleanup_old_tmp
+from ..tmp_cleanup import track as _track_tmp
 from . import maybe_expose
-from ..sampling import SYS_UI, SYS_STATE, SYS_VERIFY
-from ..tmp_cleanup import track as _track_tmp, cleanup_old as _cleanup_old_tmp
 
 _DEGRADED = "[DEGRADED: visual LLM disabled — set LUNA_VISUAL_LLM=1 and install claude CLI]"
 
@@ -37,7 +38,7 @@ def register_llm_tools(mcp, sampling, get_bridge: Callable, *, exposed: set = fr
     """Register LLM visual tools. Returns {name: (fn, params)} for batch."""
 
     async def _take_screenshot() -> str:
-        from ..config import SCREENSHOT_FORMAT, SCREENSHOT_QUALITY, SCREENSHOT_MAX_WIDTH
+        from ..config import SCREENSHOT_FORMAT, SCREENSHOT_MAX_WIDTH, SCREENSHOT_QUALITY
         bridge = get_bridge()
         data = await bridge.screenshot(format=SCREENSHOT_FORMAT, quality=SCREENSHOT_QUALITY,
                                        max_width=SCREENSHOT_MAX_WIDTH)

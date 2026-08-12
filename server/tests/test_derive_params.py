@@ -1,8 +1,9 @@
 """Tests for derive_params() — equivalence + coercion-parity (B5)."""
 from __future__ import annotations
-import pytest
-from luna_mcp.tools.batch import derive_params, register_batch_tool, _TOOL_REGISTRY, coerce_args
 
+import pytest
+
+from luna_mcp.tools.batch import _TOOL_REGISTRY, coerce_args, derive_params, register_batch_tool
 
 # ── derive_params basics ──────────────────────────────────────────────────────
 

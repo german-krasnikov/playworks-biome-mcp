@@ -1,6 +1,6 @@
 """S5.3 — Luna issue seeds tests (RED phase)."""
-import pathlib
 import pytest
+
 from luna_mcp.lessons.store import LessonStore
 
 

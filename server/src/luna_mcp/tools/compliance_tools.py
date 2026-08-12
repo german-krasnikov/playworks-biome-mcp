@@ -1,8 +1,8 @@
 """F12 Compliance Checker MCP tool."""
 from __future__ import annotations
 
-from ..tools import maybe_expose
 from ..compliance.checker import NETWORK_RULES, check_tier1, format_results
+from ..tools import maybe_expose
 
 
 async def check_compliance(build_path: str, network: str, screenshot_path: str = "") -> str:

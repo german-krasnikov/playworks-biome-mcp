@@ -1,9 +1,5 @@
 """Tests for Jakefile index builder — RED phase."""
-import hashlib
-import pathlib
-import pytest
-from luna_mcp.build_intel.index import build_index, JakefileIndex
-
+from luna_mcp.build_intel.index import JakefileIndex, build_index
 
 SAMPLE_JAKE = """\
 // Line 1

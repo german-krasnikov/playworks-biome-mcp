@@ -1,10 +1,10 @@
 """Integration tests for hinter + degradation layering in server composition."""
-import asyncio
-import pytest
-from unittest.mock import AsyncMock, MagicMock, patch
-from luna_mcp.hinter import ToolHinter
-from luna_mcp.degradation import GracefulDegradation
+from unittest.mock import MagicMock
 
+import pytest
+
+from luna_mcp.degradation import GracefulDegradation
+from luna_mcp.hinter import ToolHinter
 
 # --- hinted() wrapper construction tests ---
 

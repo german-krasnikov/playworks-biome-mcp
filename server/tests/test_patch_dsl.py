@@ -1,9 +1,6 @@
 """Tests for PatchOp DSL + validator — RED phase."""
-import pathlib
-import pytest
-from luna_mcp.build_intel.patch_dsl import PatchOp, validate, apply_op
-from luna_mcp.build_intel.index import build_index, JakefileIndex
-
+from luna_mcp.build_intel.index import build_index
+from luna_mcp.build_intel.patch_dsl import PatchOp, apply_op, validate
 
 SAMPLE_TEXT = """\
 // Line 1

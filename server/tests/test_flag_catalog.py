@@ -1,6 +1,6 @@
 """RED: FlagCatalog — JSON-based persistent catalog."""
 import json
-import pathlib
+
 import pytest
 
 from luna_mcp.flag_explorer.catalog import FlagCatalog, FlagEntry

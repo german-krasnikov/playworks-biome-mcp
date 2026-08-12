@@ -4,9 +4,9 @@ from __future__ import annotations
 import pathlib
 import re
 
-from luna_mcp.tools import maybe_expose
-from luna_mcp.build_diff.indexer import BuildIndex
 from luna_mcp.build_diff.bisector import Bisector
+from luna_mcp.build_diff.indexer import BuildIndex
+from luna_mcp.tools import maybe_expose
 
 _LABEL_RE = re.compile(r'^[a-z0-9_.-]{1,64}$')
 
@@ -15,7 +15,7 @@ def _make_index_build(store):
     async def index_build(path: str, label: str) -> str:
         """Scan a build folder and persist its manifest. label must be [a-z0-9_.-]{1,64}."""
         if not _LABEL_RE.match(label):
-            return f"[INVALID: label must match ^[a-z0-9_.-]{{1,64}}$]"
+            return "[INVALID: label must match ^[a-z0-9_.-]{1,64}$]"
         p = pathlib.Path(path).expanduser().resolve()
         try:
             manifest = BuildIndex.scan(p, label)

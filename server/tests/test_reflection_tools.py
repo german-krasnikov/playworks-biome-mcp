@@ -1,6 +1,7 @@
 """Phase 11b: Bridge.Reflection + Object Selection — TDD tests."""
-import pytest
 from unittest.mock import AsyncMock, Mock
+
+import pytest
 from mcp.server.fastmcp.exceptions import ToolError
 
 import luna_mcp.server as server_module
@@ -131,8 +132,9 @@ async def test_get_selection_not_initialized():
 # ── batch registration ───────────────────────────────────────────────────────
 
 def test_all_tools_registered_for_batch():
-    from luna_mcp.tools.reflection_tools import register_reflection_tools
     from mcp.server.fastmcp import FastMCP
+
+    from luna_mcp.tools.reflection_tools import register_reflection_tools
     mcp = FastMCP("test")
     call_fn = AsyncMock()
     tools = register_reflection_tools(mcp, call_fn)

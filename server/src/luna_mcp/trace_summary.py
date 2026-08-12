@@ -1,6 +1,5 @@
 """Pure trace event summarizer — no CDP, no state."""
 from __future__ import annotations
-from luna_mcp.cdp_domains import truncate_lines
 
 _FRAME_NAMES = {"DrawFrame", "BeginFrame", "Commit"}
 

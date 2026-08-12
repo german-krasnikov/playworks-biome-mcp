@@ -1,10 +1,8 @@
 """Tests for JakefilePlanner (Haiku DSL planning) — RED phase."""
-import asyncio
 import pytest
-from unittest.mock import AsyncMock, MagicMock
-from luna_mcp.build_intel.planner import JakefilePlanner, parse_dsl
-from luna_mcp.build_intel.index import build_index
 
+from luna_mcp.build_intel.index import build_index
+from luna_mcp.build_intel.planner import JakefilePlanner, parse_dsl
 
 SAMPLE_DSL = """\
 PATCH id=lower_quality search=quality: 85 replace=quality: 65 count=1 anchor_before=jpeg

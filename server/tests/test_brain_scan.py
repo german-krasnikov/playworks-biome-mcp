@@ -1,6 +1,6 @@
 """Tests for BrainScanner (F20: Runtime Anomaly Detector)."""
-import asyncio
 import time
+
 import pytest
 
 from luna_mcp.watchdog.brain_scan import BrainScanner

@@ -1,5 +1,6 @@
 """SchemaGuard: pre-flight validator — blocks typos before CDP eval."""
 from __future__ import annotations
+
 import logging
 import os
 from typing import Optional

@@ -4,12 +4,12 @@ from __future__ import annotations
 import json
 import pathlib
 
-from ..tools import maybe_expose
-from ..luna_config.locator import find_config
-from ..luna_config.reader import read_config
-from ..luna_config.writer import write_config, revert_config
 from ..luna_config.differ import diff_configs
 from ..luna_config.jake_driver import JakeDriver
+from ..luna_config.locator import find_config
+from ..luna_config.reader import read_config
+from ..luna_config.writer import write_config
+from ..tools import maybe_expose
 
 
 async def luna_config_get(config_path: str = "") -> str:

@@ -1,5 +1,6 @@
 """In-memory marker map with TTL. Cleared on Page.frameNavigated."""
 from __future__ import annotations
+
 import time
 from dataclasses import dataclass
 from typing import Optional

@@ -1,6 +1,7 @@
 """Tests for placeholder engine."""
 import pytest
-from luna_mcp.templates.placeholders import expand, parse_args, PlaceholderError
+
+from luna_mcp.templates.placeholders import PlaceholderError, expand, parse_args
 
 
 def test_simple_substitution():

@@ -5,7 +5,7 @@ import os
 from dataclasses import dataclass
 from typing import Optional
 
-from .registry import cost_of, ToolCost
+from .registry import ToolCost, cost_of
 from .tracker import BudgetTracker
 
 

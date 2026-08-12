@@ -1,6 +1,7 @@
 """F13 Intent Router — smart dispatcher: keyword Tier 1 + Haiku Tier 2."""
 from __future__ import annotations
-from typing import Optional, Callable
+
+from typing import Callable, Optional
 
 KEYWORD_ROUTES: dict[tuple, str] = {
     ("recompile", "rebuild", "jake", "task", "build script"): "discover_jake_tasks path={path}",

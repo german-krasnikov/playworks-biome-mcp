@@ -1,6 +1,5 @@
 """Tests for ToolHinter behavioral pattern detection."""
-import pytest
-from luna_mcp.hinter import ToolHinter, _Call
+from luna_mcp.hinter import ToolHinter
 
 
 def make_hinter():

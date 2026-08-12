@@ -1,9 +1,8 @@
 """Tests for typemap-aware LessonStore extensions."""
-import pathlib
 import sqlite3
-import pytest
-from luna_mcp.lessons.store import Lesson, LessonStore
+
 from luna_mcp.lessons.keys import class_hash, sig_hash
+from luna_mcp.lessons.store import Lesson, LessonStore
 
 
 def _store(tmp_path) -> LessonStore:

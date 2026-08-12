@@ -1,5 +1,5 @@
 """Smart visual router: picks cheapest path for visual questions."""
-from typing import Callable, Awaitable
+from typing import Awaitable, Callable
 
 # Injected at wiring time by server.py or tests
 _call_fn: Callable[..., Awaitable[str]] | None = None

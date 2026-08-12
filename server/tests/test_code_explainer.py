@@ -4,10 +4,11 @@ Demangler + Haiku explanation for Luna transpiled JS.
 No Chrome needed.
 """
 from __future__ import annotations
-import json
-import pytest
-from unittest.mock import AsyncMock, MagicMock, patch
 
+import json
+from unittest.mock import AsyncMock, MagicMock
+
+import pytest
 
 # ── Fixtures ──────────────────────────────────────────────────────────────────
 

@@ -1,9 +1,7 @@
 """S5.4 — Jake task discovery tests (RED phase)."""
-import json
-import pathlib
 import subprocess
-import pytest
 
+import pytest
 
 # ── discover_tasks unit tests ─────────────────────────────────────────────────
 
@@ -67,7 +65,7 @@ def test_discover_tasks_catalog_persists(tmp_path, monkeypatch):
     monkeypatch.setattr(subprocess, "run", fake_run)
 
     catalog_path = tmp_path / "jake_tasks.json"
-    from luna_mcp.luna_config.jake_tasks import discover_tasks, save_catalog, load_catalog
+    from luna_mcp.luna_config.jake_tasks import discover_tasks, load_catalog, save_catalog
     tasks = discover_tasks(str(tmp_path))
     save_catalog(tasks, catalog_path)
     loaded = load_catalog(catalog_path)

@@ -1,7 +1,7 @@
 """ToolHinter — behavioral anti-pattern detection via N-gram ring buffer."""
 import time
 from collections import deque
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Optional
 
 from .hinter_rules import _RULES_BASE

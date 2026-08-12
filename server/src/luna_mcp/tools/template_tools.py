@@ -1,9 +1,10 @@
 """Template MCP tools: template, template_list, template_save."""
 from __future__ import annotations
-import pathlib
-from luna_mcp.templates.registry import TemplateRegistry, _BUNDLED_DIR, _USER_DIR
-from luna_mcp.templates.placeholders import expand, parse_args, PlaceholderError
+
+from luna_mcp.templates.placeholders import PlaceholderError, expand, parse_args
+from luna_mcp.templates.registry import _BUNDLED_DIR, _USER_DIR, TemplateRegistry
 from luna_mcp.tools.batch import execute_batch
+
 from . import maybe_expose
 
 

@@ -1,7 +1,7 @@
 """Temp file tracker: auto-delete /tmp/luna_*.png on age/count/exit."""
 from __future__ import annotations
+
 import atexit
-import os
 import pathlib
 import threading
 import time

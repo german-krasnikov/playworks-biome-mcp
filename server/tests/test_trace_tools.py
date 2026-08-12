@@ -1,7 +1,8 @@
 """Tests for S4.3 trace_frames tool + trace_summary."""
-import pytest
 import asyncio
-from unittest.mock import patch, AsyncMock
+from unittest.mock import patch
+
+import pytest
 
 
 class FakeMCP:

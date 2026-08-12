@@ -1,5 +1,6 @@
 """Pure heap profile summarizer — no CDP, no state."""
 from __future__ import annotations
+
 from luna_mcp.cdp_domains import truncate_lines
 
 

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 960" width="900" height="960" role="img" aria-labelledby="cl-title cl-desc">
-<title id="cl-title">Luna MCP — Release Timeline</title>
+<title id="cl-title">Playworks Biome MCP — Release Timeline</title>
 <desc id="cl-desc">An animated vertical changelog. Five milestones reveal in sequence top to bottom as a marker descends a glowing gradient spine: Phase A+B+C (Foundation), Waves 1-6 (The brain), Token Economy (up to 92% saved), Sprints 1-6 (Probes and field-readiness), and v0.1.0 Beta (Touchdown) with 198 tools, 1728 tests, and 30,182 LOC.</desc>
 <defs>
 <linearGradient id="sky" x1="0" y1="0" x2="0.65" y2="1"><stop offset="0" stop-color="#05060B"/><stop offset="0.5" stop-color="#080A14"/><stop offset="1" stop-color="#0E1120"/></linearGradient>
@@ -39,7 +39,7 @@
 <circle class="tw" cx="58" cy="600" r="1.1" style="animation-delay:.4s"/>
 <circle class="tw" cx="855" cy="860" r="1.2" style="animation-delay:1.3s"/>
 </g>
-<text x="40" y="54" class="hd" font-size="27" font-weight="700" fill="#E8ECF6">Luna MCP <tspan class="mn" font-size="13" font-weight="400" fill="#7E879F">&#183; release timeline</tspan></text>
+<text x="40" y="54" class="hd" font-size="27" font-weight="700" fill="#E8ECF6">Playworks Biome <tspan class="mn" font-size="13" font-weight="400" fill="#7E879F">&#183; release timeline</tspan></text>
 <text x="40" y="76" class="mn" font-size="12.5" fill="#7E879F">Unity&#8594;JS transpiler debug bridge over CDP &#183; oldest &#8594; newest</text>
 <text x="860" y="54" class="mn" font-size="12.5" fill="#3FE0A3" text-anchor="end">5 milestones</text>
 <line x1="40" y1="92" x2="860" y2="92" stroke="#222742" stroke-width="1"/>

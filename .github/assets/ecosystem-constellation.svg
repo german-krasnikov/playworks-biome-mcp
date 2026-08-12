@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 220" width="1200" height="220" role="img" aria-labelledby="eco-title eco-desc">
-  <title id="eco-title">Luna MCP ecosystem constellation</title>
+  <title id="eco-title">Playworks Biome MCP ecosystem constellation</title>
   <desc id="eco-desc">A moon orbiting along an elliptical telemetry ring against a deep-space starfield, with the cyan-to-violet accent sweep dividing the ecosystem section.</desc>
   <defs>
     <linearGradient id="eco__skyGrad" x1="0" y1="0" x2="0" y2="1">

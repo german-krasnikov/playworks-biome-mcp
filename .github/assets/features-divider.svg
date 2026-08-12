@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" width="1200" height="120" role="img" aria-labelledby="fdiv__title fdiv__desc">
-  <title id="fdiv__title">Luna MCP — Capabilities telemetry divider</title>
+  <title id="fdiv__title">Playworks Biome MCP — Capabilities telemetry divider</title>
   <desc id="fdiv__desc">A cyan-to-violet telemetry line sweeps across a deep-space band while a small lunar sphere orbits a faint ring, with a quiet twinkling starfield.</desc>
   <defs>
     <!-- shared: luna-hero-sky (re-declared with exact stops) -->

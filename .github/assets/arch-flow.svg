@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="1200" height="360" role="img" aria-labelledby="aflow__title aflow__desc">
-  <title id="aflow__title">Luna MCP data flow: AI Assistant over stdio to the Python FastMCP server, then over a CDP WebSocket to Chrome running the Luna build with JS helpers injected in the iframe.</title>
+  <title id="aflow__title">Playworks Biome MCP data flow: AI Assistant over stdio to the Python FastMCP server, then over a CDP WebSocket to Chrome running the Luna build with JS helpers injected in the iframe.</title>
   <desc id="aflow__desc">Three control-room panels connected by two glowing cyan-to-violet telemetry links. Packets travel left to right; a small moon orbits over the server panel.</desc>
 
   <defs>
@@ -115,7 +115,7 @@
     <text x="150" y="222" class="mono" font-size="10.5" fill="#566079">any stdio MCP client</text>
   </g>
 
-  <!-- ===== PANEL 2: Luna MCP server (with orbiting moon) ===== -->
+  <!-- ===== PANEL 2: Playworks Biome MCP server (with orbiting moon) ===== -->
   <g>
     <rect x="430" y="100" width="340" height="160" rx="16" fill="#0E1120" stroke="#222742" stroke-width="1"/>
     <rect x="430" y="100" width="340" height="160" rx="16" fill="none" stroke="url(#aflow__accentArc)" stroke-width="2" opacity=".45"/>
@@ -129,7 +129,7 @@
       </g>
     </g>
 
-    <text x="600" y="184" text-anchor="middle" class="lbl" font-size="18" font-weight="bold" fill="#E8ECF6" filter="url(#aflow__glowFine)">Luna MCP</text>
+    <text x="600" y="184" text-anchor="middle" class="lbl" font-size="18" font-weight="bold" fill="#E8ECF6" filter="url(#aflow__glowFine)">Playworks Biome</text>
     <text x="600" y="204" text-anchor="middle" class="lbl" font-size="12" fill="#C2C9DD">Python · FastMCP</text>
     <!-- token-economy chip -->
     <g>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-labelledby="cstack__title cstack__desc">
-  <title id="cstack__title">Luna MCP — the 6-layer composition stack</title>
+  <title id="cstack__title">Playworks Biome MCP — the 6-layer composition stack</title>
   <desc id="cstack__desc">A telemetry packet descends through six guard layers — Recorder, Hinter, Degradation, Budget gate, Reflect, and Schema guard — before reaching Chrome, each layer earning its place.</desc>
   <defs>
     <linearGradient id="cstack__skyGrad" x1="0" y1="0" x2="0" y2="1">

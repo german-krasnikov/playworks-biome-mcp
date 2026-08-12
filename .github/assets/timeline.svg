@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-labelledby="tl-title tl-desc">
-  <title id="tl-title">Luna MCP release flight path</title>
+  <title id="tl-title">Playworks Biome MCP release flight path</title>
   <desc id="tl-desc">An animated orbital release timeline: Phase A+B+C, then Waves 1 to 6, then Sprints 1 to 6, with a moon traveling the path as telemetry sweeps along a cyan-to-violet line.</desc>
   <defs>
     <linearGradient id="tl__skyGrad" x1="0" y1="0" x2="0" y2="1">
